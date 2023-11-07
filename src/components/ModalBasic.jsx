@@ -59,7 +59,7 @@ function ModalBasic({
         leaveStart="opacity-100 translate-y-0"
         leaveEnd="opacity-0 translate-y-4"
       >
-        <div ref={modalContent} className="bg-white dark:bg-slate-800 rounded shadow-lg overflow-auto max-w-lg w-full max-h-full">
+        <div ref={modalContent} className="bg-white dark:bg-slate-800 rounded overflow-auto max-w-lg w-full max-h-full">
           {/* Modal header */}
           <div className="px-5 py-3 border-b border-slate-200 dark:border-slate-700">
             <div className="flex justify-between items-center">

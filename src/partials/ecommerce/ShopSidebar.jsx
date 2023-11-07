@@ -3,7 +3,7 @@ import React from 'react';
 function ShopSidebar() {
   return (
     <div>
-      <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 p-5 min-w-60">
+      <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-5 min-w-60">
         <div className="grid md:grid-cols-2 xl:grid-cols-1 gap-6">
           {/* Group 1 */}
           <div>

@@ -9,7 +9,7 @@ function ShopCards01() {
   return (
     <React.Fragment>
       {/* Card 1 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <img className="w-full" src={AppImage01} width="286" height="160" alt="Application 01" />
@@ -103,7 +103,7 @@ function ShopCards01() {
       </div>
 
       {/* Card 2 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <img className="w-full" src={AppImage02} width="286" height="160" alt="Application 02" />
@@ -197,7 +197,7 @@ function ShopCards01() {
       </div>
 
       {/* Card 3 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <img className="w-full" src={AppImage03} width="286" height="160" alt="Application 03" />
@@ -291,7 +291,7 @@ function ShopCards01() {
       </div>
 
       {/* Card 4 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <img className="w-full" src={AppImage04} width="286" height="160" alt="Application 04" />

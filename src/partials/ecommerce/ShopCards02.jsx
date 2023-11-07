@@ -9,7 +9,7 @@ function ShopCards02() {
   return (
     <React.Fragment>
       {/* Card 1 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -60,7 +60,7 @@ function ShopCards02() {
       </div>
 
       {/* Card 2 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -102,7 +102,7 @@ function ShopCards02() {
       </div>
 
       {/* Card 3 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -145,7 +145,7 @@ function ShopCards02() {
       </div>
 
       {/* Card 4 */}
-      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">

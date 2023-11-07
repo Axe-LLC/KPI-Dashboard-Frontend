@@ -176,7 +176,7 @@ function CreditCards() {
                     <div className="text-slate-800 dark:text-slate-100 font-semibold text-center mb-6">Physical Metal Card Summary</div>
 
                     {/* Credit Card */}
-                    <div className="relative aspect-[7/4] bg-gradient-to-tr from-slate-600 to-slate-800 p-5 rounded-xl shadow-lg overflow-hidden">
+                    <div className="relative aspect-[7/4] bg-gradient-to-tr from-slate-600 to-slate-800 p-5 rounded-xl overflow-hidden">
                       {/* Illustration on card */}
                       <div className="absolute inset-0 w-full h-full" aria-hidden="true">
                         <svg className="w-full h-full" width="326" height="190" viewBox="0 0 326 190" xmlns="http://www.w3.org/2000/svg">

@@ -21,7 +21,7 @@ function MeetupsPosts() {
     <div className="grid xl:grid-cols-2 gap-6">
       
       {/* Item 1 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img
@@ -93,7 +93,7 @@ function MeetupsPosts() {
       </article>
       
       {/* Item 2 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img
@@ -165,7 +165,7 @@ function MeetupsPosts() {
       </article>
       
       {/* Item 3 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img
@@ -237,7 +237,7 @@ function MeetupsPosts() {
       </article>
       
       {/* Item 4 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img
@@ -302,7 +302,7 @@ function MeetupsPosts() {
       </article>
       
       {/* Item 5 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img
@@ -367,7 +367,7 @@ function MeetupsPosts() {
       </article>
       
       {/* Item 6 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img
@@ -439,7 +439,7 @@ function MeetupsPosts() {
       </article>
       
       {/* Item 7 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img
@@ -504,7 +504,7 @@ function MeetupsPosts() {
       </article>
       
       {/* Item 8 */}
-      <article className="flex bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <Link className="relative block w-24 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0" to="/community/meetups-post">
           <img

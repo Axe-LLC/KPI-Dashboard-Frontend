@@ -31,7 +31,7 @@ function Apps() {
             </div>
 
             {/* Content */}
-            <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm mb-8">
+            <div className="bg-white dark:bg-slate-800 rounded-sm mb-8">
               <div className="flex flex-col md:flex-row md:-mr-px">
                 <SettingsSidebar />
                 <AppsPanel />

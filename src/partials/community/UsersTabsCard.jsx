@@ -4,7 +4,7 @@ import EditMenu from '../../components/DropdownEditMenu';
 
 function UsersTabsCard(props) {
   return (
-    <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="flex flex-col h-full">
         {/* Card top */}
         <div className="grow p-5">

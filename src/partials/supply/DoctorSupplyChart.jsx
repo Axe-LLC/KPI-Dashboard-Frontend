@@ -55,7 +55,7 @@ function DoctorSupplyChart({data, isRendering}) {
       {/* Chart built with Chart.js 3 */}
       <div className="grow">
         {/* Change the height attribute to adjust the chart height */}
-        {chartData?.labels?.length && !isRendering && <LineChart data={chartData} width={286} height={98} />}
+        {chartData?.labels?.length > 0 && !isRendering && <LineChart data={chartData} width={286} height={98} />}
       </div>
     </div>
   );

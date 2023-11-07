@@ -148,3 +148,11 @@ main {
 #sidebar {
     background-color: #1C4851;
 }
+
+.nav-selected-item {
+    background-color: #F09375;
+}
+
+.nav-selected-item-text {
+    color: #3a313a;
+}

@@ -16,7 +16,6 @@ function Staff() {
 
   useEffect(() => {
     setRendering(false);
-    console.log(staffData, '+++++++++++++')
   }, [staffData]);
 
   return (

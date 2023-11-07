@@ -49,7 +49,7 @@ function TypeStaffChart({data, isRendering}) {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-      {chartData?.labels?.length && !isRendering && <BarChart data={chartData} width={595} height={248} />}
+      {chartData?.labels?.length > 0 && !isRendering && <BarChart data={chartData} width={595} height={248} />}
     </div>
   );
 }

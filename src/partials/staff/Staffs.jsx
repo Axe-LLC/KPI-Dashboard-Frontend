@@ -21,21 +21,23 @@ function Staffs({setStaffData, setRendering}) {
       setStaffs(res.data);
       for (let i=0; i<res.data.length; i++) {
         let data = dayArray[res.data[i].start_date];
-        if (res.data[i].role === STAFF_TYPE_DOCTOR) {
-          data[STAFF_TYPE_DOCTOR] += res.data[i].hours;
+        if(data) {
+          if (res.data[i].role === STAFF_TYPE_DOCTOR) {
+            data[STAFF_TYPE_DOCTOR] += res.data[i].hours;
+          }
+          else {
+            data[STAFF_TYPE_HYGIENE] += res.data[i].hours;
+          }
+  
+          if (res.data[i].employee_status === EMPLOYEE_STATUS_FULL_TIME) {
+            data[EMPLOYEE_STATUS_FULL_TIME] += res.data[i].hours;
+          }
+          else {
+            data[EMPLOYEE_STATUS_PART_TIME] += res.data[i].hours;
+          }
+  
+          dayArray[res.data[i].start_date] = data;
         }
-        else {
-          data[STAFF_TYPE_HYGIENE] += res.data[i].hours;
-        }
-
-        if (res.data[i].employee_status === EMPLOYEE_STATUS_FULL_TIME) {
-          data[EMPLOYEE_STATUS_FULL_TIME] += res.data[i].hours;
-        }
-        else {
-          data[EMPLOYEE_STATUS_PART_TIME] += res.data[i].hours;
-        }
-
-        dayArray[res.data[i].start_date] = data;
       }
       setStaffData(dayArray);
     });

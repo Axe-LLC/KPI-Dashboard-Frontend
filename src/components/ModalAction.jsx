@@ -58,7 +58,7 @@ function ModalAction({
         leaveStart="opacity-100 translate-y-0"
         leaveEnd="opacity-0 translate-y-4"
       >
-        <div ref={modalContent} className="bg-white dark:bg-slate-800 rounded shadow-lg overflow-auto max-w-lg w-full max-h-full">
+        <div ref={modalContent} className="bg-white dark:bg-slate-800 rounded overflow-auto max-w-lg w-full max-h-full">
           <div className="p-6">
             <div className="relative">
               {/* Close button */}

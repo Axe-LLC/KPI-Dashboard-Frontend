@@ -61,12 +61,12 @@ function Pay() {
             <img className="object-cover h-full w-full filter blur opacity-10" src={PayBg} width="460" height="180" alt="Pay background" />
           </div>
           <div className="relative px-4 sm:px-6 lg:px-8 max-w-lg mx-auto">
-            <img className="rounded-t shadow-lg" src={PayBg} width="460" height="180" alt="Pay background" />
+            <img className="rounded-t" src={PayBg} width="460" height="180" alt="Pay background" />
           </div>
         </div>
 
         <div className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-lg mx-auto">
-          <div className="bg-white dark:bg-slate-800 px-8 pb-6 rounded-b shadow-lg">
+          <div className="bg-white dark:bg-slate-800 px-8 pb-6 rounded-b">
             {/* Card header */}
             <div className="text-center mb-6">
               <div className="mb-2">

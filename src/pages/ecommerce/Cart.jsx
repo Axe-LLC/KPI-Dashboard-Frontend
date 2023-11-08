@@ -49,7 +49,7 @@ function Cart() {
 
               {/* Sidebar */}
               <div>
-                <div className="bg-white dark:bg-slate-800 p-5 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
                   <div className="text-slate-800 dark:text-slate-100 font-semibold mb-2">Order Summary</div>
                   {/* Order details */}
                   <ul className="mb-4">

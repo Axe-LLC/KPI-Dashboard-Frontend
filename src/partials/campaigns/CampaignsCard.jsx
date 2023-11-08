@@ -56,7 +56,7 @@ function CampaignsCard(props) {
   };
 
   return (
-    <div className="col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="flex flex-col h-full p-5">
         <header>
           <div className="flex items-center justify-between">

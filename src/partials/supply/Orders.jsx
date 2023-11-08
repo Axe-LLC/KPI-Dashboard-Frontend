@@ -76,7 +76,7 @@ function Orders({setSupplyData, setRendering}) {
       </div>
 
       {/* Table */}
-      <OrdersTable selectedItems={handleSelectedItems} orders={orders} clinics={clinics} />
+      <OrdersTable selectedItems={handleSelectedItems} orders={orders} clinics={clinics} fetchOrders={fetchOrders} />
 
       {/* Pagination */}
       <div className="mt-8">

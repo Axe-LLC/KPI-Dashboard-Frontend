@@ -140,3 +140,23 @@ input[type="search"]::-webkit-search-results-decoration {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+main {
+    background: #FFFCF6;
+}
+
+#sidebar {
+    background-color: #1C4851;
+}
+
+.nav-selected-item {
+    background-color: #F09375;
+}
+
+.nav-selected-item-text {
+    color: #3a313a;
+}
+
+.welcome-msg-box {
+    background: linear-gradient(180deg, rgba(240, 169, 117, 0.3) 0%, #FFF6E4 59.93%, rgba(255, 252, 246, 0) 92.99%) !important;
+}

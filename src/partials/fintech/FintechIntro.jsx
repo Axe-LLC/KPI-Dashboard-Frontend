@@ -8,7 +8,7 @@ import FintechIcon04 from '../../images/company-icon-04.svg';
 
 function FintechIntro() {
   return (
-    <div className="flex flex-col col-span-full bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="flex flex-col col-span-full bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 py-6">
         <div className="md:flex md:justify-between md:items-center">
           {/* Left side */}

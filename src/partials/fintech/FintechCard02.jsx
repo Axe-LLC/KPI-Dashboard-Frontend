@@ -4,7 +4,7 @@ import EditMenu from '../../components/DropdownEditMenuCard';
 
 function FintechCard02() {
   return (
-    <div className="flex flex-col col-span-full xl:col-span-4 bg-gradient-to-b from-slate-700  to-slate-800 dark:bg-none dark:bg-slate-800 shadow-lg rounded-sm border border-slate-700">
+    <div className="flex flex-col col-span-full xl:col-span-4 bg-gradient-to-b from-slate-700  to-slate-800 dark:bg-none dark:bg-slate-800 rounded-sm border border-slate-700">
       <header className="px-5 py-4 border-b border-slate-600 dark:border-slate-700 flex items-center">
         <h2 className="font-semibold text-slate-200">Active Cards</h2>
       </header>

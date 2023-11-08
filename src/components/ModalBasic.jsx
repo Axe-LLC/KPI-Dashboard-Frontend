@@ -14,8 +14,9 @@ function ModalBasic({
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
+      console.log(target, '=========')
       if (!modalOpen || modalContent.current.contains(target)) return
-      setModalOpen(false);
+      // setModalOpen(false);
     };
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
@@ -48,7 +49,7 @@ function ModalBasic({
       {/* Modal dialog */}
       <Transition
         id={id}
-        className="fixed inset-0 z-50 overflow-hidden flex items-center my-4 justify-center px-4 sm:px-6"
+        className="fixed inset-0 z-50 overflow-hidden flex items-center my-4 justify-center px-4 sm:px-6 border-none"
         role="dialog"
         aria-modal="true"
         show={modalOpen}
@@ -59,7 +60,7 @@ function ModalBasic({
         leaveStart="opacity-100 translate-y-0"
         leaveEnd="opacity-0 translate-y-4"
       >
-        <div ref={modalContent} className="bg-white dark:bg-slate-800 rounded shadow-lg overflow-auto max-w-lg w-full max-h-full">
+        <div ref={modalContent} className="bg-white dark:bg-slate-800 rounded overflow-auto max-w-lg w-full max-h-full">
           {/* Modal header */}
           <div className="px-5 py-3 border-b border-slate-200 dark:border-slate-700">
             <div className="flex justify-between items-center">

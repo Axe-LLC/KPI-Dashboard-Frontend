@@ -123,7 +123,7 @@ function InboxBody({
         </header>
 
         {/* Messages box */}
-        <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 px-6 divide-y divide-slate-200 dark:divide-slate-700">
+        <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 px-6 divide-y divide-slate-200 dark:divide-slate-700">
           {mails.map((mail) => {
             return (
               <Mail

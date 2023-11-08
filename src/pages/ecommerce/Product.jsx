@@ -525,7 +525,7 @@ function Product() {
 
               {/* Sidebar */}
               <div>
-                <div className="bg-white dark:bg-slate-800 p-5 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
                   <div className="text-sm text-slate-800 dark:text-slate-100 font-semibold mb-3">Select a Package</div>
                   <ul className="space-y-2 sm:flex sm:space-y-0 sm:space-x-2 lg:space-y-2 lg:space-x-0 lg:flex-col mb-4">
                     <li>

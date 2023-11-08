@@ -43,7 +43,7 @@ function DoctorSupplyChart({data, isRendering}) {
   }, [data]);
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 pt-5">
         <header>
           <h3 className="text-sm font-semibold text-slate-500 uppercase mb-1">
@@ -55,7 +55,7 @@ function DoctorSupplyChart({data, isRendering}) {
       {/* Chart built with Chart.js 3 */}
       <div className="grow">
         {/* Change the height attribute to adjust the chart height */}
-        {chartData?.labels?.length && !isRendering && <LineChart data={chartData} width={286} height={98} />}
+        {chartData?.labels?.length > 0 && !isRendering && <LineChart data={chartData} width={286} height={98} />}
       </div>
     </div>
   );

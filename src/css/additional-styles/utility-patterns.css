@@ -162,6 +162,10 @@ main {
     height: 24px;
 }
 
+.primary-button {
+    background: #F09375;
+}
+
 .welcome-msg-box {
     background: linear-gradient(180deg, rgba(240, 169, 117, 0.3) 0%, #FFF6E4 59.93%, rgba(255, 252, 246, 0) 92.99%) !important;
 }

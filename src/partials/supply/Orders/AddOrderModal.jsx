@@ -46,7 +46,7 @@ function AddOrderModal({clinics, fetchOrders}) {
   return (
     <React.Fragment>
       <button
-        className="btn bg-indigo-500 hover:bg-indigo-600 text-white"
+        className="btn primary-button text-white"
         aria-controls="feedback-modal"
         onClick={(e) => {
           e.stopPropagation();
@@ -105,7 +105,7 @@ function AddOrderModal({clinics, fetchOrders}) {
         <div className="px-5 py-4 border-t border-slate-200 dark:border-slate-700">
           <div className="flex flex-wrap justify-end space-x-2">
             <button className="btn-sm border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300" onClick={(e) => { e.stopPropagation(); setAddOrderModalOpen(false); }}>Cancel</button>
-            <button className="btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" onClick={() => addOrder()}>Add Order</button>
+            <button className="btn-sm primary-button text-white" onClick={() => addOrder()}>Add Order</button>
           </div>
         </div>
       </ModalBasic>

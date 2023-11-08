@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ModalBasic from "../../../components/ModalBasic";
 import { SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from "../../../utils/Consts";
@@ -13,6 +13,16 @@ function AddOrderModal({clinics, fetchOrders}) {
   const [clinic, setClinic] = useState(0);
   const [showError, setShowError] = useState(false);
 
+  useEffect(() => {
+    setName();
+    setNumber();
+    setDate('');
+    setTotal();
+    setType(STAFF_TYPE_DOCTOR);
+    setClinic();
+    console.log(number, '========');
+  }, [addOrderModalOpen])
+
   const addOrder = () => {
     if (clinic === 0 || !number || date === '' || !name || total === undefined) {
       setShowError(true);
@@ -26,13 +36,8 @@ function AddOrderModal({clinics, fetchOrders}) {
         type: type,
         clinic: clinic
       }).then((res) => {
+        console.log('success!')
         fetchOrders();
-        setName();
-        setNumber();
-        setDate('');
-        setTotal();
-        setType(STAFF_TYPE_DOCTOR);
-        setClinic();
         setAddOrderModalOpen(false);
       });
     }

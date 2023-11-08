@@ -40,6 +40,16 @@ function Orders({setSupplyData, setRendering}) {
     axios.get(`${SERVER_ADDRESS}/clinics`).then((res) => setClinics(res.data.data[0][1]));
   }
 
+  const handleDelete = () => {
+    axios.delete(`${SERVER_ADDRESS}/orders`, {
+      headers: {},
+      data: selectedItems
+    }).then((res) => {
+      fetchOrders();
+      setSelectedItems([]);
+    })
+  }
+
   useEffect(() => {
     fetchOrders();
     fetchClincs();
@@ -64,7 +74,7 @@ function Orders({setSupplyData, setRendering}) {
         {/* Right: Actions */}
         <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
           {/* Delete button */}
-          <DeleteButton selectedItems={selectedItems} />
+          <DeleteButton selectedItems={selectedItems} handleDelete={handleDelete}/>
           {/* Dropdown */}
           <DateSelect />
           {/* Filter button */}

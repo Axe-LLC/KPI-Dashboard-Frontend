@@ -14,7 +14,6 @@ function ModalBasic({
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
-      console.log(target, '=========')
       if (!modalOpen || modalContent.current.contains(target)) return
       // setModalOpen(false);
     };

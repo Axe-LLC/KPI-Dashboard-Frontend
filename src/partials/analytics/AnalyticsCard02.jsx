@@ -29,14 +29,14 @@ function AnalyticsCard02() {
           252, 423, 622, 470, 532,
         ],
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        backgroundColor: `#FAD97F66`,
+        borderColor: '#F09375',
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-          pointHoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+          pointBackgroundColor: '#F09375',
+          pointHoverBackgroundColor: '#F09375',
           pointBorderWidth: 0,
           pointHoverBorderWidth: 0,          
           clip: 20,
@@ -47,22 +47,17 @@ function AnalyticsCard02() {
   return (
     <div className="flex flex-col col-span-full xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Active Users Right Now</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Appointments</h2>
       </header>
       {/* Card content */}
       <div className="flex flex-col h-full">
         {/* Live visitors number */}
         <div className="px-5 py-3">
           <div className="flex items-center">
-            {/* Red dot */}
-            <div className="relative flex items-center justify-center w-3 h-3 mr-3" aria-hidden="true">
-              <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-50"></div>
-              <div className="relative inline-flex rounded-full w-1.5 h-1.5 bg-rose-500"></div>
-            </div> 
             {/* Vistors number */}
             <div>
               <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">347</div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">Live visitors</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">Total Appointments</div>
             </div>
           </div>
         </div>
@@ -81,10 +76,10 @@ function AnalyticsCard02() {
               <thead className="text-xs uppercase text-slate-400 dark:text-slate-500">
                 <tr>
                   <th className="py-2">
-                    <div className="font-semibold text-left">Top pages</div>
+                    <div className="font-semibold text-left">Appointment Types</div>
                   </th>
                   <th className="py-2">
-                    <div className="font-semibold text-right">Active users</div>
+                    <div className="font-semibold text-right">Count</div>
                   </th>
                 </tr>
               </thead>
@@ -93,7 +88,7 @@ function AnalyticsCard02() {
                 {/* Row */}
                 <tr>
                   <td className="py-2">
-                    <div className="text-left">preview.cruip.com/open-pro/</div>
+                    <div className="text-left">Completed</div>
                   </td>
                   <td className="py-2">
                     <div className="font-medium text-right text-slate-800">94</div>
@@ -102,7 +97,7 @@ function AnalyticsCard02() {
                 {/* Row */}
                 <tr>
                   <td className="py-2">
-                    <div className="text-left">preview.cruip.com/simple/</div>
+                    <div className="text-left">Cancelled</div>
                   </td>
                   <td className="py-2">
                     <div className="font-medium text-right text-slate-800">42</div>
@@ -111,7 +106,7 @@ function AnalyticsCard02() {
                 {/* Row */}
                 <tr>
                   <td className="py-2">
-                    <div className="text-left">cruip.com/unlimited/</div>
+                    <div className="text-left">New Patients</div>
                   </td>
                   <td className="py-2">
                     <div className="font-medium text-right text-slate-800">12</div>
@@ -120,7 +115,7 @@ function AnalyticsCard02() {
                 {/* Row */}
                 <tr>
                   <td className="py-2">
-                    <div className="text-left">preview.cruip.com/twist/</div>
+                    <div className="text-left">Emegency Appointments</div>
                   </td>
                   <td className="py-2">
                     <div className="font-medium text-right text-slate-800">4</div>
@@ -129,11 +124,6 @@ function AnalyticsCard02() {
               </tbody>
             </table>
           </div>
-        </div>
-
-        {/* Card footer */}
-        <div className="text-right px-5 pb-4">
-          <Link className="text-sm font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" to="#0">Real-Time Report -&gt;</Link>
         </div>
       </div>
     </div>

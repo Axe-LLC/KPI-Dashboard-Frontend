@@ -13,15 +13,15 @@ function FintechCard08() {
       {
         label: 'Growth 1',
         data: [0, 3500000],
-        borderColor: tailwindConfig().theme.colors.emerald[500],
+        borderColor: '#F09375',
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.emerald[500])}, 0.08)`,
+        backgroundColor: `#FAD97F66`,
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.emerald[500],
-        pointHoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+        pointBackgroundColor: '#F09375',
+        pointHoverBackgroundColor: '#F09375',
         pointBorderWidth: 0,
         pointHoverBorderWidth: 0,
         clip: 20,
@@ -30,7 +30,7 @@ function FintechCard08() {
       {
         label: 'Growth 2',
         data: [0, 2000000],
-        borderColor: tailwindConfig().theme.colors.emerald[200],
+        borderColor: '#F09375DD',
         fill: false,
         borderWidth: 2,
         tension: 0,
@@ -48,12 +48,11 @@ function FintechCard08() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-12 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Growth Portfolio</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collections</h2>
       </header>
       <div className="px-5 py-3">
         <div className="text-sm italic mb-2">Hey Mark, by age 65 you could have:</div>
         <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">$2M - $3.5M</div>
-        <div className="text-sm text-slate-500 dark:text-slate-400">Risk level 8</div>
       </div>
       {/* Chart built with Chart.js 3 */}
       <div className="grow">

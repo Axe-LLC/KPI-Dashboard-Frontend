@@ -13,9 +13,9 @@ function OrdersTableItem(props) {
   const statusColor = (status) => {
     switch (status) {
       case STAFF_TYPE_DOCTOR:
-        return 'bg-emerald-100 dark:bg-emerald-400/30 text-emerald-600 dark:text-emerald-400';
+        return '#F09375';
       case STAFF_TYPE_HYGIENE:
-        return 'bg-amber-100 dark:bg-amber-400/30 text-amber-600 dark:text-amber-400';
+        return '#FBD08F';
       default:
         return 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400';
     }
@@ -49,7 +49,7 @@ function OrdersTableItem(props) {
             <div className="text-left font-medium text-emerald-500">{props.total}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5 ${statusColor(props.type)}`}>{props.type}</div>
+            <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5`} style={{color: statusColor(props.type)}}>{props.type}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5`}>{clinicName}</div>

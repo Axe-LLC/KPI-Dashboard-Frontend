@@ -83,8 +83,12 @@ function Staffs({setStaffData, setRendering}) {
       </div>
 
       {/* Table */}
-      <StaffsTable selectedItems={handleSelectedItems} staffs={staffs} clinics={clinics} />
-
+      <StaffsTable
+        selectedItems={handleSelectedItems}
+        staffs={staffs}
+        clinics={clinics}
+        fetchStaffs={fetchStaffs}
+      />
       {/* Pagination */}
       <div className="mt-8">
         <PaginationClassic />

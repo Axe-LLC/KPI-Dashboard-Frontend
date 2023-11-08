@@ -4,14 +4,15 @@ import OrdersTableItem from './OrdersTableItem';
 function OrdersTable({
   selectedItems,
   orders,
-  clinics
+  clinics,
+  fetchOrders
 }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
-    setIsCheck(list.map(li => li.id));
+    setIsCheck(orders.map(li => parseInt(li.id)));
     if (selectAll) {
       setIsCheck([]);
     }
@@ -20,9 +21,9 @@ function OrdersTable({
   const handleClick = e => {
     const { id, checked } = e.target;
     setSelectAll(false);
-    setIsCheck([...isCheck, id]);
+    setIsCheck([...isCheck, parseInt(id)]);
     if (!checked) {
-      setIsCheck(isCheck.filter(item => item !== id));
+      setIsCheck(isCheck.filter(item => item !== parseInt(id)));
     }
   };
 
@@ -79,7 +80,7 @@ function OrdersTable({
                   <OrdersTableItem
                     key={order.id}
                     id={order.id}
-                    order={order.number}
+                    number={order.number}
                     date={order.date}
                     total={order.total}
                     type={order.type}
@@ -88,6 +89,7 @@ function OrdersTable({
                     clinics={clinics}
                     handleClick={handleClick}
                     isChecked={isCheck.includes(order.id)}
+                    fetchOrders={fetchOrders}
                   />
                 )
               })

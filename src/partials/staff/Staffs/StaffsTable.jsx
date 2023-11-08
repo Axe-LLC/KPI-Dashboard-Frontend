@@ -4,14 +4,15 @@ import StaffsTableItem from './StaffsTableItem';
 function StaffsTable({
   selectedItems,
   staffs,
-  clinics
+  clinics,
+  fetchStaffs
 }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
-    setIsCheck(list.map(li => li.id));
+    setIsCheck(staffs.map(li => parseInt(li.id)));
     if (selectAll) {
       setIsCheck([]);
     }
@@ -20,9 +21,9 @@ function StaffsTable({
   const handleClick = e => {
     const { id, checked } = e.target;
     setSelectAll(false);
-    setIsCheck([...isCheck, id]);
+    setIsCheck([...isCheck, parseInt(id)]);
     if (!checked) {
-      setIsCheck(isCheck.filter(item => item !== id));
+      setIsCheck(isCheck.filter(item => item !== parseInt(id)));
     }
   };
 
@@ -92,6 +93,7 @@ function StaffsTable({
                     clinics={clinics}
                     handleClick={handleClick}
                     isChecked={isCheck.includes(staff.id)}
+                    fetchStaffs={fetchStaffs}
                   />
                 )
               })

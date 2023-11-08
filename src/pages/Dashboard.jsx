@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
-import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
-import DashboardAvatars from '../partials/dashboard/DashboardAvatars';
-import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
+import DateSelect from '../components/DateSelect';
+import ClinicSelect from '../components/ClinicSelect';
 import FintechCard09 from '../partials/fintech/FintechCard09';
 import FintechCard07 from '../partials/fintech/FintechCard07';
 import FintechCard08 from '../partials/fintech/FintechCard08';
 import AnalyticsCard01 from '../partials/analytics/AnalyticsCard01';
 import AnalyticsCard02 from '../partials/analytics/AnalyticsCard02';
+import { SERVER_ADDRESS } from '../utils/Consts';
 
 function Dashboard() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [clinics, setClinics] = useState([{id: 0, name: 'All Clinics'}]);
+  const initialClinics = [{id: 0, name: 'All Clinics'}];
+
+  useEffect(() => {
+    fetchClincs();
+  }, []);
+
+  const fetchClincs = () => {
+    axios.get(`${SERVER_ADDRESS}/clinics`).then((res) => setClinics(initialClinics.concat(res.data.data[0][1])));
+  }
 
   return (
     <div className="flex h-[100dvh] overflow-hidden">
@@ -43,10 +52,11 @@ function Dashboard() {
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                {/* Filter button */}
-                <FilterButton align="right" />
+                <ClinicSelect options={clinics} />   
                 {/* Datepicker built with flatpickr */}
-                <Datepicker align="right" />           
+                <Datepicker align="right" />
+                {/* Dropdown */}
+                <DateSelect />    
               </div>
 
             </div>

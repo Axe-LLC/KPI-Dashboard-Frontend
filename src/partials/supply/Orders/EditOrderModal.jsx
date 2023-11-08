@@ -66,7 +66,7 @@ function EditOrderModal({clinics, fetchOrders, open, setOpen, order}) {
               <label className="block text-sm font-medium mb-1" htmlFor="clinic">Clinic <span className="text-rose-500">*</span></label>
               <select id="type" className="form-input w-full px-2 py-1" value={clinic} onChange={(e) => {setClinic(e.target.value); setShowError(false);}}>
                 <option value={0}>--- Select Clinic ---</option>
-                {clinics.map((c, index) => (
+                {clinics.filter(c => c.id !== 0).map((c, index) => (
                   <option key={index} value={c.id}>{c.name}</option>
                 ))}
               </select>

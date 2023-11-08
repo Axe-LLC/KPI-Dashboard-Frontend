@@ -111,12 +111,6 @@ function Sidebar({
         <div className="space-y-8">
           {/* Pages group */}
           <div>
-            <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
-              <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6" aria-hidden="true">
-                •••
-              </span>
-              <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Pages</span>
-            </h3>
             <ul className="mt-3">
               {/* Dashboard */}
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname === '/' && 'nav-selected-item'}`}>

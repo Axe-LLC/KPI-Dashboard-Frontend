@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LineChart from '../../charts/LineChart03';
 
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
+import RoleSelect from '../../components/RoleSelect';
 
 function AnalyticsCard01() {
-
+  const [role, setRole] = useState('Doctor');
   const chartData = {
     labels: [
       '12-01-2020', '01-01-2021', '02-01-2021',
@@ -29,14 +30,14 @@ function AnalyticsCard01() {
           13000, 11000, 15000, 17000, 18000,
         ],
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        backgroundColor: `#FAD97F66`,
+        borderColor: '#F09375',
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-          pointHoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+          pointBackgroundColor: '#F09375',
+          pointHoverBackgroundColor: '#F09375',
           pointBorderWidth: 0,
           pointHoverBorderWidth: 0,          
           clip: 20,
@@ -67,8 +68,9 @@ function AnalyticsCard01() {
 
   return (
     <div className="flex flex-col col-span-full xl:col-span-8 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
-      <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Analytics</h2>
+      <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Analytics By Provider Type</h2>
+        <RoleSelect setRole={setRole} />
       </header>
       <div className="px-5 py-1">
         <div className="flex flex-wrap">
@@ -79,7 +81,7 @@ function AnalyticsCard01() {
                 <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">24.7K</div>
                 <div className="text-sm font-medium text-emerald-500">+49%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">Unique Visitors</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">{`${role}  Hours`}</div>
             </div>
             <div className="hidden md:block w-px h-8 bg-slate-200 dark:bg-slate-700 mr-5" aria-hidden="true"></div>
           </div>
@@ -90,7 +92,7 @@ function AnalyticsCard01() {
                 <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">56.9K</div>
                 <div className="text-sm font-medium text-emerald-500">+7%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">Total Pageviews</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">{`${role} Production`}</div>
             </div>
             <div className="hidden md:block w-px h-8 bg-slate-200 dark:bg-slate-700 mr-5" aria-hidden="true"></div>
           </div>
@@ -101,7 +103,7 @@ function AnalyticsCard01() {
                 <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">54%</div>
                 <div className="text-sm font-medium text-amber-500">-7%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">Bounce Rate</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">{`Production per ${role} Hour`}</div>
             </div>
             <div className="hidden md:block w-px h-8 bg-slate-200 dark:bg-slate-700 mr-5" aria-hidden="true"></div>
           </div>
@@ -112,7 +114,7 @@ function AnalyticsCard01() {
                 <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">2m 56s</div>
                 <div className="text-sm font-medium text-amber-500">+7%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">Visit Duration</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">{`Percentage of ${role} Production`}</div>
             </div>
           </div>
         </div>

@@ -66,7 +66,7 @@ function EditOrderModal({clinics, fetchOrders, open, setOpen, order}) {
               <label className="block text-sm font-medium mb-1" htmlFor="clinic">Clinic <span className="text-rose-500">*</span></label>
               <select id="type" className="form-input w-full px-2 py-1" value={clinic} onChange={(e) => {setClinic(e.target.value); setShowError(false);}}>
                 <option value={0}>--- Select Clinic ---</option>
-                {clinics.map((c, index) => (
+                {clinics.filter(c => c.id !== 0).map((c, index) => (
                   <option key={index} value={c.id}>{c.name}</option>
                 ))}
               </select>
@@ -80,7 +80,7 @@ function EditOrderModal({clinics, fetchOrders, open, setOpen, order}) {
         <div className="px-5 py-4 border-t border-slate-200 dark:border-slate-700">
           <div className="flex flex-wrap justify-end space-x-2">
             <button className="btn-sm border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300" onClick={(e) => { e.stopPropagation(); setOpen(false); }}>Cancel</button>
-            <button className="btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" onClick={() => updateOrder()}>Update Order</button>
+            <button className="btn-sm primary-button text-white" onClick={() => updateOrder()}>Update Order</button>
           </div>
         </div>
       </ModalBasic>

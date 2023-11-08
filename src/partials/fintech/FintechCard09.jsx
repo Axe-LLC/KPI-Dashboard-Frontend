@@ -7,22 +7,18 @@ import { tailwindConfig } from '../../utils/Utils';
 function FintechCard09() {
   
   const chartData = {
-    labels: ['Cash', 'Commodities', 'Bonds', 'Stock'],
+    labels: ['Doctor', 'Hygiene'],
     datasets: [
       {
         label: 'Sessions By Device',
-        data: [12, 13, 10, 65],
+        data: [12, 13],
         backgroundColor: [
-          tailwindConfig().theme.colors.emerald[400],
-          tailwindConfig().theme.colors.amber[400],
-          tailwindConfig().theme.colors.sky[400],
-          tailwindConfig().theme.colors.indigo[500],
+          '#F09375',
+          '#FBD08F',
         ],
         hoverBackgroundColor: [
-          tailwindConfig().theme.colors.emerald[500],
-          tailwindConfig().theme.colors.amber[500],
-          tailwindConfig().theme.colors.sky[500],
-          tailwindConfig().theme.colors.indigo[600],
+          '#F09375',
+          '#FBD08F',
         ],
         borderWidth: 0,
       },
@@ -32,7 +28,7 @@ function FintechCard09() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Portfolio Value</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Production</h2>
       </header>
       <div className="px-5 py-3">
         <div className="text-sm italic mb-2">Hey Mark, here is the value of your portfolio:</div>

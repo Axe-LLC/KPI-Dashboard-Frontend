@@ -6,39 +6,13 @@ import FilterButton from '../../components/DropdownFilter';
 import OrdersTable from "./Orders/OrdersTable";
 import PaginationClassic from "../../components/PaginationClassic";
 import AddOrderModal from "./Orders/AddOrderModal";
-import { getCurrentMonthDays } from "../../utils/Utils";
-import { STAFF_TYPE_TOTAL, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, SERVER_ADDRESS } from "../../utils/Consts";
 
-function Orders({setSupplyData, setRendering}) {
+function Orders({clinics, orders, fetchOrders}) {
   const [selectedItems, setSelectedItems] = useState([]);
-  const [clinics, setClinics] = useState([]);
-  const [orders, setOrders] = useState([]);
 
-  const fetchOrders = () => {
-    setRendering(true);
-    axios.get(`${SERVER_ADDRESS}/order`).then((res) => {
-      let dayArray = getCurrentMonthDays();
-      setOrders(res.data);
-      for (let i=0; i<res.data.length; i++) {
-        let data = dayArray[res.data[i].date];
-        data[STAFF_TYPE_TOTAL] += res.data[i].total;
-
-        if (res.data[i].type === STAFF_TYPE_DOCTOR) {
-          data[STAFF_TYPE_DOCTOR] += res.data[i].total;
-        }
-        else {
-          data[STAFF_TYPE_HYGIENE] += res.data[i].total;
-        }
-
-        dayArray[res.data[i].date] = data;
-      }
-      setSupplyData(dayArray);
-    });
-  }
-
-  const fetchClincs = () => {
-    axios.get(`${SERVER_ADDRESS}/clinics`).then((res) => setClinics(res.data.data[0][1]));
-  }
+  const handleSelectedItems = (selectedItems) => {
+    setSelectedItems([...selectedItems]);
+  };
 
   const handleDelete = () => {
     axios.delete(`${SERVER_ADDRESS}/orders`, {
@@ -50,16 +24,6 @@ function Orders({setSupplyData, setRendering}) {
     })
   }
 
-  useEffect(() => {
-    fetchOrders();
-    fetchClincs();
-  }, []);
-  
-
-  const handleSelectedItems = (selectedItems) => {
-    setSelectedItems([...selectedItems]);
-  };
-
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
@@ -68,7 +32,7 @@ function Orders({setSupplyData, setRendering}) {
 
         {/* Left: Title */}
         <div className="mb-4 sm:mb-0">
-          <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Orders ✨</h1>
+          {/* <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Orders ✨</h1> */}
         </div>
 
         {/* Right: Actions */}
@@ -76,11 +40,9 @@ function Orders({setSupplyData, setRendering}) {
           {/* Delete button */}
           <DeleteButton selectedItems={selectedItems} handleDelete={handleDelete}/>
           {/* Dropdown */}
-          <DateSelect />
+          {/* <DateSelect /> */}
           {/* Filter button */}
-          <FilterButton align="right" />
-          {/* Add order button */}
-          <AddOrderModal clinics={clinics} fetchOrders={fetchOrders} />
+          {/* <FilterButton align="right" /> */}
         </div>
 
       </div>

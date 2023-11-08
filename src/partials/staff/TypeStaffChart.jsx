@@ -24,8 +24,8 @@ function TypeStaffChart({data, isRendering}) {
         {
           label: EMPLOYEE_STATUS_FULL_TIME,
           data: values1,
-          backgroundColor: tailwindConfig().theme.colors.blue[400],
-          hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
+          backgroundColor: '#F09375',
+          hoverBackgroundColor: '#F09375',
           barPercentage: 0.66,
           categoryPercentage: 0.66,
         },
@@ -33,8 +33,8 @@ function TypeStaffChart({data, isRendering}) {
         {
           label: EMPLOYEE_STATUS_PART_TIME,
           data: values2,
-          backgroundColor: tailwindConfig().theme.colors.indigo[500],
-          hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
+          backgroundColor: '#FBD08F',
+          hoverBackgroundColor: '#FBD08F',
           barPercentage: 0.66,
           categoryPercentage: 0.66,
         },

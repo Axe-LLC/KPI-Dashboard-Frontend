@@ -26,8 +26,8 @@ function DoctorSupplyChart({data, isRendering}) {
         {
           data: values,
           fill: true,
-          backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.emerald[500])}, 0.08)`,
-          borderColor: tailwindConfig().theme.colors.emerald[500],
+          backgroundColor: `#FAD9CF`,
+          borderColor: '#F09375',
           borderWidth: 2,
           tension: 0,
           pointRadius: 0,

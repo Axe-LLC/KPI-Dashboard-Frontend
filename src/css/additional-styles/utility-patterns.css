@@ -154,7 +154,16 @@ main {
 }
 
 .nav-selected-item-text {
-    color: #3a313a;
+    color: #FFFFFF;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.primary-button {
+    background: #F09375;
 }
 
 .welcome-msg-box {

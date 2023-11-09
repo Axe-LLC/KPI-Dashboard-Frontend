@@ -19,6 +19,9 @@ function Staff() {
   const [staffData, setStaffData] = useState([]);
   const [isRendering, setRendering] = useState(false);
   const [clinics, setClinics] = useState([{id: 0, name: 'All Clinics'}]);
+  const [clinic, setClinic] = useState(0);
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
   const initialClinics = [{id: 0, name: 'All Clinics'}];
   const [staffs, setStaffs] = useState([]);
 
@@ -87,11 +90,11 @@ function Staff() {
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                <ClinicSelect options={clinics} />
+                <ClinicSelect options={clinics} setClinic={setClinic} />
                 {/* Dropdown */}
-                <DateSelect />  
+                <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} />  
                 {/* Datepicker built with flatpickr */}
-                <Datepicker align="right" /> 
+                <Datepicker align="right" setStartDate={setStartDate} setEndDate={setEndDate} /> 
                 {/* Add order button */}
                 <AddStaffModal clinics={clinics} fetchStaffs={fetchStaffs} />          
               </div>

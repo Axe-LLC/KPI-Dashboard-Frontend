@@ -9,7 +9,7 @@ function ShopCards06() {
   return (
     <React.Fragment>
       {/* Card 1 */}
-      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <img className="absolute w-full h-full object-cover" src={AppImage17} width="286" height="160" alt="Application 17" />
         {/* Gradient */}
@@ -22,7 +22,7 @@ function ShopCards06() {
       </div>
 
       {/* Card 2 */}
-      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <img className="absolute w-full h-full object-cover" src={AppImage18} width="286" height="160" alt="Application 18" />
         {/* Gradient */}
@@ -35,7 +35,7 @@ function ShopCards06() {
       </div>
 
       {/* Card 3 */}
-      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <img className="absolute w-full h-full object-cover" src={AppImage19} width="286" height="160" alt="Application 19" />
         {/* Gradient */}
@@ -48,7 +48,7 @@ function ShopCards06() {
       </div>
 
       {/* Card 4 */}
-      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="relative col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Image */}
         <img className="absolute w-full h-full object-cover" src={AppImage20} width="286" height="160" alt="Application 20" />
         {/* Gradient */}

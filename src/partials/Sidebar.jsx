@@ -84,7 +84,7 @@ function Sidebar({
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <img src={logoImg} alt="" />
+            <img src={logoImg} alt="" className='logo-img'/>
           </NavLink>
         </div>
 
@@ -94,7 +94,7 @@ function Sidebar({
           <div>
             <ul className="mt-3">
               {/* Dashboard */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname === '/' && 'nav-selected-item'}`}>
+              <li className={`px-3 py-2 rounded-md mb-2 last:mb-0 ${pathname === '/' && 'nav-selected-item'}`}>
                 <NavLink
                   end
                   to="/"
@@ -109,7 +109,7 @@ function Sidebar({
                 </NavLink>
               </li>
               {/* Supply */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('supply') && 'nav-selected-item'}`}>
+              <li className={`px-3 py-2 rounded-md mb-2 last:mb-0 ${pathname.includes('supply') && 'nav-selected-item'}`}>
                 <NavLink
                   end
                   to="/dashboard/supply"
@@ -126,7 +126,7 @@ function Sidebar({
                 </NavLink>
               </li>
               {/* Staff Analytics */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('staff') && 'nav-selected-item'}`}>
+              <li className={`px-3 py-2 rounded-md mb-2 last:mb-0 ${pathname.includes('staff') && 'nav-selected-item'}`}>
                 <NavLink
                   end
                   to="/dashboard/staff"

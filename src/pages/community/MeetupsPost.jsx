@@ -88,7 +88,7 @@ function MeetupsPost() {
 
                 {/* Image */}
                 <figure className="mb-6">
-                  <img className="w-full rounded-sm" src={MeetupImage} width="640" height="360" alt="Meetup" />
+                  <img className="w-full rounded-md" src={MeetupImage} width="640" height="360" alt="Meetup" />
                 </figure>
 
                 {/* Post content */}
@@ -114,13 +114,13 @@ function MeetupsPost() {
                   <h2 className="text-xl leading-snug text-slate-800 dark:text-slate-100 font-bold mb-2">Photos (3)</h2>
                   <div className="grid grid-cols-3 gap-4 my-6">
                     <a className="block" href="#0">
-                      <img className="w-full rounded-sm" src={MeetupPhoto01} width="203" height="152" alt="Meetup photo 01" />
+                      <img className="w-full rounded-md" src={MeetupPhoto01} width="203" height="152" alt="Meetup photo 01" />
                     </a>
                     <a className="block" href="#0">
-                      <img className="w-full rounded-sm" src={MeetupPhoto02} width="203" height="152" alt="Meetup photo 02" />
+                      <img className="w-full rounded-md" src={MeetupPhoto02} width="203" height="152" alt="Meetup photo 02" />
                     </a>
                     <a className="block" href="#0">
-                      <img className="w-full rounded-sm" src={MeetupPhoto03} width="203" height="152" alt="Meetup photo 03" />
+                      <img className="w-full rounded-md" src={MeetupPhoto03} width="203" height="152" alt="Meetup photo 03" />
                     </a>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ function MeetupsPost() {
                   <h2 className="text-xl leading-snug text-slate-800 dark:text-slate-100 font-bold mb-2">Similar Meetups</h2>
                   <div className="space-y-8 sm:space-y-5 my-6 lg:mb-0">
                     {/* Related item */}
-                    <article className="flex bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+                    <article className="flex bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
                       {/* Image */}
                       <a className="relative block w-24 sm:w-56 lg:sidebar-expanded:w-20 xl:sidebar-expanded:w-56 shrink-0" href="#0">
                         <img
@@ -239,7 +239,7 @@ function MeetupsPost() {
               {/* Sidebar */}
               <div className="space-y-4">
                 {/* 1st block */}
-                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-md border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
                   <div className="space-y-2">
                     <button className="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white">
                       <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 16 16">
@@ -257,7 +257,7 @@ function MeetupsPost() {
                 </div>
 
                 {/* 2nd block */}
-                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-md border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
                   <div className="flex justify-between space-x-1 mb-5">
                     <div className="text-sm text-slate-800 dark:text-slate-100 font-semibold">Attendees (127)</div>
                     <a className="text-sm font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" href="#0">
@@ -349,7 +349,7 @@ function MeetupsPost() {
                 </div>
 
                 {/* 3rd block */}
-                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-md border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
                   <div className="flex justify-between space-x-1 mb-5">
                     <div className="text-sm text-slate-800 dark:text-slate-100 font-semibold">Invite Friends</div>
                     <a className="text-sm font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" href="#0">

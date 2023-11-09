@@ -35,7 +35,7 @@ function BreadcrumbPage() {
                 {/* With Slashes */}
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">With Slashes</h2>
-                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm">
+                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
                     <div className="text-center">
                       {/* Start */}
                       <ul className="inline-flex flex-wrap text-sm font-medium">
@@ -57,7 +57,7 @@ function BreadcrumbPage() {
                 {/* With Dots */}
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">With Dots</h2>
-                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm">
+                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
                     <div className="text-center">
                       {/* Start */}
                       <ul className="inline-flex flex-wrap text-sm font-medium">
@@ -79,7 +79,7 @@ function BreadcrumbPage() {
                 {/* With Chevrons */}
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">With Chevrons</h2>
-                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm">
+                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
                     <div className="text-center">
                       {/* Start */}
                       <ul className="inline-flex flex-wrap text-sm font-medium">

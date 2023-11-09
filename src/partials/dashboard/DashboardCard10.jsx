@@ -2,7 +2,7 @@ import React from 'react';
 
 function DashboardCard10() {
   return (
-    <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Recent Activity</h2>
       </header>
@@ -11,7 +11,7 @@ function DashboardCard10() {
         {/* Card content */}
         {/* "Today" group */}
         <div>
-          <header className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm font-semibold p-2">Today</header>
+          <header className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-md font-semibold p-2">Today</header>
           <ul className="my-1">
             {/* Item */}
             <li className="flex px-2">
@@ -65,7 +65,7 @@ function DashboardCard10() {
         </div>
         {/* "Yesterday" group */}
         <div>
-          <header className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm font-semibold p-2">Yesterday</header>
+          <header className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-md font-semibold p-2">Yesterday</header>
           <ul className="my-1">
             {/* Item */}
             <li className="flex px-2">

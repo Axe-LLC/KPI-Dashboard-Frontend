@@ -11,7 +11,7 @@ function CartItems() {
         {/* Cart item */}
         <li className="sm:flex items-center py-6 border-b border-slate-200 dark:border-slate-700">
           <a className="block mb-4 sm:mb-0 mr-5 md:w-32 xl:w-auto shrink-0" href="#0">
-            <img className="rounded-sm" src={Related01} width="200" height="142" alt="Product 01" />
+            <img className="rounded-md" src={Related01} width="200" height="142" alt="Product 01" />
           </a>
           <div className="grow">
             <a href="#0">
@@ -73,7 +73,7 @@ function CartItems() {
         {/* Cart item */}
         <li className="sm:flex items-center py-6 border-b border-slate-200 dark:border-slate-700">
           <a className="block mb-4 sm:mb-0 mr-5 md:w-32 xl:w-auto shrink-0" href="#0">
-            <img className="rounded-sm" src={Related02} width="200" height="142" alt="Product 02" />
+            <img className="rounded-md" src={Related02} width="200" height="142" alt="Product 02" />
           </a>
           <div className="grow">
             <a href="#0">
@@ -135,7 +135,7 @@ function CartItems() {
         {/* Cart item */}
         <li className="sm:flex items-center py-6 border-b border-slate-200 dark:border-slate-700">
           <a className="block mb-4 sm:mb-0 mr-5 md:w-32 xl:w-auto shrink-0" href="#0">
-            <img className="rounded-sm" src={Related03} width="200" height="142" alt="Product 03" />
+            <img className="rounded-md" src={Related03} width="200" height="142" alt="Product 03" />
           </a>
           <div className="grow">
             <a href="#0">

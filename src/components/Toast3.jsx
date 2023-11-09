@@ -41,7 +41,7 @@ function Toast3({
     <>
       {open && (
         <div className={className} role="alert">
-          <div className="inline-flex min-w-[20rem] px-4 py-2 rounded-sm text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-100">
+          <div className="inline-flex min-w-[20rem] px-4 py-2 rounded-md text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-100">
             <div className="flex w-full justify-between items-start">
               <div className="flex">
                 {typeIcon(type)}

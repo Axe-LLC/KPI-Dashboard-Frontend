@@ -81,7 +81,7 @@ function JobPost() {
                 </header>
 
                 {/* Company information (mobile) */}
-                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 mb-6 lg:hidden">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-md border border-slate-200 mb-6 lg:hidden">
                   <div className="text-center mb-6">
                     <div className="inline-flex mb-3">
                       <img className="w-16 h-16 rounded-full" src={Image06} width="64" height="64" alt="Company 01" />
@@ -249,7 +249,7 @@ function JobPost() {
               <div className="hidden lg:block space-y-4">
 
                 {/* Company information (desktop) */}
-                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-md border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
                   <div className="text-center mb-6">
                     <div className="inline-flex mb-3">
                       <img className="w-16 h-16 rounded-full" src={Image06} width="64" height="64" alt="Company 01" />

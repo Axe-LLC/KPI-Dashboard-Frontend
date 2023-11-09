@@ -87,11 +87,11 @@ function Staff() {
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                <ClinicSelect options={clinics} />   
-                {/* Datepicker built with flatpickr */}
-                <Datepicker align="right" />
+                <ClinicSelect options={clinics} />
                 {/* Dropdown */}
-                <DateSelect />   
+                <DateSelect />  
+                {/* Datepicker built with flatpickr */}
+                <Datepicker align="right" /> 
                 {/* Add order button */}
                 <AddStaffModal clinics={clinics} fetchStaffs={fetchStaffs} />          
               </div>

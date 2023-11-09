@@ -147,7 +147,7 @@ function ProfileBody({
               {/* Cards */}
               <div className="grid xl:grid-cols-2 gap-4">
                 {/* Card */}
-                <div className="bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700 rounded-sm shadow-sm">
+                <div className="bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700 rounded-md shadow-sm">
                   {/* Card header */}
                   <div className="grow flex items-center truncate mb-2">
                     <div className="w-8 h-8 shrink-0 flex items-center justify-center bg-slate-700 rounded-full mr-2">
@@ -178,7 +178,7 @@ function ProfileBody({
                 </div>
 
                 {/* Card */}
-                <div className="bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700 rounded-sm shadow-sm">
+                <div className="bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700 rounded-md shadow-sm">
                   {/* Card header */}
                   <div className="grow flex items-center truncate mb-2">
                     <div className="w-8 h-8 shrink-0 flex items-center justify-center bg-slate-700 rounded-full mr-2">
@@ -212,7 +212,7 @@ function ProfileBody({
             {/* Work History */}
             <div>
               <h2 className="text-slate-800 dark:text-slate-100 font-semibold mb-2">Work History</h2>
-              <div className="bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700 rounded-sm shadow-sm">
+              <div className="bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700 rounded-md shadow-sm">
                 <ul className="space-y-3">
                   {/* Item */}
                   <li className="sm:flex sm:items-center sm:justify-between">

@@ -8,7 +8,7 @@ function JobSidebar() {
   return (
     <div className="space-y-8">
       {/* Alert */}
-      <div className="relative bg-indigo-200 dark:bg-indigo-500 rounded-sm p-5 min-w-60">
+      <div className="relative bg-indigo-200 dark:bg-indigo-500 rounded-md p-5 min-w-60">
         <div className="absolute bottom-0 -mb-3">
           <svg width="44" height="42" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <defs>
@@ -41,7 +41,7 @@ function JobSidebar() {
         </div>
       </div>
       {/* White box */}
-      <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-5 min-w-60">
+      <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-5 min-w-60">
         <div className="grid md:grid-cols-2 xl:grid-cols-1 gap-6">
           {/* Group 1 */}
           <div>

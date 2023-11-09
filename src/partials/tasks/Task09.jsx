@@ -4,7 +4,7 @@ import UserImage01 from '../../images/user-28-12.jpg';
 
 function Task09() {
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4">
+    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4">
       {/* Body */}
       <div className="mb-3">
         {/* Title */}

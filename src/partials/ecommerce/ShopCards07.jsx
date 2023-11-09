@@ -17,7 +17,7 @@ function ShopCards07() {
   return (
     <React.Fragment>
       {/* Card 1 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -102,7 +102,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 2 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -178,7 +178,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 3 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -263,7 +263,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 4 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -339,7 +339,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 5 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -415,7 +415,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 6 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -500,7 +500,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 7 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -576,7 +576,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 8 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -652,7 +652,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 9 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -729,7 +729,7 @@ function ShopCards07() {
 
       {/* CTA */}
       <div className="col-span-full md:order-1 xl:order-none">
-        <div className="h-full p-6 bg-slate-800 rounded-sm text-center xl:text-left xl:flex xl:justify-between xl:items-center">
+        <div className="h-full p-6 bg-slate-800 rounded-md text-center xl:text-left xl:flex xl:justify-between xl:items-center">
           <div className="mb-4 xl:mb-0 xl:mr-4">
             <div className="text-xl text-slate-50 font-semibold mb-1">Excepteur sint occaecat <span className="text-indigo-500">cupidatat</span> 🎁</div>
             <div className="m-auto text-sm text-slate-400">Excepteur sint occaecat cupidatat non proidentsunt in culpa qui officia deserunt mollit!</div>
@@ -739,7 +739,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 10 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -815,7 +815,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 11 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">
@@ -891,7 +891,7 @@ function ShopCards07() {
       </div>
 
       {/* Card 12 */}
-      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="col-span-full md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex flex-col h-full">
           {/* Image */}
           <div className="relative">

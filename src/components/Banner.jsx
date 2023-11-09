@@ -54,7 +54,7 @@ function Banner({
     <>
       {open &&
         <div className={className} role="alert">
-          <div className={`px-4 py-2 rounded-sm text-sm text-white ${typeColor(type)}`}>
+          <div className={`px-4 py-2 rounded-md text-sm text-white ${typeColor(type)}`}>
             <div className="flex w-full justify-between items-start">
               <div className="flex">
                 {typeIcon(type)}

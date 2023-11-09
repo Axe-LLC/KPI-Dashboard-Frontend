@@ -80,7 +80,7 @@ function TasksList() {
                   <div className="space-y-2">
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">
@@ -135,7 +135,7 @@ function TasksList() {
                     </div>
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">
@@ -181,7 +181,7 @@ function TasksList() {
                     </div>
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">
@@ -236,7 +236,7 @@ function TasksList() {
                   <div className="space-y-2">
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">
@@ -302,7 +302,7 @@ function TasksList() {
                     </div>
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">
@@ -341,7 +341,7 @@ function TasksList() {
                     </div>
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">
@@ -393,7 +393,7 @@ function TasksList() {
                   <div className="space-y-2">
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4 opacity-60" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4 opacity-60" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">
@@ -438,7 +438,7 @@ function TasksList() {
                     </div>
                     
                     {/* Task */}
-                    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4 opacity-60" draggable="true">
+                    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4 opacity-60" draggable="true">
                       <div className="sm:flex sm:justify-between sm:items-start">
                         {/* Left side */}
                         <div className="grow mt-0.5 mb-3 sm:mb-0 space-y-3">

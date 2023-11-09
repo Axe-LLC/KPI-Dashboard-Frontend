@@ -77,7 +77,7 @@ function AccordionPage() {
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">Table Row with Accordion</h2>
                   {/* Start */}
-                  <div className="rounded-sm border border-slate-200 dark:border-slate-700">
+                  <div className="rounded-md border border-slate-200 dark:border-slate-700">
                     <div className="overflow-x-auto">
                       <table className="table-auto w-full dark:bg-slate-800 dark:text-slate-300 divide-y divide-slate-200 dark:divide-slate-700">
                         {
@@ -108,7 +108,7 @@ function AccordionPage() {
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">Rich Table Row with Accordion</h2>
                   {/* Start */}
-                  <div className="rounded-sm border border-slate-200 dark:border-slate-700">
+                  <div className="rounded-md border border-slate-200 dark:border-slate-700">
                     <div className="overflow-x-auto">
                       <table className="table-auto w-full dark:bg-slate-800 dark:text-slate-300 divide-y divide-slate-200 dark:divide-slate-700">
                         {

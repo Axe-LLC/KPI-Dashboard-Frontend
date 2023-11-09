@@ -95,7 +95,7 @@ function KnowledgeBase() {
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:sidebar-expanded:grid-cols-2 xl:sidebar-expanded:grid-cols-4 gap-6">
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -135,7 +135,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -174,7 +174,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -208,7 +208,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -249,7 +249,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -289,7 +289,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -330,7 +330,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -367,7 +367,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-sm text-center p-5">
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-md text-center p-5">
                     <div className="flex flex-col h-full">
                       <div className="grow mb-2">
                         {/* Icon */}
@@ -417,7 +417,7 @@ function KnowledgeBase() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   
                   {/* Item */}
-                  <div className="w-full p-3 rounded-sm text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <div className="w-full p-3 rounded-md text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="flex h-full">
                       {/* Icon */}
                       <svg className="w-4 h-4 shrink-0 fill-indigo-500 mt-[3px] mr-3" viewBox="0 0 16 16">
@@ -442,7 +442,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="w-full p-3 rounded-sm text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <div className="w-full p-3 rounded-md text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="flex h-full">
                       {/* Icon */}
                       <svg className="w-4 h-4 shrink-0 fill-indigo-500 mt-[3px] mr-3" viewBox="0 0 16 16">
@@ -467,7 +467,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="w-full p-3 rounded-sm text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <div className="w-full p-3 rounded-md text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="flex h-full">
                       {/* Icon */}
                       <svg className="w-4 h-4 shrink-0 fill-indigo-500 mt-[3px] mr-3" viewBox="0 0 16 16">
@@ -492,7 +492,7 @@ function KnowledgeBase() {
                   </div>
                   
                   {/* Item */}
-                  <div className="w-full p-3 rounded-sm text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <div className="w-full p-3 rounded-md text bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="flex h-full">
                       {/* Icon */}
                       <svg className="w-4 h-4 shrink-0 fill-indigo-500 mt-[3px] mr-3" viewBox="0 0 16 16">

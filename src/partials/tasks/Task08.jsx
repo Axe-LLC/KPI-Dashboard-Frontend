@@ -5,7 +5,7 @@ import TaskImage from '../../images/task-image-02.jpg';
 
 function Task08() {
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 p-4">
+    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 p-4">
       {/* Body */}
       <div className="mb-3">
         {/* Title */}

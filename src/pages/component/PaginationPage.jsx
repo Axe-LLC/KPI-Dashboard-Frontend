@@ -38,7 +38,7 @@ function PaginationPage() {
                 {/* Option 1 */}
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">Option 1</h2>
-                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm">
+                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
                     <PaginationNumeric />
                   </div>
                 </div>
@@ -46,7 +46,7 @@ function PaginationPage() {
                 {/* Option 2 */}
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">Option 2</h2>
-                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm">
+                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
                     <PaginationClassic />
                   </div>
                 </div>
@@ -54,7 +54,7 @@ function PaginationPage() {
                 {/* Option 3 */}
                 <div>
                   <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-6">Option 3</h2>
-                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm">
+                  <div className="px-6 py-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
                     <PaginationNumeric2 />
                   </div>
                 </div>

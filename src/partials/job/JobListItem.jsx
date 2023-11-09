@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function JobListItem(props) {
   return (
     <div
-      className={`shadow-lg rounded-sm border px-5 py-4 ${
+      className={`shadow-lg rounded-md border px-5 py-4 ${
         props.type === 'Featured'
           ? 'bg-amber-50 dark:bg-amber-400/10 border-amber-300 dark:border-amber-400/50'
           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700'

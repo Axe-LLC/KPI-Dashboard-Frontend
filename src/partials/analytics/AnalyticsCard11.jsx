@@ -12,7 +12,7 @@ import Image11 from '../../images/user-28-11.jpg';
 
 function AnalyticsCard11() {
   return (
-    <div className="col-span-full bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="col-span-full bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Top Products</h2>
       </header>
@@ -22,7 +22,7 @@ function AnalyticsCard11() {
         <div className="overflow-x-auto">
           <table className="table-auto w-full dark:text-slate-300">
             {/* Table header */}
-            <thead className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm">
+            <thead className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-md">
               <tr>
                 <th className="p-2 whitespace-nowrap">
                   <div className="font-semibold text-left">Product</div>

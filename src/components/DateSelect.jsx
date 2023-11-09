@@ -57,7 +57,7 @@ function DateSelect() {
     <div className="relative">
       <button
         ref={trigger}
-        className="btn justify-between min-w-44 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-slate-200"
+        className="btn justify-between min-w-44 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-slate-200 shadow-none w-64"
         aria-label="Select date range"
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -96,10 +96,10 @@ function DateSelect() {
                 <button
                   key={option.id}
                   tabIndex="0"
-                  className={`flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer ${option.id === selected && 'text-indigo-500'}`}
+                  className={`flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer`} style={option.id === selected ? {color: '#F09375'} : {}}
                   onClick={() => { setSelected(option.id); setDropdownOpen(false); }}
                 >
-                  <svg className={`shrink-0 mr-2 fill-current text-indigo-500 ${option.id !== selected && 'invisible'}`} width="12" height="9" viewBox="0 0 12 9">
+                  <svg className={`shrink-0 mr-2 fill-current ${option.id !== selected && 'invisible'}`} width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                   </svg>
                   <span>{option.period}</span>

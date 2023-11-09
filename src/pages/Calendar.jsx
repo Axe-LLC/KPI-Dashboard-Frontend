@@ -345,7 +345,7 @@ function Calendar() {
             </div>
 
             {/* Calendar table */}
-            <div className="bg-white dark:bg-slate-800 rounded-sm shadow overflow-hidden">
+            <div className="bg-white dark:bg-slate-800 rounded-md shadow overflow-hidden">
 
               {/* Days of the week */}
               <div className="grid grid-cols-7 gap-px border-b border-slate-200 dark:border-slate-700">

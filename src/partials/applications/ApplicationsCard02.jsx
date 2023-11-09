@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ApplicationsCard02(props) {
   return (
-    <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+    <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 overflow-hidden">
       <div className="flex flex-col h-full">
         {/* Image */}
         <img className="w-full" src={props.image} width="286" height="160" alt={props.name} />

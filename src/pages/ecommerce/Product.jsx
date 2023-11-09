@@ -108,7 +108,7 @@ function Product() {
 
                 {/* Image */}
                 <figure className="mb-6">
-                  <img className="w-full rounded-sm" src={ProductImage} width="640" height="360" alt="Product" />
+                  <img className="w-full rounded-md" src={ProductImage} width="640" height="360" alt="Product" />
                 </figure>
 
                 {/* Product content */}
@@ -341,7 +341,7 @@ function Product() {
                     {/* Related item */}
                     <li className="sm:flex items-center">
                       <a className="block mb-4 sm:mb-0 mr-5 md:w-32 xl:w-auto shrink-0" href="#0">
-                        <img className="rounded-sm" src={Related01} width="200" height="142" alt="Product 01" />
+                        <img className="rounded-md" src={Related01} width="200" height="142" alt="Product 01" />
                       </a>
                       <div className="grow">
                         <a href="#0">
@@ -399,7 +399,7 @@ function Product() {
                     {/* Related item */}
                     <li className="sm:flex items-center">
                       <a className="block mb-4 sm:mb-0 mr-5 md:w-32 xl:w-auto shrink-0" href="#0">
-                        <img className="rounded-sm" src={Related02} width="200" height="142" alt="Product 02" />
+                        <img className="rounded-md" src={Related02} width="200" height="142" alt="Product 02" />
                       </a>
                       <div className="grow">
                         <a href="#0">
@@ -457,7 +457,7 @@ function Product() {
                     {/* Related item */}
                     <li className="sm:flex items-center">
                       <a className="block mb-4 sm:mb-0 mr-5 md:w-32 xl:w-auto shrink-0" href="#0">
-                        <img className="rounded-sm" src={Related03} width="200" height="142" alt="Product 03" />
+                        <img className="rounded-md" src={Related03} width="200" height="142" alt="Product 03" />
                       </a>
                       <div className="grow">
                         <a href="#0">
@@ -525,7 +525,7 @@ function Product() {
 
               {/* Sidebar */}
               <div>
-                <div className="bg-white dark:bg-slate-800 p-5 rounded-sm border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-md border border-slate-200 dark:border-slate-700 lg:w-72 xl:w-80">
                   <div className="text-sm text-slate-800 dark:text-slate-100 font-semibold mb-3">Select a Package</div>
                   <ul className="space-y-2 sm:flex sm:space-y-0 sm:space-x-2 lg:space-y-2 lg:space-x-0 lg:flex-col mb-4">
                     <li>

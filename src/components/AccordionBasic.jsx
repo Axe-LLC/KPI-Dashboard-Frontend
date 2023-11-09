@@ -5,7 +5,7 @@ function AccordionBasic(props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="px-5 py-4 rounded-sm dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+    <div className="px-5 py-4 rounded-md dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
       <button
         className="flex items-center justify-between w-full group mb-1"
         aria-expanded={open}

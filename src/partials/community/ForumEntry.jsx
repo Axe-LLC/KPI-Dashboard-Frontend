@@ -36,7 +36,7 @@ function ForumEntry() {
           <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold">Besides Product Hunt, where else should I promote my new project? 🤔</h2>
           {/* Upvote button */}
           <div className="shrink-0">
-            <button className="text-xs font-semibold text-center h-12 w-12 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 rounded-sm flex flex-col justify-center items-center">
+            <button className="text-xs font-semibold text-center h-12 w-12 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 rounded-md flex flex-col justify-center items-center">
               <svg className="inline-flex fill-slate-400 dark:fill-slate-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                 <path d="m0 6 6-6 6 6z" />
               </svg>
@@ -97,7 +97,7 @@ function ForumEntry() {
             <div className="flex items-start">
               {/* Comment upvote */}
               <div className="absolute top-0 left-0">
-                <button className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
+                <button className="text-xs font-semibold text-left w-6 rounded-md flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
                   <svg className="inline-flex fill-slate-400 dark:fill-slate-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                     <path d="m0 6 6-6 6 6z" />
                   </svg>
@@ -146,7 +146,7 @@ function ForumEntry() {
                 <div className="flex items-start">
                   {/* Comment upvote */}
                   <div className="absolute top-0 left-0">
-                    <button className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
+                    <button className="text-xs font-semibold text-left w-6 rounded-md flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
                       <svg className="inline-flex fill-slate-400 dark:fill-slate-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                         <path d="m0 6 6-6 6 6z" />
                       </svg>
@@ -197,7 +197,7 @@ function ForumEntry() {
             <div className="flex items-start">
               {/* Comment upvote */}
               <div className="absolute top-0 left-0">
-                <button className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center text-slate-600 dark:text-slate-300">
+                <button className="text-xs font-semibold text-left w-6 rounded-md flex flex-col justify-center items-center text-slate-600 dark:text-slate-300">
                   <svg className="inline-flex fill-indigo-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                     <path d="m0 6 6-6 6 6z" />
                   </svg>
@@ -243,7 +243,7 @@ function ForumEntry() {
             <div className="flex items-start">
               {/* Comment upvote */}
               <div className="absolute top-0 left-0">
-                <button className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
+                <button className="text-xs font-semibold text-left w-6 rounded-md flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
                   <svg className="inline-flex fill-slate-400 dark:fill-slate-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                     <path d="m0 6 6-6 6 6z" />
                   </svg>
@@ -290,7 +290,7 @@ function ForumEntry() {
                 <div className="flex items-start">
                   {/* Comment upvote */}
                   <div className="absolute top-0 left-0">
-                    <button className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
+                    <button className="text-xs font-semibold text-left w-6 rounded-md flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
                       <svg className="inline-flex fill-slate-400 dark:fill-slate-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                         <path d="m0 6 6-6 6 6z" />
                       </svg>
@@ -334,7 +334,7 @@ function ForumEntry() {
                     <div className="flex items-start">
                       {/* Comment upvote */}
                       <div className="absolute top-0 left-0">
-                        <button className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
+                        <button className="text-xs font-semibold text-left w-6 rounded-md flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
                           <svg className="inline-flex fill-slate-400 dark:fill-slate-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                             <path d="m0 6 6-6 6 6z" />
                           </svg>
@@ -381,7 +381,7 @@ function ForumEntry() {
             <div className="flex items-start">
               {/* Comment upvote */}
               <div className="absolute top-0 left-0">
-                <button className="text-xs font-semibold text-left w-6 rounded-sm flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
+                <button className="text-xs font-semibold text-left w-6 rounded-md flex flex-col justify-center items-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-500">
                   <svg className="inline-flex fill-slate-400 dark:fill-slate-500 mt-1.5 mb-1.5" width="12" height="6" xmlns="http://www.w3.org/2000/svg">
                     <path d="m0 6 6-6 6 6z" />
                   </svg>

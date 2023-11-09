@@ -70,10 +70,10 @@ function Supply() {
         {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
 
         <main className="grow">
-          <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+          <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto pt-8">
 
             {/* Page header */}
-            <div className="sm:flex sm:justify-between sm:items-center mb-8">
+            <div className="sm:flex sm:justify-between sm:items-center mb-6">
             
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
@@ -82,11 +82,11 @@ function Supply() {
           
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                <ClinicSelect options={clinics} />   
+                <ClinicSelect options={clinics} />
+                {/* Dropdown */}
+                <DateSelect />
                 {/* Datepicker built with flatpickr */}
                 <Datepicker align="right" />
-                {/* Dropdown */}
-                <DateSelect />   
                 {/* Add order button */}
                 <AddOrderModal clinics={clinics} fetchOrders={fetchOrders} />
               </div>

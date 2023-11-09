@@ -47,7 +47,7 @@ function ApplicationsCard03(props) {
   };
 
   return (
-    <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="col-span-full sm:col-span-6 xl:col-span-3 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
       <div className="flex flex-col h-full text-center p-5">
         <div className="grow mb-1">
           <div className="inline-flex justify-center items-center w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-full mb-2">

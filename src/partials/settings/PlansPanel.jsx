@@ -34,7 +34,7 @@ function PlansPanel() {
            {/* Pricing tabs */}
             <div className="grid grid-cols-12 gap-6">
              {/* Tab 1 */}
-              <div className="relative col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+              <div className="relative col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-emerald-500" aria-hidden="true"></div>
                 <div className="px-5 pt-5 pb-6 border-b border-slate-200 dark:border-slate-700">
                   <header className="flex items-center mb-2">
@@ -85,7 +85,7 @@ function PlansPanel() {
                 </div>
               </div>
              {/* Tab 2 */}
-              <div className="relative col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+              <div className="relative col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-sky-500" aria-hidden="true"></div>
                 <div className="px-5 pt-5 pb-6 border-b border-slate-200 dark:border-slate-700">
                   <header className="flex items-center mb-2">
@@ -147,7 +147,7 @@ function PlansPanel() {
                 </div>
               </div>
              {/* Tab 3 */}
-              <div className="relative col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+              <div className="relative col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-indigo-500" aria-hidden="true"></div>
                 <div className="px-5 pt-5 pb-6 border-b border-slate-200 dark:border-slate-700">
                   <header className="flex items-center mb-2">
@@ -215,7 +215,7 @@ function PlansPanel() {
 
        {/* Contact Sales */}
         <section>
-          <div className="px-5 py-3 bg-indigo-50 dark:bg-indigo-500/30 border border-indigo-100 dark:border-transparent rounded-sm text-center xl:text-left xl:flex xl:flex-wrap xl:justify-between xl:items-center">
+          <div className="px-5 py-3 bg-indigo-50 dark:bg-indigo-500/30 border border-indigo-100 dark:border-transparent rounded-md text-center xl:text-left xl:flex xl:flex-wrap xl:justify-between xl:items-center">
             <div className="text-slate-800 dark:text-slate-100 font-semibold mb-2 xl:mb-0">Looking for different configurations?</div>
             <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">Contact Sales</button>
           </div>

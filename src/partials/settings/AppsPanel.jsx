@@ -33,7 +33,7 @@ function AppsPanel() {
         <section className="pb-6 border-b border-slate-200 dark:border-slate-700">
           <div className="grid grid-cols-12 gap-6">
             {/* Card 1 */}
-            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -77,7 +77,7 @@ function AppsPanel() {
               </div>
             </div>
             {/* Card 2 */}
-            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -121,7 +121,7 @@ function AppsPanel() {
               </div>
             </div>
             {/* Card 3 */}
-            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -165,7 +165,7 @@ function AppsPanel() {
               </div>
             </div>
             {/* Card 4 */}
-            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -209,7 +209,7 @@ function AppsPanel() {
               </div>
             </div>
             {/* Card 5 */}
-            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -253,7 +253,7 @@ function AppsPanel() {
               </div>
             </div>
             {/* Card 6 */}
-            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-6 2xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -304,7 +304,7 @@ function AppsPanel() {
           <h3 className="text-xl leading-snug text-slate-800 dark:text-slate-100 font-bold mt-6 mb-5">Trending Categories</h3>
           <div className="grid grid-cols-12 gap-6">
             {/* Card 1 */}
-            <div className="col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -324,7 +324,7 @@ function AppsPanel() {
               </div>
             </div>
             {/* Card 2 */}
-            <div className="col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">
@@ -344,7 +344,7 @@ function AppsPanel() {
               </div>
             </div>
             {/* Card 3 */}
-            <div className="col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-sm border border-slate-200 dark:border-slate-700">
+            <div className="col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-md rounded-md border border-slate-200 dark:border-slate-700">
               {/* Card content */}
               <div className="flex flex-col h-full p-5">
                 <div className="grow">

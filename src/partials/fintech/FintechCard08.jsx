@@ -46,12 +46,11 @@ function FintechCard08() {
   };
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-12 xl:col-span-4 bg-white dark:bg-slate-800 rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="flex flex-col col-span-full sm:col-span-12 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collections</h2>
       </header>
       <div className="px-5 py-3">
-        <div className="text-sm italic mb-2">Hey Mark, by age 65 you could have:</div>
         <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">$2M - $3.5M</div>
       </div>
       {/* Chart built with Chart.js 3 */}

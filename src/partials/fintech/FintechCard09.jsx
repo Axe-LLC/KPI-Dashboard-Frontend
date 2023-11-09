@@ -31,7 +31,6 @@ function FintechCard09() {
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Production</h2>
       </header>
       <div className="px-5 py-3">
-        <div className="text-sm italic mb-2">Hey Mark, here is the value of your portfolio:</div>
         <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">$224,807.27</div>
       </div>
       {/* Chart built with Chart.js 3 */}

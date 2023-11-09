@@ -51,7 +51,6 @@ function FintechCard08() {
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collections</h2>
       </header>
       <div className="px-5 py-3">
-        <div className="text-sm italic mb-2">Hey Mark, by age 65 you could have:</div>
         <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">$2M - $3.5M</div>
       </div>
       {/* Chart built with Chart.js 3 */}

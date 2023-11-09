@@ -65,7 +65,6 @@ function FintechCard07() {
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Adjustment</h2>
       </header>
       <div className="px-5 py-3">
-        <div className="text-sm italic mb-2">Hey Mark, you're very close to your goal:</div>
         <div className="flex items-center">
           <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">$5,247.09</div>
           <div className="text-sm"><span className="font-medium text-amber-500">97.4%</span></div>

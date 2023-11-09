@@ -1,5 +1,13 @@
 import resolveConfig from 'tailwindcss/resolveConfig';
-import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, STAFF_TYPE_TOTAL, EMPLOYEE_STATUS_PART_TIME, EMPLOYEE_STATUS_FULL_TIME } from './Consts';
+import { STAFF_TYPE_DOCTOR,
+  STAFF_TYPE_HYGIENE,
+  STAFF_TYPE_TOTAL,
+  EMPLOYEE_STATUS_PART_TIME,
+  EMPLOYEE_STATUS_FULL_TIME,
+  METRICS_PRODUCTION,
+  METRICS_ADJUSTMENTS,
+  METRICS_COLLECTIONS
+} from './Consts';
 
 export const tailwindConfig = () => {
   // Tailwind config
@@ -53,7 +61,36 @@ export const getCurrentMonthDays = () => {
   return days;
 }
 
-const formatDateString = (date) => {
+export const generateMetricsData = (data, startDate, endDate, clinic) => {
+  var start = new Date(startDate);
+  const end = new Date(endDate);
+  var days = [];
+  while (start <= end) {
+    const formattedDate = formatDateString(start);
+    days[formattedDate] = {
+      [METRICS_PRODUCTION]: 0,
+      [METRICS_ADJUSTMENTS]: 0,
+      [METRICS_COLLECTIONS]: 0,
+    };
+    start.setDate(start.getDate() + 1);
+  }
+  
+  let filteredData = data;
+  if(clinic) {
+    filteredData = data.filter(d => d.clinic.id === clinic);
+  }
+
+  for(let i=0; i<filteredData.length; i++) {
+    days[filteredData[i].postedOn][METRICS_PRODUCTION] += parseFloat(filteredData[i].calculations.production);
+    days[filteredData[i].postedOn][METRICS_ADJUSTMENTS] += parseFloat(filteredData[i].calculations.adjustments);
+    days[filteredData[i].postedOn][METRICS_COLLECTIONS] += parseFloat(filteredData[i].calculations.totalPayments);
+    console.log(days[filteredData[i].postedOn][METRICS_PRODUCTION]);
+  }
+  console.log(days);
+  return days;
+}
+
+export const formatDateString = (date) => {
   var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
@@ -65,4 +102,18 @@ const formatDateString = (date) => {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+export const formatRangeDateString = (date, isStart) => {
+  var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return year + '-' + month + '-' + day ;
 }

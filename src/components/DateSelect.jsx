@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Transition from '../utils/Transition';
+import { formatRangeDateString } from '../utils/Utils';
 
-function DateSelect() {
+function DateSelect({setStartDate, setEndDate}) {
 
   const options = [
     {
@@ -31,6 +32,26 @@ function DateSelect() {
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
+
+  useEffect(() => {
+    var currentDate = new Date();
+    setEndDate(formatRangeDateString(currentDate, false));
+    if(selected === 0) {
+      setStartDate(formatRangeDateString(currentDate, true));
+    } else if(selected === 1) {
+      const lastWeekDate = new Date(currentDate.getTime() 
+            - 7 * 24 * 60 * 60 * 1000); 
+      setStartDate(formatRangeDateString(lastWeekDate, true));
+    } else if(selected === 2) {
+      currentDate = currentDate.setMonth(currentDate.getMonth()-1);
+      setStartDate(formatRangeDateString(currentDate, true));
+    } else if(selected === 3) {
+      currentDate = currentDate.setFullYear(currentDate.getFullYear()-1);
+      setStartDate(formatRangeDateString(currentDate, true));
+    } else {
+      setStartDate(formatRangeDateString(new Date('2020-01-01'), true));
+    }
+  }, [selected])
 
   // close on click outside
   useEffect(() => {

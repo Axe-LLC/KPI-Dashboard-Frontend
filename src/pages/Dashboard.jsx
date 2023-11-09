@@ -10,19 +10,40 @@ import FintechCard08 from '../partials/fintech/FintechCard08';
 import AnalyticsCard01 from '../partials/analytics/AnalyticsCard01';
 import AnalyticsCard02 from '../partials/analytics/AnalyticsCard02';
 import { SERVER_ADDRESS } from '../utils/Consts';
+import { formatRangeDateString, generateMetricsData } from '../utils/Utils';
 
 function Dashboard() {
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [clinics, setClinics] = useState([{id: 0, name: 'All Clinics'}]);
+  const [clinic, setClinic] = useState(0);
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
   const initialClinics = [{id: 0, name: 'All Clinics'}];
 
   useEffect(() => {
     fetchClincs();
+    let date = new Date();
+    setEndDate(formatRangeDateString(date, false));
+    date.setMonth(date.getMonth()-1);
+    setStartDate(formatRangeDateString(date, true));
   }, []);
+
+  useEffect(() => {
+    if(startDate && endDate) {
+      fetchOfficeFinance();
+      console.log(startDate, endDate);
+    }
+  }, [startDate, endDate]);
 
   const fetchClincs = () => {
     axios.get(`${SERVER_ADDRESS}/clinics`).then((res) => setClinics(initialClinics.concat(res.data.data[0][1])));
+  }
+
+  const fetchOfficeFinance = () => {
+    axios.get(`${SERVER_ADDRESS}/office_finances`, { params: { start: startDate, end: endDate } }).then((res) => {
+      console.log(res.data.data[0][1])
+      generateMetricsData(res.data.data[0][1], startDate, endDate, clinic);
+    });
   }
 
   return (
@@ -52,11 +73,11 @@ function Dashboard() {
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                <ClinicSelect options={clinics} />
+                <ClinicSelect options={clinics} setClinic={setClinic} />
                 {/* Dropdown */}
-                <DateSelect />  
+                <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} />  
                 {/* Datepicker built with flatpickr */}
-                <Datepicker align="right" />  
+                <Datepicker align="right" setStartDate={setStartDate} setEndDate={setEndDate} />  
               </div>
 
             </div>

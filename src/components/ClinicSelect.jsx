@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Transition from '../utils/Transition';
 
-function ClinicSelect({options}) {
+function ClinicSelect({options, setClinic}) {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selected, setSelected] = useState(0);
@@ -29,6 +29,10 @@ function ClinicSelect({options}) {
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   });
+
+  useEffect(() => {
+    setClinic(selected);
+  }, [selected])
 
   return (
     <div className="relative">

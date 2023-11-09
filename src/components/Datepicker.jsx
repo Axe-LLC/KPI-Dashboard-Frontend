@@ -1,8 +1,11 @@
 import React from 'react';
 import Flatpickr from 'react-flatpickr';
+import { formatRangeDateString } from '../utils/Utils';
 
 function Datepicker({
-  align
+  align,
+  setStartDate,
+  setEndDate
 }) {
 
   const options = {
@@ -20,6 +23,10 @@ function Datepicker({
     },
     onChange: (selectedDates, dateStr, instance) => {
       instance.element.value = dateStr.replace('to', '-');
+      if(selectedDates[1]) {
+        setEndDate(formatRangeDateString(selectedDates[1], false));
+        setStartDate(formatRangeDateString(selectedDates[0], true));
+      }
     },
   }
 

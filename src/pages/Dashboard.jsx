@@ -44,7 +44,7 @@ function Dashboard() {
             {/* <WelcomeBanner /> */}
 
             {/* Dashboard actions */}
-            <div className="sm:flex sm:justify-between sm:items-center mb-8">
+            <div className="sm:flex sm:justify-between sm:items-center mb-6">
 
               <div className="mb-4 sm:mb-0">
                 <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Metrics</h1>

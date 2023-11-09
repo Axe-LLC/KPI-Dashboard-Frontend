@@ -25,10 +25,10 @@ function Orders({clinics, orders, fetchOrders}) {
   }
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+    <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
 
       {/* Page header */}
-      <div className="sm:flex sm:justify-between sm:items-center mb-8">
+      <div className="sm:flex sm:justify-between sm:items-center mt-4 mb-2">
 
         {/* Left: Title */}
         <div className="mb-4 sm:mb-0">

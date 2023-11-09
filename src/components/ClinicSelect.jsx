@@ -44,7 +44,7 @@ function ClinicSelect({options}) {
           <svg className="w-4 h-4 fill-current text-slate-500 dark:text-slate-400 shrink-0 mr-2" viewBox="0 0 16 16">
             <path d="M15 2h-2V0h-2v2H9V0H7v2H5V0H3v2H1a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1zm-1 12H2V6h12v8z" />
           </svg>
-          <span>{options[selected]?.name}</span>
+          <span>{options.find(o => o.id === selected)?.name}</span>
         </span>
         <svg className="shrink-0 ml-1 fill-current text-slate-400" width="11" height="7" viewBox="0 0 11 7">
           <path d="M5.4 6.8L0 1.4 1.4 0l4 4 4-4 1.4 1.4z" />

@@ -81,12 +81,13 @@ export const generateMetricsData = (data, startDate, endDate, clinic) => {
   }
 
   for(let i=0; i<filteredData.length; i++) {
-    days[filteredData[i].postedOn][METRICS_PRODUCTION] += parseFloat(filteredData[i].calculations.production);
-    days[filteredData[i].postedOn][METRICS_ADJUSTMENTS] += parseFloat(filteredData[i].calculations.adjustments);
-    days[filteredData[i].postedOn][METRICS_COLLECTIONS] += parseFloat(filteredData[i].calculations.totalPayments);
-    console.log(days[filteredData[i].postedOn][METRICS_PRODUCTION]);
+    if(days[filteredData[i].postedOn]) {
+      days[filteredData[i].postedOn][METRICS_PRODUCTION] += parseFloat(filteredData[i].calculations?.production);
+      days[filteredData[i].postedOn][METRICS_ADJUSTMENTS] += parseFloat(filteredData[i].calculations?.adjustments);
+      days[filteredData[i].postedOn][METRICS_COLLECTIONS] += parseFloat(filteredData[i].calculations?.totalPayments);
+    }
   }
-  console.log(days);
+
   return days;
 }
 

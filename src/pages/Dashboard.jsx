@@ -4,9 +4,9 @@ import Sidebar from '../partials/Sidebar';
 import Datepicker from '../components/Datepicker';
 import DateSelect from '../components/DateSelect';
 import ClinicSelect from '../components/ClinicSelect';
-import FintechCard09 from '../partials/fintech/FintechCard09';
-import FintechCard07 from '../partials/fintech/FintechCard07';
-import FintechCard08 from '../partials/fintech/FintechCard08';
+import ProductionChart from '../partials/metrics/ProductionChart';
+import AdjustmentChart from '../partials/metrics/AdjustmentChart';
+import CollectionsChart from '../partials/metrics/CollectionsChart';
 import AnalyticsCard01 from '../partials/analytics/AnalyticsCard01';
 import AnalyticsCard02 from '../partials/analytics/AnalyticsCard02';
 import { SERVER_ADDRESS } from '../utils/Consts';
@@ -18,31 +18,41 @@ function Dashboard() {
   const [clinic, setClinic] = useState(0);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+  const [isRendering, setRendering] = useState(false);
   const initialClinics = [{id: 0, name: 'All Clinics'}];
+  const [metricsData, setMetricsData] = useState([]);
 
   useEffect(() => {
     fetchClincs();
     let date = new Date();
     setEndDate(formatRangeDateString(date, false));
-    date.setMonth(date.getMonth()-1);
-    setStartDate(formatRangeDateString(date, true));
+    const lastWeekDate = new Date(date.getTime() 
+            - 7 * 24 * 60 * 60 * 1000); 
+    setStartDate(formatRangeDateString(lastWeekDate, true));
   }, []);
 
   useEffect(() => {
     if(startDate && endDate) {
       fetchOfficeFinance();
-      console.log(startDate, endDate);
     }
   }, [startDate, endDate]);
+
+  useEffect(() => {
+    setRendering(false);
+  }, [metricsData]);
 
   const fetchClincs = () => {
     axios.get(`${SERVER_ADDRESS}/clinics`).then((res) => setClinics(initialClinics.concat(res.data.data[0][1])));
   }
 
   const fetchOfficeFinance = () => {
+    setRendering(true);
     axios.get(`${SERVER_ADDRESS}/office_finances`, { params: { start: startDate, end: endDate } }).then((res) => {
-      console.log(res.data.data[0][1])
-      generateMetricsData(res.data.data[0][1], startDate, endDate, clinic);
+      let resultArr = [];
+      for(let i=0; i<res.data.data.length; i++) {
+        resultArr = resultArr.concat(res.data.data[i][1]);
+      }
+      setMetricsData(resultArr);
     });
   }
 
@@ -86,11 +96,11 @@ function Dashboard() {
             <div className="grid grid-cols-12 gap-6">
 
               {/* Line chart (Acme Plus) */}
-              <FintechCard09 />
+              <ProductionChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
               {/* Line chart (Acme Advanced) */}
-              <FintechCard07 />
+              <AdjustmentChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
               {/* Line chart (Acme Professional) */}
-              <FintechCard08 />
+              <CollectionsChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
               {/* Bar chart (Direct vs Indirect) */}
               <AnalyticsCard01 />
               {/* Line chart (Real Time Value) */}

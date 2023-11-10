@@ -28,7 +28,7 @@ function DateSelect({setStartDate, setEndDate}) {
   ];
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selected, setSelected] = useState(2);
+  const [selected, setSelected] = useState(1);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -37,7 +37,7 @@ function DateSelect({setStartDate, setEndDate}) {
     var currentDate = new Date();
     setEndDate(formatRangeDateString(currentDate, false));
     if(selected === 0) {
-      setStartDate(formatRangeDateString(currentDate, true));
+      setStartDate(formatRangeDateString(new Date(new Date().setDate(new Date().getDate()-1)), true));
     } else if(selected === 1) {
       const lastWeekDate = new Date(currentDate.getTime() 
             - 7 * 24 * 60 * 60 * 1000); 

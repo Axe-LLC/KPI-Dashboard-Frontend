@@ -199,3 +199,7 @@ main {
 .order-table-min-height {
     min-height: calc(100vh - 405px);
 }
+
+.empty-line-chart-metrics {
+    height: 375px;
+}

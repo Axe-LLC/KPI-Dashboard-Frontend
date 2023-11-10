@@ -12,7 +12,7 @@ function AdjustmentChart({metricsData, isRendering}) {
     let values = [];
     for (var key in metricsData) {
       labels.push(key);
-      values.push(metricsData[key][METRICS_ADJUSTMENTS]);
+      values.push(parseFloat(metricsData[key][METRICS_ADJUSTMENTS]) * -1);
       totalValue += metricsData[key][METRICS_ADJUSTMENTS];
     }
     setTotal(totalValue);
@@ -47,7 +47,7 @@ function AdjustmentChart({metricsData, isRendering}) {
       </header>
       <div className="px-5 py-3">
         {!isRendering && <div className="flex items-center">
-          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${total}</div>
+          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${total.toLocaleString('en-US')}</div>
           <div className="text-sm"><span className="font-medium text-amber-500">97.4%</span></div>
         </div>}
       </div>

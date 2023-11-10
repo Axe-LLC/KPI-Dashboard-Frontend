@@ -48,11 +48,7 @@ function Dashboard() {
   const fetchOfficeFinance = () => {
     setRendering(true);
     axios.get(`${SERVER_ADDRESS}/office_finances`, { params: { start: startDate, end: endDate } }).then((res) => {
-      let resultArr = [];
-      for(let i=0; i<res.data.data.length; i++) {
-        resultArr = resultArr.concat(res.data.data[i][1]);
-      }
-      setMetricsData(resultArr);
+      setMetricsData(res.data.data);
     });
   }
 

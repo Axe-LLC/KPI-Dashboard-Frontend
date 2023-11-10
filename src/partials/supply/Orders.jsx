@@ -51,7 +51,7 @@ function Orders({clinics, orders, fetchOrders}) {
       <OrdersTable selectedItems={handleSelectedItems} orders={orders} clinics={clinics} fetchOrders={fetchOrders} />
 
       {/* Pagination */}
-      <div className="mt-8">
+      <div className="mt-8 mb-8">
         <PaginationClassic />
       </div>
 

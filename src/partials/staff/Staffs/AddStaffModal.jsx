@@ -54,9 +54,9 @@ function AddStaffModal({clinics, fetchStaffs}) {
         <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
           <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
         </svg>
-        <span className="hidden xs:block ml-2">Add Team</span>
+        <span className="hidden xs:block ml-2">Add Team Member</span>
       </button>
-      <ModalBasic id="feedback-modal" modalOpen={addStaffModalOpen} setModalOpen={setAddStaffModalOpen} title="Add Team">
+      <ModalBasic id="feedback-modal" modalOpen={addStaffModalOpen} setModalOpen={setAddStaffModalOpen} title="Add Team Member">
         <div className="px-5 py-4">
           <div className="text-sm">
             {/* <div className="font-medium text-slate-800 dark:text-slate-100 mb-3">Let us know what you think 🙌</div> */}
@@ -110,7 +110,7 @@ function AddStaffModal({clinics, fetchStaffs}) {
         <div className="px-5 py-4 border-t border-slate-200 dark:border-slate-700">
           <div className="flex flex-wrap justify-end space-x-2">
             <button className="btn-sm border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300" onClick={(e) => { e.stopPropagation(); setAddStaffModalOpen(false); }}>Cancel</button>
-            <button className="btn-sm primary-button text-white" onClick={() => addStaff()}>Add Team</button>
+            <button className="btn-sm primary-button text-white" onClick={() => addStaff()}>Add Team Member</button>
           </div>
         </div>
       </ModalBasic>

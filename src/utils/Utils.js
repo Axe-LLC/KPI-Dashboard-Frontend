@@ -77,7 +77,7 @@ export const generateMetricsData = (data, startDate, endDate, clinic) => {
   
   let filteredData = data;
   if(clinic) {
-    filteredData = data.filter(d => d.clinic.id === clinic);
+    filteredData = data.filter(d => parseInt(d.clinic.id) === clinic);
   }
 
   for(let i=0; i<filteredData.length; i++) {

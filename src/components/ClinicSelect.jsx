@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Transition from '../utils/Transition';
 
-function ClinicSelect({options, setClinic}) {
+function ClinicSelect({options, setClinic, setRendering}) {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selected, setSelected] = useState(0);
@@ -32,6 +32,7 @@ function ClinicSelect({options, setClinic}) {
 
   useEffect(() => {
     setClinic(selected);
+    setRendering(true);
   }, [selected])
 
   return (

@@ -39,7 +39,7 @@ function Dashboard() {
 
   useEffect(() => {
     setRendering(false);
-  }, [metricsData]);
+  }, [metricsData, clinic]);
 
   const fetchClincs = () => {
     axios.get(`${SERVER_ADDRESS}/clinics`).then((res) => setClinics(initialClinics.concat(res.data.data[0][1])));
@@ -83,7 +83,7 @@ function Dashboard() {
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                <ClinicSelect options={clinics} setClinic={setClinic} />
+                <ClinicSelect options={clinics} setClinic={setClinic} setRendering={setRendering} />
                 {/* Dropdown */}
                 <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} />  
                 {/* Datepicker built with flatpickr */}

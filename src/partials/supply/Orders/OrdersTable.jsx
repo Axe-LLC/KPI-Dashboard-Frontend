@@ -33,7 +33,7 @@ function OrdersTable({
   }, [isCheck]);
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 relative">
+    <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 relative order-table-min-height">
       <header className="px-5 py-4">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">All Orders <span className="text-slate-400 dark:text-slate-500 font-medium">442</span></h2>
       </header>

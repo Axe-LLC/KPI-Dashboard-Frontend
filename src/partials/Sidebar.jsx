@@ -63,7 +63,7 @@ function Sidebar({
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 p-4 transition-all duration-200 ease-in-out ${
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] overflow-y-scroll lg:overflow-y-auto no-scrollbar w-56 lg:w-20 lg:sidebar-expanded:!w-56 2xl:!w-56 shrink-0 p-4 transition-all duration-200 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-64'
         }`}
       >
@@ -141,6 +141,10 @@ function Sidebar({
                     </span>
                   </div>
                 </NavLink>
+              </li>
+              <li className={`px-3 py-2 rounded-md mb-2 sidebar-footer`}>
+                <p className='text-sm text-white font-medium'>KPI Dashboard</p>
+                <p className='text-sm text-white font-medium mb-2'>Built by Caresuite</p>
               </li>
             </ul>
           </div>

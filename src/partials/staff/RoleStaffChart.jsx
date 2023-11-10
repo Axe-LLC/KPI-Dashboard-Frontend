@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import BarChart from '../../charts/BarChart01';
+import LineChart from '../../charts/LineChart06';
+import StaffLineChart from '../../charts/StaffLineChart';
+import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils';
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../../utils/Consts';
 
 function RoleStaffChart({data, isRendering}) {
@@ -20,26 +22,42 @@ function RoleStaffChart({data, isRendering}) {
     setChartData({
       labels: labels,
       datasets: [
-        // Light blue bars
+        // Indigo line
         {
           label: STAFF_TYPE_DOCTOR,
           data: values1,
-          backgroundColor: '#F09375',
-          hoverBackgroundColor: '#F09375',
-          barPercentage: 0.66,
-          categoryPercentage: 0.66,
+          borderColor: '#F09375',
+          fill: true,
+          backgroundColor: `#FAD97F66`,
+          borderWidth: 2,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 3,
+            pointBackgroundColor: '#F09375',
+            pointHoverBackgroundColor: '#F09375',
+            pointBorderWidth: 0,
+            pointHoverBorderWidth: 0,
+            clip: 20,
         },
-        // Blue bars
+        // Gray line
         {
           label: STAFF_TYPE_HYGIENE,
           data: values2,
-          backgroundColor: '#FBD08F',
-          hoverBackgroundColor: '#FBD08F',
-          barPercentage: 0.66,
-          categoryPercentage: 0.66,
+          borderColor: `#FBD08F`,
+          fill: true,
+          backgroundColor: `#FBD08F66`,
+          borderWidth: 2,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 3,
+          pointBackgroundColor: `#FBD08F`,
+          pointHoverBackgroundColor: `#FBD08F`,
+          pointBorderWidth: 0,
+          pointHoverBorderWidth: 0,
+          clip: 20,
         },
-      ],
-    })
+      ]
+    });
   }, [data]);
 
   return (
@@ -49,7 +67,9 @@ function RoleStaffChart({data, isRendering}) {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-      {chartData?.labels?.length > 0 && !isRendering && <BarChart data={chartData} width={595} height={248} />}
+      <div className="grow">
+        {chartData?.labels?.length > 0 && !isRendering && <StaffLineChart data={chartData} width={595} height={248} />}
+      </div>
     </div>
   );
 }

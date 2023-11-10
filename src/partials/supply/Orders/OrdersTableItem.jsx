@@ -25,7 +25,7 @@ function OrdersTableItem(props) {
     <React.Fragment>
       <tbody className="text-sm" onClick={() => setEditModalOpen(true)} aria-controls={`update-order-modal-${props.id}`}>
         {/* Row */}
-        <tr>
+        <tr className='border-b'>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
             <div className="flex items-center">
               <label className="inline-flex">

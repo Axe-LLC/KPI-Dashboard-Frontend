@@ -54,7 +54,7 @@ function Staffs({clinics, staffs, fetchStaffs}) {
         fetchStaffs={fetchStaffs}
       />
       {/* Pagination */}
-      <div className="mt-8">
+      <div className="mt-8 mb-8">
         <PaginationClassic />
       </div>
 

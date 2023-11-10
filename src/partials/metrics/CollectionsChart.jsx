@@ -49,7 +49,7 @@ function CollectionsChart({metricsData, isRendering}) {
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collections</h2>
       </header>
       <div className="px-5 py-3">
-        {!isRendering && <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">${total.toLocaleString('en-US')}</div>}
+        {!isRendering && <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">${total.toFixed(2).toLocaleString('en-US')}</div>}
       </div>
       {/* Chart built with Chart.js 3 */}
       <div className={`grow ${isRendering && 'flex items-center m-auto empty-line-chart-metrics'}`}>

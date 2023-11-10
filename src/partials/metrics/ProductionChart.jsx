@@ -25,12 +25,12 @@ function ProductionChart({metricsData, isRendering}) {
         label: 'Sessions By Device',
         data: [12, 13],
         backgroundColor: [
-          '#F09375',
-          '#FBD08F',
+          '#609696',
+          '#C8D7D1',
         ],
         hoverBackgroundColor: [
-          '#F09375',
-          '#FBD08F',
+          '#609696',
+          '#C8D7D1',
         ],
         borderWidth: 0,
       },

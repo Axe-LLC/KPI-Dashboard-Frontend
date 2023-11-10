@@ -31,9 +31,6 @@ function LineChart04({
       type: 'line',
       data: data,
       options: {
-        chartArea: {
-          backgroundColor: darkMode ? chartAreaBg.dark : chartAreaBg.light,
-        },
         layout: {
           padding: {
             left: 20,
@@ -84,12 +81,10 @@ function LineChart04({
     if (!chart) return;
 
     if (darkMode) {
-      chart.options.chartArea.backgroundColor = chartAreaBg.dark;
       chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.dark;
       chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.dark;
       chart.options.plugins.tooltip.borderColor = tooltipBorderColor.dark;
     } else {
-      chart.options.chartArea.backgroundColor = chartAreaBg.light;
       chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.light;
       chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.light;
       chart.options.plugins.tooltip.borderColor = tooltipBorderColor.light;

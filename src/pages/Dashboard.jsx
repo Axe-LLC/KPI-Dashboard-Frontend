@@ -7,6 +7,7 @@ import ClinicSelect from '../components/ClinicSelect';
 import ProductionChart from '../partials/metrics/ProductionChart';
 import AdjustmentChart from '../partials/metrics/AdjustmentChart';
 import CollectionsChart from '../partials/metrics/CollectionsChart';
+import AnalyticsByProviderType from '../partials/metrics/AnalyticsByProviderType';
 import AnalyticsCard01 from '../partials/analytics/AnalyticsCard01';
 import AnalyticsCard02 from '../partials/analytics/AnalyticsCard02';
 import { SERVER_ADDRESS } from '../utils/Consts';
@@ -98,7 +99,7 @@ function Dashboard() {
               {/* Line chart (Acme Professional) */}
               <CollectionsChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
               {/* Bar chart (Direct vs Indirect) */}
-              <AnalyticsCard01 />
+              <AnalyticsByProviderType />
               {/* Line chart (Real Time Value) */}
               <AnalyticsCard02 />              
             </div>

@@ -25,35 +25,19 @@ function TypeStaffChart({data, isRendering}) {
         {
           label: EMPLOYEE_STATUS_FULL_TIME,
           data: values1,
-          borderColor: '#F09375',
-          fill: true,
-          backgroundColor: `#FAD97F66`,
-          borderWidth: 2,
-          tension: 0,
-          pointRadius: 0,
-          pointHoverRadius: 3,
-            pointBackgroundColor: '#F09375',
-            pointHoverBackgroundColor: '#F09375',
-            pointBorderWidth: 0,
-            pointHoverBorderWidth: 0,
-            clip: 20,
+          backgroundColor: '#B49BC0',
+          hoverBackgroundColor: '#B49BC0',
+          barPercentage: 0.66,
+          categoryPercentage: 0.66,
         },
         // Gray line
         {
           label: EMPLOYEE_STATUS_PART_TIME,
           data: values2,
-          borderColor: `#FBD08F`,
-          fill: true,
-          backgroundColor: `#FBD08F66`,
-          borderWidth: 2,
-          tension: 0,
-          pointRadius: 0,
-          pointHoverRadius: 3,
-          pointBackgroundColor: `#FBD08F`,
-          pointHoverBackgroundColor: `#FBD08F`,
-          pointBorderWidth: 0,
-          pointHoverBorderWidth: 0,
-          clip: 20,
+          backgroundColor: '#66A6C4',
+          hoverBackgroundColor: '#66A6C4',
+          barPercentage: 0.66,
+          categoryPercentage: 0.66,
         },
       ]
     })
@@ -66,9 +50,7 @@ function TypeStaffChart({data, isRendering}) {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-      <div className="grow">
-        {chartData?.labels?.length > 0 && !isRendering && <StaffLineChart data={chartData} width={595} height={248} />}
-      </div>
+      {chartData?.labels?.length > 0 && !isRendering && <BarChart data={chartData} width={595} height={248} />}
     </div>
   );
 }

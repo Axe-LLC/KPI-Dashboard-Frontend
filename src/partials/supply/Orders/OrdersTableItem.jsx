@@ -13,9 +13,9 @@ function OrdersTableItem(props) {
   const statusColor = (status) => {
     switch (status) {
       case STAFF_TYPE_DOCTOR:
-        return '#F09375';
+        return '#FFBBA8';
       case STAFF_TYPE_HYGIENE:
-        return '#FBD08F';
+        return '#EFB351';
       default:
         return 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400';
     }
@@ -36,23 +36,23 @@ function OrdersTableItem(props) {
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className="flex items-center text-slate-800">
-              <div className="font-medium text-sky-500">{props.number}</div>
+              <div className="font-medium staff-table-text">{props.number}</div>
             </div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div>{props.date}</div>
+            <div className='staff-table-text'>{props.date}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="font-medium text-slate-800 dark:text-slate-100">{props.name}</div>
+            <div className="font-medium dark:text-slate-100 staff-table-text">{props.name}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium text-emerald-500">{props.total}</div>
+            <div className="text-left font-medium staff-table-text">{props.total}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5`} style={{color: statusColor(props.type)}}>{props.type}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5`}>{clinicName}</div>
+            <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>
           </td>
         </tr>
       </tbody>

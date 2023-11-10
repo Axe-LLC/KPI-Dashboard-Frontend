@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../../../utils/Consts';
+import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_FULL_TIME, EMPLOYEE_STATUS_PART_TIME } from '../../../utils/Consts';
 import EditStaffModal from './EditStaffModal';
 
 function StaffsTableItem(props) {
@@ -13,9 +13,20 @@ function StaffsTableItem(props) {
   const statusColor = (status) => {
     switch (status) {
       case STAFF_TYPE_DOCTOR:
-        return '#F09375';
+        return '#FFBBA8';
       case STAFF_TYPE_HYGIENE:
-        return '#FBD08F';
+        return '#EFB351';
+      default:
+        return 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400';
+    }
+  };
+
+  const employeeColor = (employee_status) => {
+    switch (employee_status) {
+      case EMPLOYEE_STATUS_FULL_TIME:
+        return '#B49BC0';
+      case EMPLOYEE_STATUS_PART_TIME:
+        return '#66A6C4';
       default:
         return 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400';
     }
@@ -43,7 +54,7 @@ function StaffsTableItem(props) {
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className="flex items-center text-slate-800">
-              <div className="font-medium text-sky-500">{props.name}</div>
+              <div className="font-medium staff-table-text">{props.name}</div>
             </div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -53,16 +64,16 @@ function StaffsTableItem(props) {
             <div className="font-medium text-slate-800 dark:text-slate-100">{props.hours}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium text-emerald-500">{props.hourly}</div>
+            <div className="text-left font-medium staff-table-text">{props.hourly}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium text-emerald-500">{props.startDate}</div>
+            <div className="text-left font-medium staff-table-text">{props.startDate}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium text-emerald-500">{props.employeeStatus}</div>
+            <div className="text-left font-medium" style={{color: employeeColor(props.employeeStatus)}}>{props.employeeStatus}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5`}>{clinicName}</div>
+            <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>
           </td>
         </tr>
       </tbody>

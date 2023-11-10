@@ -23,15 +23,15 @@ function AdjustmentChart({metricsData, isRendering}) {
         {
           label: METRICS_ADJUSTMENTS,
           data: values,
-          borderColor: '#F09375',
+          borderColor: '#EFB351',
           fill: true,
-          backgroundColor: `#FAD97F66`,
+          backgroundColor: `#F9EDCA`,
           borderWidth: 2,
           tension: 0,
           pointRadius: 0,
           pointHoverRadius: 3,
-            pointBackgroundColor: '#F09375',
-            pointHoverBackgroundColor: '#F09375',
+            pointBackgroundColor: '#EFB351',
+            pointHoverBackgroundColor: '#EFB351',
             pointBorderWidth: 0,
             pointHoverBorderWidth: 0,
             clip: 20,
@@ -47,7 +47,7 @@ function AdjustmentChart({metricsData, isRendering}) {
       </header>
       <div className="px-5 py-3">
         {!isRendering && <div className="flex items-center">
-          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${total.toLocaleString('en-US')}</div>
+          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${total.toFixed(2).toLocaleString('en-US')}</div>
           <div className="text-sm"><span className="font-medium text-amber-500">97.4%</span></div>
         </div>}
       </div>

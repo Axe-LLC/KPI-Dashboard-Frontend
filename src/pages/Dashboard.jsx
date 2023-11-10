@@ -7,7 +7,7 @@ import ClinicSelect from '../components/ClinicSelect';
 import ProductionChart from '../partials/metrics/ProductionChart';
 import AdjustmentChart from '../partials/metrics/AdjustmentChart';
 import CollectionsChart from '../partials/metrics/CollectionsChart';
-import AnalyticsCard01 from '../partials/analytics/AnalyticsCard01';
+import AnalyticsByProviderType from '../partials/metrics/AnalyticsByProviderType';
 import AnalyticsCard02 from '../partials/analytics/AnalyticsCard02';
 import { SERVER_ADDRESS } from '../utils/Consts';
 import { formatRangeDateString, generateMetricsData } from '../utils/Utils';
@@ -21,14 +21,14 @@ function Dashboard() {
   const [isRendering, setRendering] = useState(false);
   const initialClinics = [{id: 0, name: 'All Clinics'}];
   const [metricsData, setMetricsData] = useState([]);
+  const [isCustomDate, setIsCustomDate] = useState(false);
 
   useEffect(() => {
     fetchClincs();
-    let date = new Date();
+    const date = new Date();
     setEndDate(formatRangeDateString(date, false));
-    const lastWeekDate = new Date(date.getTime() 
-            - 7 * 24 * 60 * 60 * 1000); 
-    setStartDate(formatRangeDateString(lastWeekDate, true));
+    const start = new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-01'); 
+    setStartDate(formatRangeDateString(start, true));
   }, []);
 
   useEffect(() => {
@@ -81,9 +81,9 @@ function Dashboard() {
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                 <ClinicSelect options={clinics} setClinic={setClinic} setRendering={setRendering} />
                 {/* Dropdown */}
-                <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} />  
+                <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} isCustomDate={isCustomDate} setIsCustomDate={setIsCustomDate} />  
                 {/* Datepicker built with flatpickr */}
-                <Datepicker align="right" setStartDate={setStartDate} setEndDate={setEndDate} />  
+                <Datepicker align="right" setStartDate={setStartDate} setEndDate={setEndDate} start={startDate} end={endDate} setIsCustomDate={setIsCustomDate} />  
               </div>
 
             </div>
@@ -98,7 +98,7 @@ function Dashboard() {
               {/* Line chart (Acme Professional) */}
               <CollectionsChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
               {/* Bar chart (Direct vs Indirect) */}
-              <AnalyticsCard01 />
+              <AnalyticsByProviderType />
               {/* Line chart (Real Time Value) */}
               <AnalyticsCard02 />              
             </div>

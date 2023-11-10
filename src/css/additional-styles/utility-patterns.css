@@ -203,3 +203,13 @@ main {
 .empty-line-chart-metrics {
     height: 375px;
 }
+
+.staff-table-text {
+    color: #609696;
+}
+
+.staff-table-clinic {
+    border-radius: 8px;
+    border: 1px solid #66A6C4;
+    background: rgba(102, 166, 196, 0.20);
+}

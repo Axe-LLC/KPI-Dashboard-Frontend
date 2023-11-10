@@ -104,7 +104,7 @@ function Sidebar({
                 >
                   <div className="flex items-center">
                     <img src={metricsImg} alt="" className='nav-icon' />
-                    <span className={`text-sm text-white font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 ${pathname === '/' && 'nav-selected-item-text'}`}>Metrics</span>
+                    <span className={`text-sm text-white font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 ${pathname === '/' && 'nav-selected-item-text'}`}>Office Metrics</span>
                   </div>
                 </NavLink>
               </li>
@@ -120,7 +120,7 @@ function Sidebar({
                   <div className="flex items-center">
                     <img src={ordersImg} alt="" className="nav-icon" />
                     <span className={`text-sm text-white font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 ${pathname.includes('supply') && 'nav-selected-item-text'}`}>
-                      Orders
+                      Supply Spend
                     </span>
                   </div>
                 </NavLink>
@@ -137,7 +137,7 @@ function Sidebar({
                   <div className="flex items-center">
                     <img src={teamImg} alt="" className='nav-icon' />
                     <span className={`text-sm text-white font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 ${pathname.includes('staff') && 'nav-selected-item-text'}`}>
-                      Team
+                      Staff Count
                     </span>
                   </div>
                 </NavLink>

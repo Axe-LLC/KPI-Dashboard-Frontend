@@ -80,12 +80,12 @@ function Supply() {
             
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
-                <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Orders</h1>
+                <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Supply Spend</h1>
               </div>
           
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                <ClinicSelect options={clinics} setClinic={setClinic} />
+                <ClinicSelect options={clinics} setClinic={setClinic} setRendering={setRendering} />
                 {/* Dropdown */}
                 <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} />
                 {/* Datepicker built with flatpickr */}

@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import CollectionLineChart from '../../charts/CollectionLineChart';
-import { METRICS_COLLECTIONS } from '../../utils/Consts';
+import { METRICS_COLLECTIONS, METRICS_PRODUCTION } from '../../utils/Consts';
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 function CollectionsChart({metricsData, isRendering}) {
   const [total, setTotal] = useState(0);
   const [chartData, setChartData] = useState(null);
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     let totalValue = 0;
+    let totalProduction = 0;
     let labels = [];
     let values = [];
     for (var key in metricsData) {
       labels.push(key);
       values.push(metricsData[key][METRICS_COLLECTIONS]);
       totalValue += metricsData[key][METRICS_COLLECTIONS];
+      totalProduction += metricsData[key][METRICS_PRODUCTION];
     }
     setTotal(totalValue);
+    setPercentage(totalValue / totalProduction * 100);
 
     setChartData({
       labels: labels,
@@ -46,10 +50,14 @@ function CollectionsChart({metricsData, isRendering}) {
   return (
     <div className="flex flex-col col-span-full sm:col-span-12 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collections</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collection Percentage</h2>
       </header>
       <div className="px-5 py-3">
-        {!isRendering && <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">${total.toFixed(2).toLocaleString('en-US')}</div>}
+        {!isRendering && <div className="flex items-center">
+            <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${total.toFixed(2).toLocaleString('en-US')}</div>
+            <div className="text-xs"><span className="font-medium text-amber-500">{percentage.toFixed(2)}%</span></div>
+          </div>
+        }
       </div>
       {/* Chart built with Chart.js 3 */}
       <div className={`grow ${isRendering && 'flex items-center m-auto empty-line-chart-metrics'}`}>

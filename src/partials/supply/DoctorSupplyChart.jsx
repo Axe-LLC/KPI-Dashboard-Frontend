@@ -49,7 +49,7 @@ function DoctorSupplyChart({data, isRendering}) {
           <h3 className="text-sm font-semibold text-slate-500 uppercase mb-1">
             <span className="text-slate-800 dark:text-slate-100">Spend in Doctor Supplies</span>
           </h3>
-          <div className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-1">{total} hrs</div>
+          <div className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-1">$ {total}</div>
         </header>
       </div>
       {/* Chart built with Chart.js 3 */}

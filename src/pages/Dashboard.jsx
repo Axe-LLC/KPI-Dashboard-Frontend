@@ -8,9 +8,9 @@ import ProductionChart from '../partials/metrics/ProductionChart';
 import AdjustmentChart from '../partials/metrics/AdjustmentChart';
 import CollectionsChart from '../partials/metrics/CollectionsChart';
 import AnalyticsByProviderType from '../partials/metrics/AnalyticsByProviderType';
-import AnalyticsCard02 from '../partials/analytics/AnalyticsCard02';
 import { SERVER_ADDRESS } from '../utils/Consts';
 import { formatRangeDateString, generateMetricsData } from '../utils/Utils';
+import AppointmentsChart from '../partials/metrics/AppointmentsChart';
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -21,6 +21,7 @@ function Dashboard() {
   const [isRendering, setRendering] = useState(false);
   const initialClinics = [{id: 0, name: 'All Clinics'}];
   const [metricsData, setMetricsData] = useState([]);
+  const [appointmentsData, setAppointmentsData] = useState([]);
   const [isCustomDate, setIsCustomDate] = useState(false);
 
   useEffect(() => {
@@ -34,6 +35,7 @@ function Dashboard() {
   useEffect(() => {
     if(startDate && endDate) {
       fetchOfficeFinance();
+      fetchAppointments();
     }
   }, [startDate, endDate]);
 
@@ -49,6 +51,12 @@ function Dashboard() {
     setRendering(true);
     axios.get(`${SERVER_ADDRESS}/office_finances`, { params: { start: startDate, end: endDate } }).then((res) => {
       setMetricsData(res.data.data);
+    });
+  }
+
+  const fetchAppointments = () => {
+    axios.get(`${SERVER_ADDRESS}/appointment/${clinic}`, { params: { start: startDate, end: endDate } }).then((res) => {
+      setAppointmentsData(res.data.data);
     });
   }
 
@@ -100,7 +108,7 @@ function Dashboard() {
               {/* Bar chart (Direct vs Indirect) */}
               <AnalyticsByProviderType />
               {/* Line chart (Real Time Value) */}
-              <AnalyticsCard02 />              
+              <AppointmentsChart />              
             </div>
 
           </div>

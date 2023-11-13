@@ -10,7 +10,7 @@ import HygieneSupplyChart from '../partials/supply/HygieneSupplyChart';
 import PercentSupplyChart from '../partials/supply/PercentSupplyChart';
 import Orders from '../partials/supply/Orders';
 import AddOrderModal from '../partials/supply/Orders/AddOrderModal';
-import { getCurrentMonthDays } from '../utils/Utils';
+import { getFilteredDays, formatRangeDateString } from '../utils/Utils';
 import { STAFF_TYPE_TOTAL, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, SERVER_ADDRESS } from "../utils/Consts";
 
 function Supply() {
@@ -24,33 +24,44 @@ function Supply() {
   const [endDate, setEndDate] = useState();
   const initialClinics = [{id: 0, name: 'All Clinics'}];
   const [orders, setOrders] = useState([]);
+  const [isCustomDate, setIsCustomDate] = useState(false);
 
   useEffect(() => {
     setRendering(false);
-  }, [supplyData]);
+  }, [supplyData, clinic]);
 
   useEffect(() => {
-    fetchOrders();
     fetchClincs();
+    const date = new Date();
+    setEndDate(formatRangeDateString(date, false));
+    const start = new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-01'); 
+    setStartDate(formatRangeDateString(start, true));
   }, []);
+
+  useEffect(() => {
+    if(startDate && endDate) {
+      fetchOrders();
+    }
+  }, [startDate, endDate, clinic]);
 
   const fetchOrders = () => {
     setRendering(true);
-    axios.get(`${SERVER_ADDRESS}/order`).then((res) => {
-      let dayArray = getCurrentMonthDays();
-      setOrders(res.data);
-      for (let i=0; i<res.data.length; i++) {
-        let data = dayArray[res.data[i].date];
-        data[STAFF_TYPE_TOTAL] += res.data[i].total;
+    axios.get(`${SERVER_ADDRESS}/order`, { params: { start: startDate, end: endDate } }).then((res) => {
+      let dayArray = getFilteredDays(startDate, endDate);
+      const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
+      setOrders(filteredDataByClinic);
+      for (let i=0; i<filteredDataByClinic.length; i++) {
+        let data = dayArray[filteredDataByClinic[i].date];
+        data[STAFF_TYPE_TOTAL] += filteredDataByClinic[i].total;
 
-        if (res.data[i].type === STAFF_TYPE_DOCTOR) {
-          data[STAFF_TYPE_DOCTOR] += res.data[i].total;
+        if (filteredDataByClinic[i].type === STAFF_TYPE_DOCTOR) {
+          data[STAFF_TYPE_DOCTOR] += filteredDataByClinic[i].total;
         }
         else {
-          data[STAFF_TYPE_HYGIENE] += res.data[i].total;
+          data[STAFF_TYPE_HYGIENE] += filteredDataByClinic[i].total;
         }
 
-        dayArray[res.data[i].date] = data;
+        dayArray[filteredDataByClinic[i].date] = data;
       }
       setSupplyData(dayArray);
     });
@@ -87,9 +98,9 @@ function Supply() {
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                 <ClinicSelect options={clinics} setClinic={setClinic} setRendering={setRendering} />
                 {/* Dropdown */}
-                <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} />
+                <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} isCustomDate={isCustomDate} setIsCustomDate={setIsCustomDate} />
                 {/* Datepicker built with flatpickr */}
-                <Datepicker align="right" setStartDate={setStartDate} setEndDate={setEndDate} />
+                <Datepicker align="right" setStartDate={setStartDate} setEndDate={setEndDate} start={startDate} end={endDate} setIsCustomDate={setIsCustomDate} />
                 {/* Add order button */}
                 <AddOrderModal clinics={clinics} fetchOrders={fetchOrders} />
               </div>

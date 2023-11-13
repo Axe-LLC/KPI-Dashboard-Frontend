@@ -43,12 +43,12 @@ export const formatThousands = (value) => Intl.NumberFormat('en-US', {
 }).format(value);
 
 
-export const getCurrentMonthDays = () => {
-  const today = new Date();
-  var date = new Date(today.getFullYear(), today.getMonth(), 1);
+export const getFilteredDays = (startDate, endDate) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
   var days = [];
-  while (date.getMonth() === today.getMonth() && date.getDate() <= today.getDate()) {
-    const formattedDate = formatDateString(date);
+  while (start <= end) {
+    const formattedDate = formatDateString(start);
     days[formattedDate] = {
       [STAFF_TYPE_TOTAL]: 0,
       [STAFF_TYPE_DOCTOR]: 0,
@@ -56,7 +56,7 @@ export const getCurrentMonthDays = () => {
       [EMPLOYEE_STATUS_FULL_TIME]: 0,
       [EMPLOYEE_STATUS_PART_TIME]: 0
     };
-    date.setDate(date.getDate() + 1);
+    start.setDate(start.getDate() + 1);
   }
   return days;
 }

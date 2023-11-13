@@ -65,7 +65,7 @@ function StaffsTableItem(props) {
             <div className="font-medium text-slate-800 dark:text-slate-100">{props.hours}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium staff-table-text">{props.hourly}</div>
+            <div className="text-left font-medium staff-table-text">${props.hourly.toFixed(2)}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className="text-left font-medium staff-table-text">{dateStringType(props.startDate)}</div>

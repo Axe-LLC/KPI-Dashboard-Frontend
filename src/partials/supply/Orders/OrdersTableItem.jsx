@@ -47,7 +47,7 @@ function OrdersTableItem(props) {
             <div className="font-medium dark:text-slate-100 staff-table-text">{props.name}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium staff-table-text">{props.total}</div>
+            <div className="text-left font-medium staff-table-text">${props.total.toFixed(2)}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className={`inline-flex font-medium rounded-full text-center capitalize`} style={{color: statusColor(props.type)}}>{props.type}</div>

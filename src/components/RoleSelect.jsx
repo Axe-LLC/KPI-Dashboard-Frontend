@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Transition from '../utils/Transition';
+import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../utils/Consts';
 
-function RoleSelect({setRole}) {
+function RoleSelect({setRole,setChartData}) {
 
   const options = [
     {
       id: 0,
-      name: 'Doctor'
+      name: STAFF_TYPE_DOCTOR
     },
     {
       id: 1,
-      name: 'Hygiene'
+      name: STAFF_TYPE_HYGIENE
     },
   ];
 
@@ -52,7 +53,7 @@ function RoleSelect({setRole}) {
         aria-expanded={dropdownOpen}
       >
         <span className="flex items-center">
-          <span>{options[selected].name}</span>
+          <span className="capitalize">{options[selected].name}</span>
         </span>
         <svg className="shrink-0 ml-1 fill-current text-slate-400" width="11" height="7" viewBox="0 0 11 7">
           <path d="M5.4 6.8L0 1.4 1.4 0l4 4 4-4 1.4 1.4z" />
@@ -83,12 +84,12 @@ function RoleSelect({setRole}) {
                   tabIndex="0"
                   className={`flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer`}
                   style={option.id === selected ? {color: '#F09375'} : {}}
-                  onClick={() => { setSelected(option.id); setDropdownOpen(false); setRole(option.name); }}
+                  onClick={() => { setSelected(option.id); setDropdownOpen(false); setRole(option.name); setChartData(null); }}
                 >
                   <svg className={`shrink-0 mr-2 fill-current ${option.id !== selected && 'invisible'}`} width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                   </svg>
-                  <span>{option.name}</span>
+                  <span className="capitalize">{option.name}</span>
                 </button>
               )
             })

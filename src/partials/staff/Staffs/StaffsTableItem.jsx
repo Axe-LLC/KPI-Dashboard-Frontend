@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_FULL_TIME, EMPLOYEE_STATUS_PART_TIME } from '../../../utils/Consts';
 import EditStaffModal from './EditStaffModal';
+import { dateStringType } from '../../../utils/Utils';
 
 function StaffsTableItem(props) {
   const [clinicName, setClinicName] = useState('');
@@ -58,7 +59,7 @@ function StaffsTableItem(props) {
             </div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5`} style={{color: statusColor(props.role)}}>{props.role}</div>
+            <div className={`inline-flex font-medium rounded-full text-center capitalize`} style={{color: statusColor(props.role)}}>{props.role}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className="font-medium text-slate-800 dark:text-slate-100">{props.hours}</div>
@@ -67,10 +68,10 @@ function StaffsTableItem(props) {
             <div className="text-left font-medium staff-table-text">{props.hourly}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium staff-table-text">{props.startDate}</div>
+            <div className="text-left font-medium staff-table-text">{dateStringType(props.startDate)}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium" style={{color: employeeColor(props.employeeStatus)}}>{props.employeeStatus}</div>
+            <div className="text-left font-medium capitalize" style={{color: employeeColor(props.employeeStatus)}}>{props.employeeStatus}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>

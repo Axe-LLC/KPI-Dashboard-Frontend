@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import Sidebar from '../partials/Sidebar';
+import Header from '../partials/Header';
 import Datepicker from '../components/Datepicker';
 import DateSelect from '../components/DateSelect';
 import ClinicSelect from '../components/ClinicSelect';
@@ -70,7 +71,19 @@ function Dashboard() {
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
 
         {/*  Site header */}
-        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+        <button
+          className="text-slate-500 hover:text-slate-600 lg:hidden burger-button"
+          aria-controls="sidebar"
+          aria-expanded={sidebarOpen}
+          onClick={(e) => { e.stopPropagation(); setSidebarOpen(!sidebarOpen); }}
+        >
+          <span className="sr-only">Open sidebar</span>
+          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="5" width="16" height="2" />
+            <rect x="4" y="11" width="16" height="2" />
+            <rect x="4" y="17" width="16" height="2" />
+          </svg>
+        </button>
 
         <main className="grow">
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -79,14 +92,14 @@ function Dashboard() {
             {/* <WelcomeBanner /> */}
 
             {/* Dashboard actions */}
-            <div className="sm:flex sm:justify-between sm:items-center mb-6">
+            <div className="sm:flex sm:justify-between sm:items-center mb-6 top-header">
 
-              <div className="mb-4 sm:mb-0">
+              <div className="mb-4 sm:mb-3">
                 <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Office Metrics</h1>
               </div>
 
               {/* Right: Actions */}
-              <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+              <div className="grid xl:grid-flow-col lg:grid-cols sm:auto-cols-max justify-start sm:justify-end gap-2">
                 <ClinicSelect options={clinics} setClinic={setClinic} setRendering={setRendering} />
                 {/* Dropdown */}
                 <DateSelect setStartDate={setStartDate} setEndDate={setEndDate} isCustomDate={isCustomDate} setIsCustomDate={setIsCustomDate} />  

@@ -50,12 +50,12 @@ function CollectionsChart({metricsData, isRendering}) {
   return (
     <div className="flex flex-col col-span-full sm:col-span-12 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collection Percentage</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Collections</h2>
       </header>
       <div className="px-5 py-3">
         {!isRendering && <div className="flex items-center">
-            <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${total.toFixed(2).toLocaleString('en-US')}</div>
-            <div className="text-xs"><span className="font-medium text-amber-500">{percentage.toFixed(2)}%</span></div>
+            <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${parseFloat(total.toFixed(2)).toLocaleString('en-US')}</div>
+            <div className="text-xs"><span className="font-medium perecentage-color">Collection Percentage: {percentage.toFixed(2)}%</span></div>
           </div>
         }
       </div>

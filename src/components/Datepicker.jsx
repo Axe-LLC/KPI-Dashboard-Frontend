@@ -39,7 +39,7 @@ function Datepicker({
 
   return (
     <div className="relative">
-      <div className='w-[15.5rem]'>{start && end && !isRendering && <Flatpickr className="form-input pl-9 dark:bg-slate-800 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-slate-200 font-medium w-[15.5rem] shadow-none w-64" options={options} />}
+      <div className='w-64'>{start && end && !isRendering && <Flatpickr className="form-input pl-9 dark:bg-slate-800 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-slate-200 font-medium shadow-none w-64" options={options} />}
       </div>
       <div className="absolute inset-0 right-auto flex items-center pointer-events-none">
         <svg className="w-4 h-4 fill-current text-slate-500 dark:text-slate-400 ml-3" viewBox="0 0 16 16">

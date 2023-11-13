@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import LineChart from '../../charts/LineChart03';
-
+import AnalyticsTypeChart from '../../charts/AnalyticsTypeChart';
+import axios from 'axios';
+import { SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../../utils/Consts';
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 import RoleSelect from '../../components/RoleSelect';
+import { getFilteredDays } from '../../utils/Utils';
 
-function AnalyticsByProviderType() {
-  const [role, setRole] = useState('Doctor');
+function AnalyticsByProviderType({startDate, endDate, clinic}) {
+  const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
   const [selectedItem, setSelectedItem] = useState(0);
   const [chartData, setChartData] = useState(null);
+  const [staffData, setStaffData] = useState([]);
+  const [isRendering, setRendering] = useState(false);
+  const [totalHours, setTotalHours] = useState(0);
 
   const dataArray = [
     [
@@ -37,26 +42,35 @@ function AnalyticsByProviderType() {
     ]
   ];
 
-	const labels = ['Doctor Hours', 'Doctor Production', 'Production per Doctor Hour', 'Percentage of Doctor Production'];
+	const labels = [
+    ['Doctor Hours', 'Doctor Production', 'Production per Doctor Hour', 'Percentage of Doctor Production'],
+    ['Hygiene Hours', 'Hygiene Production', 'Production per Hygiene Hour', 'Percentage of Hygiene Production']
+];
 
-	useEffect(() => {
-		setChartData({
-			labels: [
-				'12-01-2020', '01-01-2021', '02-01-2021',
-				'03-01-2021', '04-01-2021', '05-01-2021',
-				'06-01-2021', '07-01-2021', '08-01-2021',
-				'09-01-2021', '10-01-2021', '11-01-2021',
-				'12-01-2021', '01-01-2022', '02-01-2022',
-				'03-01-2022', '04-01-2022', '05-01-2022',
-				'06-01-2022', '07-01-2022', '08-01-2022',
-				'09-01-2022', '10-01-2022', '11-01-2022',
-				'12-01-2022', '01-01-2023',
-			],
+  useEffect(() => {
+    if(startDate && endDate) {
+      fetchStaffs();
+    }
+  }, [startDate, endDate, clinic, role]);
+
+  useEffect(() => {
+    let graphLabels = [];
+    let values = [];
+    let hours = 0;
+    for (var key in staffData) {
+      graphLabels.push(key);
+      values.push(staffData[key][role]);
+      hours += staffData[key][role];
+    }
+    setTotalHours(hours);
+
+    setChartData({
+			labels: graphLabels,
 			datasets: [
 				// Indigo line
 				{
-					label: labels[selectedItem],
-					data: dataArray[selectedItem],
+					label: labels[role === STAFF_TYPE_DOCTOR ? 0 : 1][selectedItem],
+					data: selectedItem === 0 ? values :  dataArray[selectedItem],
 					fill: true,
 					backgroundColor: `#E1EFF9`,
 					borderColor: '#66A6C4',
@@ -72,13 +86,37 @@ function AnalyticsByProviderType() {
 				}
 			],
 		});
-	}, [selectedItem])
+
+    setRendering(false);
+  }, [role, staffData, selectedItem])
+
+  const fetchStaffs = () => {
+    setRendering(true);
+    axios.get(`${SERVER_ADDRESS}/team`, { params: { start: startDate, end: endDate } }).then((res) => {
+      let dayArray = getFilteredDays(startDate, endDate);
+      const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
+      for (let i=0; i<filteredDataByClinic.length; i++) {
+        let data = dayArray[filteredDataByClinic[i].start_date];
+        if(data) {
+          if (filteredDataByClinic[i].role === STAFF_TYPE_DOCTOR) {
+            data[STAFF_TYPE_DOCTOR] += filteredDataByClinic[i].hours;
+          }
+          else {
+            data[STAFF_TYPE_HYGIENE] += filteredDataByClinic[i].hours;
+          }
+          dayArray[filteredDataByClinic[i].start_date] = data;
+        }
+      }
+      setStaffData(dayArray);
+    });
+  }
+
 
   return (
     <div className="flex flex-col col-span-full xl:col-span-8 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100 pt-2 pb-2">Analytics By Provider Type</h2>
-        <RoleSelect setRole={setRole} />
+        <RoleSelect setRole={setRole} setChartData={setChartData} />
       </header>
       <div className="px-5 py-1">
         <div className="flex flex-wrap">
@@ -86,10 +124,10 @@ function AnalyticsByProviderType() {
           <div className="flex items-center py-2 cursor-pointer" onClick={() => { if(selectedItem !== 0) {setSelectedItem(0); setChartData(null); }}}>
             <div className="mr-5">
               <div className="flex items-center">
-                <div className={`text-3xl font-bold ${selectedItem === 0 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>24.7K</div>
+                <div className={`text-3xl font-bold ${selectedItem === 0 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>{totalHours.toFixed(2)}</div>
                 <div className="text-sm font-medium text-emerald-500">+49%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">{`${role}  Hours`}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`${role}  Hours`}</div>
             </div>
             <div className="hidden md:block w-px h-8 bg-slate-200 dark:bg-slate-700 mr-5" aria-hidden="true"></div>
           </div>
@@ -97,10 +135,10 @@ function AnalyticsByProviderType() {
           <div className="flex items-center py-2 cursor-pointer" onClick={() => { if(selectedItem !== 1) {setSelectedItem(1); setChartData(null); }}}>
             <div className="mr-5">
               <div className="flex items-center">
-                <div className={`text-3xl font-bold ${selectedItem === 1 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>56.9K</div>
+                <div className={`text-3xl font-bold ${selectedItem === 1 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>$56.9K</div>
                 <div className="text-sm font-medium text-emerald-500">+7%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">{`${role} Production`}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`${role} Production`}</div>
             </div>
             <div className="hidden md:block w-px h-8 bg-slate-200 dark:bg-slate-700 mr-5" aria-hidden="true"></div>
           </div>
@@ -108,10 +146,10 @@ function AnalyticsByProviderType() {
           <div className="flex items-center py-2 cursor-pointer" onClick={() => { if(selectedItem !== 2) {setSelectedItem(2); setChartData(null); }}}>
             <div className="mr-5">
               <div className="flex items-center">
-                <div className={`text-3xl font-bold ${selectedItem === 2 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>54%</div>
+                <div className={`text-3xl font-bold ${selectedItem === 2 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>$54.3</div>
                 <div className="text-sm font-medium text-amber-500">-7%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">{`Production per ${role} Hour`}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`Production per ${role} Hour`}</div>
             </div>
             <div className="hidden md:block w-px h-8 bg-slate-200 dark:bg-slate-700 mr-5" aria-hidden="true"></div>
           </div>
@@ -119,10 +157,10 @@ function AnalyticsByProviderType() {
           <div className="flex items-center cursor-pointer" onClick={() => { if(selectedItem !== 3) {setSelectedItem(3); setChartData(null); }}}>
             <div>
               <div className="flex items-center">
-                <div className={`text-3xl font-bold ${selectedItem === 3 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>2m 56s</div>
+                <div className={`text-3xl font-bold ${selectedItem === 3 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>23.7%</div>
                 <div className="text-sm font-medium text-amber-500">+7%</div>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400">{`Percentage of ${role} Production`}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`Percentage of ${role} Production`}</div>
             </div>
           </div>
         </div>
@@ -130,7 +168,7 @@ function AnalyticsByProviderType() {
       {/* Chart built with Chart.js 3 */}
       <div className="grow">
         {/* Change the height attribute to adjust the chart height */}
-        {chartData?.labels?.length > 0 && <LineChart data={chartData} width={800} height={300} />}
+        {chartData?.labels?.length > 0 && !isRendering && <AnalyticsTypeChart data={chartData} width={800} height={300} />}
       </div>
     </div>
   );

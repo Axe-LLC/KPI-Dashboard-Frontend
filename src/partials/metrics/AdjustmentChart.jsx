@@ -47,8 +47,7 @@ function AdjustmentChart({metricsData, isRendering}) {
       </header>
       <div className="px-5 py-3">
         {!isRendering && <div className="flex items-center">
-          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${total.toFixed(2).toLocaleString('en-US')}</div>
-          <div className="text-xs"><span className="font-medium text-amber-500">97.4%</span></div>
+          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${parseFloat(total.toFixed(2)).toLocaleString('en-US')}</div>
         </div>}
       </div>
       {/* Chart built with Chart.js 3 */}

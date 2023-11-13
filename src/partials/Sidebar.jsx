@@ -72,7 +72,7 @@ function Sidebar({
           {/* Close button */}
           <button
             ref={trigger}
-            className="lg:hidden text-slate-500 hover:text-slate-400"
+            className="lg:hidden text-slate-500 hover:text-slate-400 mt-2"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-controls="sidebar"
             aria-expanded={sidebarOpen}

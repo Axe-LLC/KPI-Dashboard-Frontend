@@ -213,3 +213,19 @@ main {
     border: 1px solid #66A6C4;
     background: rgba(102, 166, 196, 0.20);
 }
+
+.perecentage-color {
+    color: rgb(100, 116, 139);
+}
+
+@media only screen and (max-width: 1420px) {
+    .top-header {
+        display: block !important;
+    }
+}
+
+.burger-button {
+    position: absolute;
+    top: 35px;
+    right: 25px;
+}

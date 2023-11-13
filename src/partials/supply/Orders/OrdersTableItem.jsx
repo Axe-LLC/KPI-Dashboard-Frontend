@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../../../utils/Consts';
 import EditOrderModal from './EditOrderModal';
+import { dateStringType } from '../../../utils/Utils';
 
 function OrdersTableItem(props) {
   const [clinicName, setClinicName] = useState('');
@@ -40,16 +41,16 @@ function OrdersTableItem(props) {
             </div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className='staff-table-text'>{props.date}</div>
+            <div className='staff-table-text'>{dateStringType(props.date)}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className="font-medium dark:text-slate-100 staff-table-text">{props.name}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium staff-table-text">{props.total}</div>
+            <div className="text-left font-medium staff-table-text">${props.total.toFixed(2)}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className={`inline-flex font-medium rounded-full text-center px-2.5 py-0.5`} style={{color: statusColor(props.type)}}>{props.type}</div>
+            <div className={`inline-flex font-medium rounded-full text-center capitalize`} style={{color: statusColor(props.type)}}>{props.type}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>

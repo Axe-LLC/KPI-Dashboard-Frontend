@@ -61,23 +61,29 @@ function DateSelect({setStartDate, setEndDate, isCustomDate, setIsCustomDate}) {
 
   const setDateRange = () => {
     var currentDate = new Date();
-    setEndDate(formatRangeDateString(currentDate, false));
     if(selected === 1) {
       setStartDate(formatRangeDateString(new Date(new Date().setDate(new Date().getDate()-1)), true));
+      setEndDate(formatRangeDateString(currentDate, false));
     } else if(selected === 2) {
       const lastWeekDate = new Date(currentDate.getTime() 
             - 7 * 24 * 60 * 60 * 1000); 
       setStartDate(formatRangeDateString(lastWeekDate, true));
+      setEndDate(formatRangeDateString(currentDate, false));
     } else if(selected === 3) {
-      currentDate = currentDate.setMonth(currentDate.getMonth()-1);
+      currentDate.setMonth(currentDate.getMonth()-1);
+      currentDate.setDate(1);
       setStartDate(formatRangeDateString(currentDate, true));
+      const endDate = new Date();
+      endDate.setDate(0);
+      setEndDate(formatRangeDateString(endDate, false));
     } else if(selected === 4) {
       currentDate = currentDate.setFullYear(currentDate.getFullYear()-1);
       setStartDate(formatRangeDateString(currentDate, true));
-    } else if(selected === 0) {
       setEndDate(formatRangeDateString(currentDate, false));
+    } else if(selected === 0) {
       const start = new Date(currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-01'); 
       setStartDate(formatRangeDateString(start, true));
+      setEndDate(formatRangeDateString(currentDate, false));
     }
   }
 

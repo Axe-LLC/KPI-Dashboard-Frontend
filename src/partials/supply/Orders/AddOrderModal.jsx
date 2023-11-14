@@ -72,7 +72,7 @@ function AddOrderModal({clinics, fetchOrders}) {
             </div>
             <div>
               <label className="block text-sm font-medium mb-1" htmlFor="name">Name <span className="text-rose-500">*</span></label>
-              <input id="name" className="form-input w-full px-2 py-1" type="text" value={name} onChange={(e) => { console.log(e.target.value, '======='); setName(e.target.value); setShowError(false);}} required />
+              <input id="name" className="form-input w-full px-2 py-1" type="text" value={name} onChange={(e) => {setName(e.target.value); setShowError(false);}} required />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1" htmlFor="total">Total <span className="text-rose-500">*</span></label>

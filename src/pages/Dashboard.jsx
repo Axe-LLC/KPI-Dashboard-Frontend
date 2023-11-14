@@ -119,7 +119,7 @@ function Dashboard() {
               {/* Line chart (Acme Professional) */}
               <CollectionsChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
               {/* Bar chart (Direct vs Indirect) */}
-              <AnalyticsByProviderType startDate={startDate} endDate={endDate} clinic={clinic} />
+              <AnalyticsByProviderType metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} startDate={startDate} endDate={endDate} clinic={clinic} outerRendering={isRendering}/>
               {/* Line chart (Real Time Value) */}
               <AppointmentsChart />              
             </div>

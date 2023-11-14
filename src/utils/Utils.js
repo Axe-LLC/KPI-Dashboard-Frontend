@@ -6,7 +6,10 @@ import { STAFF_TYPE_DOCTOR,
   EMPLOYEE_STATUS_FULL_TIME,
   METRICS_PRODUCTION,
   METRICS_ADJUSTMENTS,
-  METRICS_COLLECTIONS
+  METRICS_COLLECTIONS,
+  METRICS_DOCTOR_PRODUCTION,
+  METRICS_HYGIENE_PRODUCTION,
+  HYGIENE_CODES
 } from './Consts';
 
 export const tailwindConfig = () => {
@@ -71,6 +74,8 @@ export const generateMetricsData = (data, startDate, endDate, clinic) => {
       [METRICS_PRODUCTION]: 0,
       [METRICS_ADJUSTMENTS]: 0,
       [METRICS_COLLECTIONS]: 0,
+      [METRICS_DOCTOR_PRODUCTION]: 0,
+      [METRICS_HYGIENE_PRODUCTION]: 0,
     };
     start.setDate(start.getDate() + 1);
   }
@@ -85,6 +90,12 @@ export const generateMetricsData = (data, startDate, endDate, clinic) => {
       days[filteredData[i].postedOn][METRICS_PRODUCTION] += parseFloat(filteredData[i].calculations?.production);
       days[filteredData[i].postedOn][METRICS_ADJUSTMENTS] += parseFloat(filteredData[i].calculations?.adjustments);
       days[filteredData[i].postedOn][METRICS_COLLECTIONS] += parseFloat(filteredData[i].calculations?.totalPayments);
+      if(HYGIENE_CODES.includes(filteredData[i].insuranceCode)) {
+        days[filteredData[i].postedOn][METRICS_HYGIENE_PRODUCTION] += parseFloat(filteredData[i].calculations?.production);
+      }
+      else {
+        days[filteredData[i].postedOn][METRICS_DOCTOR_PRODUCTION] += parseFloat(filteredData[i].calculations?.production);
+      }
     }
   }
 
@@ -125,4 +136,8 @@ export const dateStringType = (inputDate) => {
         // Months use 0 index.
         return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
     }
+}
+
+export const kFormatter = (num) => {
+  return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
 }

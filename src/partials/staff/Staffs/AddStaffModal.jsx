@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ModalBasic from "../../../components/ModalBasic";
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_PART_TIME, EMPLOYEE_STATUS_FULL_TIME, SERVER_ADDRESS } from "../../../utils/Consts";
@@ -6,7 +6,7 @@ import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_PART_TIME, EMPLO
 function AddStaffModal({clinics, fetchStaffs}) {
   const [addStaffModalOpen, setAddStaffModalOpen] = useState(false);
   const [startDate, setStartDate] = useState('');
-  const [name, setName] = useState();
+  const [name, setName] = useState('');
   const [hours, setHours] = useState(0);
   const [hourly, setHourly] = useState(0);
   const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
@@ -14,6 +14,16 @@ function AddStaffModal({clinics, fetchStaffs}) {
   const [clinic, setClinic] = useState(0);
   const [showError, setShowError] = useState(false);
 
+  useEffect(() => {
+    setStartDate('');
+    setName('');
+    setHours(0);
+    setHourly(0);
+    setRole(STAFF_TYPE_DOCTOR);
+    setEmployeeStatus(EMPLOYEE_STATUS_FULL_TIME);
+    setClinic(0);
+  }, [addStaffModalOpen]);
+  
   const addStaff = () => {
     if (clinic === 0 || !hours || !hourly || startDate === '' || !name) {
       setShowError(true);
@@ -29,13 +39,6 @@ function AddStaffModal({clinics, fetchStaffs}) {
         clinic: clinic
       }).then((res) => {
         fetchStaffs();
-        setStartDate('');
-        setName();
-        setHours(0);
-        setHourly(0);
-        setRole(STAFF_TYPE_DOCTOR);
-        setEmployeeStatus(EMPLOYEE_STATUS_FULL_TIME);
-        setClinic(0);
         setAddStaffModalOpen(false);
       });
     }

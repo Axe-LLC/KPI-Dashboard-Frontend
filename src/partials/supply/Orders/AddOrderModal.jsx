@@ -5,21 +5,21 @@ import { SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from "../../../
 
 function AddOrderModal({clinics, fetchOrders}) {
   const [addOrderModalOpen, setAddOrderModalOpen] = useState(false);
-  const [number, setNumber] = useState();
+  const [number, setNumber] = useState('');
   const [date, setDate] = useState('');
-  const [name, setName] = useState();
-  const [total, setTotal] = useState();
+  const [name, setName] = useState('');
+  const [total, setTotal] = useState(0);
   const [type, setType] = useState(STAFF_TYPE_DOCTOR);
   const [clinic, setClinic] = useState(0);
   const [showError, setShowError] = useState(false);
 
   useEffect(() => {
-    setName();
-    setNumber();
+    setName('');
+    setNumber('');
     setDate('');
-    setTotal();
+    setTotal(0);
     setType(STAFF_TYPE_DOCTOR);
-    setClinic();
+    setClinic(0);
   }, [addOrderModalOpen])
 
   const addOrder = () => {
@@ -72,7 +72,7 @@ function AddOrderModal({clinics, fetchOrders}) {
             </div>
             <div>
               <label className="block text-sm font-medium mb-1" htmlFor="name">Name <span className="text-rose-500">*</span></label>
-              <input id="name" className="form-input w-full px-2 py-1" type="text" value={name} onChange={(e) => {setName(e.target.value); setShowError(false);}} required />
+              <input id="name" className="form-input w-full px-2 py-1" type="text" value={name} onChange={(e) => { console.log(e.target.value, '======='); setName(e.target.value); setShowError(false);}} required />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1" htmlFor="total">Total <span className="text-rose-500">*</span></label>

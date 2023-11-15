@@ -54,16 +54,16 @@ function Supply() {
       console.log(filteredDataByClinic.length, '**********');
       console.log(filteredDataByClinic[2], '&&&&&&&&&&&&&&&&');
       for (let i=0; i<filteredDataByClinic.length; i++) {
-        let data = dayArray[filteredDataByClinic[i].date];
+        let data = dayArray[filteredDataByClinic[i]?.date];
         console.log(i);
         console.log(filteredDataByClinic[i], '++++++++')
-        data[STAFF_TYPE_TOTAL] += filteredDataByClinic[i].total;
+        data[STAFF_TYPE_TOTAL] += filteredDataByClinic[i]?.total;
 
         if (filteredDataByClinic[i].type === STAFF_TYPE_DOCTOR) {
-          data[STAFF_TYPE_DOCTOR] += filteredDataByClinic[i].total;
+          data[STAFF_TYPE_DOCTOR] += filteredDataByClinic[i]?.total;
         }
         else {
-          data[STAFF_TYPE_HYGIENE] += filteredDataByClinic[i].total;
+          data[STAFF_TYPE_HYGIENE] += filteredDataByClinic[i]?.total;
         }
 
         dayArray[filteredDataByClinic[i].date] = data;

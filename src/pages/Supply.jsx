@@ -50,6 +50,8 @@ function Supply() {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
       setOrders(filteredDataByClinic);
+      console.log(filteredDataByClinic, '-----');
+      console.log(filteredDataByClinic.length, '**********');
       for (let i=0; i<filteredDataByClinic.length; i++) {
         let data = dayArray[filteredDataByClinic[i].date];
         console.log(filteredDataByClinic[i], '++++++++')

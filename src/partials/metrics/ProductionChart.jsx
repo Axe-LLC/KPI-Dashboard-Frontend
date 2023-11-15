@@ -1,41 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import PieChart from '../../charts/PieChart';
+import ProductionPieChart from '../../charts/ProductionPieChart';
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils';
-import { METRICS_PRODUCTION } from '../../utils/Consts';
+import { METRICS_DOCTOR_PRODUCTION, METRICS_HYGIENE_PRODUCTION, METRICS_PRODUCTION } from '../../utils/Consts';
 
 function ProductionChart({metricsData, isRendering}) {
   const [total, setTotal] = useState(0);
+  const [chartData, setChartData] = useState(0);
 
   useEffect(() => {
     let totalValue = 0;
+    let totalDoctorValue = 0;
+    let totalHygieneValue = 0;
 
     for (var key in metricsData) {
       totalValue += metricsData[key][METRICS_PRODUCTION];
+      totalDoctorValue += metricsData[key][METRICS_DOCTOR_PRODUCTION];
+      totalHygieneValue += metricsData[key][METRICS_HYGIENE_PRODUCTION];
     }
     setTotal(totalValue);
+    setChartData({
+      labels: ['Doctor', 'Hygiene'],
+      datasets: [
+        {
+          label: 'Production By Role',
+          data: [totalDoctorValue, totalHygieneValue],
+          backgroundColor: [
+            '#609696',
+            '#C8D7D1',
+          ],
+          hoverBackgroundColor: [
+            '#609696',
+            '#C8D7D1',
+          ],
+          borderWidth: 0,
+        },
+      ],
+    });
 
   }, [metricsData]);
-
-  const chartData = {
-    labels: ['Doctor', 'Hygiene'],
-    datasets: [
-      {
-        label: 'Sessions By Device',
-        data: [12, 13],
-        backgroundColor: [
-          '#609696',
-          '#C8D7D1',
-        ],
-        hoverBackgroundColor: [
-          '#609696',
-          '#C8D7D1',
-        ],
-        borderWidth: 0,
-      },
-    ],
-  };
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-12 xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
@@ -49,7 +52,7 @@ function ProductionChart({metricsData, isRendering}) {
         {/* Chart built with Chart.js 3 */}
         {/* Change the height attribute to adjust the chart height */}
         {isRendering && <p>Loading now...</p>}
-        {!isRendering && <PieChart data={chartData} width={389} height={220} />}
+        {!isRendering && <ProductionPieChart data={chartData} width={389} height={220} />}
       </div>
     </div>
   );

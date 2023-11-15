@@ -52,6 +52,7 @@ function Supply() {
       setOrders(filteredDataByClinic);
       console.log(filteredDataByClinic, '-----');
       console.log(filteredDataByClinic.length, '**********');
+      console.log(filteredDataByClinic[2], '&&&&&&&&&&&&&&&&');
       for (let i=0; i<filteredDataByClinic.length; i++) {
         let data = dayArray[filteredDataByClinic[i].date];
         console.log(i);

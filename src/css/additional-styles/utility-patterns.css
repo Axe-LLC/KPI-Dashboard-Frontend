@@ -204,6 +204,14 @@ main {
     height: 375px;
 }
 
+.empty-line-chart-supply {
+    height: 98px;
+}
+
+.empty-line-chart-staff {
+    height: 248px;
+}
+
 .staff-table-text {
     color: #609696;
 }

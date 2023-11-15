@@ -54,6 +54,7 @@ function Supply() {
       console.log(filteredDataByClinic.length, '**********');
       for (let i=0; i<filteredDataByClinic.length; i++) {
         let data = dayArray[filteredDataByClinic[i].date];
+        console.log(i);
         console.log(filteredDataByClinic[i], '++++++++')
         data[STAFF_TYPE_TOTAL] += filteredDataByClinic[i].total;
 

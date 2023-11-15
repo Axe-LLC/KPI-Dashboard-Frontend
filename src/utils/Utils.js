@@ -47,8 +47,8 @@ export const formatThousands = (value) => Intl.NumberFormat('en-US', {
 
 
 export const getFilteredDays = (startDate, endDate) => {
-  const start = new Date(startDate);
-  const end = new Date(endDate);
+  const start = new Date(startDate?.replace(/-/g, '\/'));
+  const end = new Date(endDate?.replace(/-/g, '\/'));
   var days = [];
   while (start <= end) {
     const formattedDate = formatDateString(start);
@@ -65,8 +65,8 @@ export const getFilteredDays = (startDate, endDate) => {
 }
 
 export const generateMetricsData = (data, startDate, endDate, clinic) => {
-  var start = new Date(startDate);
-  const end = new Date(endDate);
+  var start = new Date(startDate?.replace(/-/g, '\/'));
+  const end = new Date(endDate?.replace(/-/g, '\/'));
   var days = [];
   while (start <= end) {
     const formattedDate = formatDateString(start);

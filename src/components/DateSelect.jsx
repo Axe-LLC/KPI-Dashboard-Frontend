@@ -81,7 +81,7 @@ function DateSelect({setStartDate, setEndDate, isCustomDate, setIsCustomDate}) {
       setStartDate(formatRangeDateString(currentDate, true));
       setEndDate(formatRangeDateString(currentDate, false));
     } else if(selected === 0) {
-      const start = new Date(currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-01'); 
+      const start = new Date(currentDate.getFullYear() + '/' + (currentDate.getMonth() + 1) + '/01');
       setStartDate(formatRangeDateString(start, true));
       setEndDate(formatRangeDateString(currentDate, false));
     }

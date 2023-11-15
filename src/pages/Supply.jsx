@@ -54,6 +54,7 @@ function Supply() {
       console.log(filteredDataByClinic.length, '**********');
       console.log(filteredDataByClinic[2], '&&&&&&&&&&&&&&&&');
       for (let i=0; i<filteredDataByClinic.length; i++) {
+        console.log(filteredDataByClinic[i]?.date, '%%%%%%%%%%');
         let data = dayArray[filteredDataByClinic[i]?.date];
         console.log(i);
         console.log(filteredDataByClinic[i], '++++++++')

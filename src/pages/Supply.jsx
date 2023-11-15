@@ -52,6 +52,7 @@ function Supply() {
       setOrders(filteredDataByClinic);
       for (let i=0; i<filteredDataByClinic.length; i++) {
         let data = dayArray[filteredDataByClinic[i].date];
+        console.log(filteredDataByClinic[i], '++++++++')
         data[STAFF_TYPE_TOTAL] += filteredDataByClinic[i].total;
 
         if (filteredDataByClinic[i].type === STAFF_TYPE_DOCTOR) {

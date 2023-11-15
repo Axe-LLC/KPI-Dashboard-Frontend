@@ -50,7 +50,6 @@ function ProductionPieChart({
             backgroundColor: darkMode ? tooltipBgColor.dark : tooltipBgColor.light,
             borderColor: darkMode ? tooltipBorderColor.dark : tooltipBorderColor.light,
             callbacks: {
-                title: () => false, // Disable tooltip title
                 label: (context) => '$' + parseFloat(context.parsed.toFixed(2)).toLocaleString('en-US'),
             },
           },

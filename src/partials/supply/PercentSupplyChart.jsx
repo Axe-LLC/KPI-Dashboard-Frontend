@@ -52,8 +52,9 @@ function PercentSupplyChart({data, isRendering}) {
         </header>
       </div>
       {/* Chart built with Chart.js 3 */}
-      <div className="grow">
+      <div className={`grow empty-line-chart-supply ${isRendering && 'flex items-center m-auto'}`}>
         {/* Change the height attribute to adjust the chart height */}
+        {isRendering && <p>Loading now...</p>}
         {chartData?.labels?.length > 0 && !isRendering && <LineChart data={chartData} width={286} height={98} />}
       </div>
     </div>

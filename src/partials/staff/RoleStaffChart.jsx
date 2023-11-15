@@ -49,8 +49,10 @@ function RoleStaffChart({data, isRendering}) {
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Hours Open</h2>
       </header>
       {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
-      {chartData?.labels?.length > 0 && !isRendering && <BarChart data={chartData} width={595} height={248} />}
+      <div className={`grow empty-line-chart-staff ${isRendering && 'flex items-center m-auto'}`}>
+        {isRendering && <p>Loading now...</p>}
+        {chartData?.labels?.length > 0 && !isRendering && <BarChart data={chartData} width={595} height={248} />}
+      </div>
     </div>
   );
 }

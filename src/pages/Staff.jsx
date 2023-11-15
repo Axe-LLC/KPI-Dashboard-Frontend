@@ -33,7 +33,7 @@ function Staff() {
     fetchClincs();
     const date = new Date();
     setEndDate(formatRangeDateString(date, false));
-    const start = new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-01'); 
+    const start = new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/01'); 
     setStartDate(formatRangeDateString(start, true));
   }, []);
 

@@ -34,7 +34,7 @@ function Supply() {
     fetchClincs();
     const date = new Date();
     setEndDate(formatRangeDateString(date, false));
-    const start = new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-01'); 
+    const start = new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/01'); 
     setStartDate(formatRangeDateString(start, true));
   }, []);
 
@@ -50,14 +50,8 @@ function Supply() {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
       setOrders(filteredDataByClinic);
-      console.log(filteredDataByClinic, '-----');
-      console.log(filteredDataByClinic.length, '**********');
-      console.log(filteredDataByClinic[2], '&&&&&&&&&&&&&&&&');
       for (let i=0; i<filteredDataByClinic.length; i++) {
-        console.log(filteredDataByClinic[i]?.date, '%%%%%%%%%%');
         let data = dayArray[filteredDataByClinic[i]?.date];
-        console.log(i);
-        console.log(filteredDataByClinic[i], '++++++++')
         if(filteredDataByClinic[i]) {
           data[STAFF_TYPE_TOTAL] += filteredDataByClinic[i]?.total;
         }

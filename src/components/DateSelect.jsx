@@ -21,10 +21,10 @@ function DateSelect({setStartDate, setEndDate, isCustomDate, setIsCustomDate}) {
       id: 3,
       period: 'Last Month'
     },
-    {
-      id: 4,
-      period: 'Last Year'
-    }
+    // {
+    //   id: 4,
+    //   period: 'Last Year'
+    // }
   ];
 
   const [dropdownOpen, setDropdownOpen] = useState(false);

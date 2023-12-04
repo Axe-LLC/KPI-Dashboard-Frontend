@@ -20,9 +20,10 @@ function Dashboard() {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [isRendering, setRendering] = useState(false);
+  const [isRenderingApp, setRenderingApp] = useState(false);
   const initialClinics = [{id: 0, name: 'All Clinics'}];
   const [metricsData, setMetricsData] = useState([]);
-  const [appointmentsData, setAppointmentsData] = useState([]);
+  const [appointmentsData, setAppointmentsData] = useState(null);
   const [isCustomDate, setIsCustomDate] = useState(false);
 
   useEffect(() => {
@@ -44,20 +45,32 @@ function Dashboard() {
     setRendering(false);
   }, [metricsData, clinic]);
 
+  useEffect(() => {
+    setRenderingApp(false);
+  }, [appointmentsData, clinic]);
+
+  useEffect(() => {
+    if(startDate && endDate) {
+      fetchOfficeFinance();
+      fetchAppointments();
+    }
+  }, [clinic])
+
   const fetchClincs = () => {
     axios.get(`${SERVER_ADDRESS}/clinics`).then((res) => setClinics(initialClinics.concat(res.data.data[0][1])));
   }
 
   const fetchOfficeFinance = () => {
     setRendering(true);
-    axios.get(`${SERVER_ADDRESS}/office_finances`, { params: { start: startDate, end: endDate } }).then((res) => {
+    axios.get(`${SERVER_ADDRESS}/office_finances/${clinic}`, { params: { start: startDate, end: endDate } }).then((res) => {
       setMetricsData(res.data.data);
     });
   }
 
   const fetchAppointments = () => {
+    setRenderingApp(true);
     axios.get(`${SERVER_ADDRESS}/appointment/${clinic}`, { params: { start: startDate, end: endDate } }).then((res) => {
-      setAppointmentsData(res.data.data);
+      setAppointmentsData(res.data);
     });
   }
 
@@ -113,16 +126,19 @@ function Dashboard() {
             <div className="grid grid-cols-12 gap-6">
 
               {/* Line chart (Acme Plus) */}
-              <ProductionChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
+              <ProductionChart metricsData={metricsData} isRendering={isRendering} />
               {/* Line chart (Acme Advanced) */}
-              <AdjustmentChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
+              <AdjustmentChart metricsData={metricsData} isRendering={isRendering} />
               {/* Line chart (Acme Professional) */}
-              <CollectionsChart metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} isRendering={isRendering} />
+              <CollectionsChart metricsData={metricsData} isRendering={isRendering} />
               {/* Bar chart (Direct vs Indirect) */}
-              <AnalyticsByProviderType metricsData={generateMetricsData(metricsData, startDate, endDate, clinic)} startDate={startDate} endDate={endDate} clinic={clinic} outerRendering={isRendering}/>
+              <AnalyticsByProviderType metricsData={metricsData} startDate={startDate} endDate={endDate} clinic={clinic} outerRendering={isRendering}/>
               {/* Line chart (Real Time Value) */}
-              <AppointmentsChart />              
+              <AppointmentsChart appointmentsData={appointmentsData} isRendering={isRenderingApp}/>              
             </div>
+            <button onClick={() => {
+              axios.get(`${SERVER_ADDRESS}/fetch_appointments`).then((res) => console.log(res));
+            }}>Test Button</button>
 
           </div>
         </main>

@@ -12,7 +12,7 @@ import { formatThousands } from '../utils/Utils';
 
 Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip);
 
-function LineChart04({
+function AppointmentLineChart({
   data,
   width,
   height
@@ -97,4 +97,4 @@ function LineChart04({
   );
 }
 
-export default LineChart04;
+export default AppointmentLineChart;

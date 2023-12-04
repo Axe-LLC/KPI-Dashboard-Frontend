@@ -34,8 +34,17 @@ function DateSelect({setStartDate, setEndDate, isCustomDate, setIsCustomDate}) {
   const dropdown = useRef(null);
 
   useEffect(() => {
-    setDateRange();
+    if(selected >= 0) {
+      setDateRange();
+      if(isCustomDate) setIsCustomDate(false);
+    }
   }, [selected])
+
+  useEffect(() => {
+    if(isCustomDate) {
+      setSelected(-1);
+    }
+  }, [isCustomDate])
 
   // close on click outside
   useEffect(() => {
@@ -101,7 +110,7 @@ function DateSelect({setStartDate, setEndDate, isCustomDate, setIsCustomDate}) {
           <svg className="w-4 h-4 fill-current text-slate-500 dark:text-slate-400 shrink-0 mr-2" viewBox="0 0 16 16">
             <path d="M15 2h-2V0h-2v2H9V0H7v2H5V0H3v2H1a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1zm-1 12H2V6h12v8z" />
           </svg>
-          <span>{isCustomDate ? 'Custom Date Range' : options[selected].period}</span>
+          <span>{isCustomDate ? 'Custom Date Range' : options[selected]?.period}</span>
         </span>
         <svg className="shrink-0 ml-1 fill-current text-slate-400" width="11" height="7" viewBox="0 0 11 7">
           <path d="M5.4 6.8L0 1.4 1.4 0l4 4 4-4 1.4 1.4z" />
@@ -130,14 +139,11 @@ function DateSelect({setStartDate, setEndDate, isCustomDate, setIsCustomDate}) {
                 <button
                   key={option.id}
                   tabIndex="0"
-                  className={`flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer`} style={option.id === selected ? {color: '#F09375'} : {}}
-                  onClick={() => { setSelected(option.id); setDropdownOpen(false); if(isCustomDate) {
-                      setIsCustomDate(false);
-                      setDateRange();
-                    }}
+                  className={`flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer`} style={option.id === selected && !isCustomDate ? {color: '#F09375'} : {}}
+                  onClick={() => { setSelected(option.id); setDropdownOpen(false); }
                   }
                 >
-                  <svg className={`shrink-0 mr-2 fill-current ${option.id !== selected && 'invisible'}`} width="12" height="9" viewBox="0 0 12 9">
+                  <svg className={`shrink-0 mr-2 fill-current ${(option.id !== selected || isCustomDate) && 'invisible'}`} width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                   </svg>
                   <span>{option.period}</span>

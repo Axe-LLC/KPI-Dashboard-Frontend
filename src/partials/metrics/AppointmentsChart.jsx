@@ -1,47 +1,40 @@
-import React from 'react';
-import LineChart from '../../charts/LineChart04';
+import React, { useEffect, useState } from 'react';
+import AppointmentLineChart from '../../charts/AppointmentLineChart';
 
-// Import utilities
-import { tailwindConfig, hexToRGB } from '../../utils/Utils';
+function AppointmentsChart({appointmentsData, isRendering}) {
+  const [chartData, setChartData] = useState(null);
 
-function AppointmentsChart() {
-
-  const chartData = {
-    labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-      '06-01-2021', '07-01-2021', '08-01-2021',
-      '09-01-2021', '10-01-2021', '11-01-2021',
-      '12-01-2021', '01-01-2022', '02-01-2022',
-      '03-01-2022', '04-01-2022', '05-01-2022',
-      '06-01-2022', '07-01-2022', '08-01-2022',
-      '09-01-2022', '10-01-2022', '11-01-2022',
-      '12-01-2022', '01-01-2023',
-    ],
-    datasets: [
-      // Indigo line
-      {
-        data: [
-          732, 610, 610, 504, 504, 504, 349,
-          349, 504, 342, 504, 610, 391, 192,
-          154, 273, 191, 191, 126, 263, 349,
-          252, 423, 622, 470, 532,
+  useEffect(() => {
+    if(appointmentsData?.data) {
+      let labels = [];
+      let values = [];
+      for (var key in appointmentsData.data) {
+        labels.push(key);
+        values.push(parseFloat(appointmentsData.data[key]));
+      }
+      setChartData({
+        labels: labels,
+        datasets: [
+          // Indigo line
+          {
+            data: values,
+            fill: true,
+            backgroundColor: `#F4EBF9`,
+            borderColor: '#B49BC0',
+            borderWidth: 2,
+            tension: 0,
+            pointRadius: 0,
+            pointHoverRadius: 3,
+            pointBackgroundColor: '#B49BC0',
+            pointHoverBackgroundColor: '#B49BC0',
+            pointBorderWidth: 0,
+            pointHoverBorderWidth: 0,          
+            clip: 20,
+          },
         ],
-        fill: true,
-        backgroundColor: `#F4EBF9`,
-        borderColor: '#B49BC0',
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: '#B49BC0',
-        pointHoverBackgroundColor: '#B49BC0',
-        pointBorderWidth: 0,
-        pointHoverBorderWidth: 0,          
-        clip: 20,
-      },
-    ],
-  };
+      })
+    }
+  }, [appointmentsData])
 
   return (
     <div className="flex flex-col col-span-full xl:col-span-4 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
@@ -55,7 +48,7 @@ function AppointmentsChart() {
           <div className="flex items-center">
             {/* Vistors number */}
             <div>
-              <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">347</div>
+              <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{appointmentsData?.total ? parseFloat(appointmentsData?.total.toFixed(2)).toLocaleString('en-US') : 0}</div>
               <div className="text-sm text-slate-500 dark:text-slate-400">Total Appointments</div>
             </div>
           </div>
@@ -64,7 +57,7 @@ function AppointmentsChart() {
         {/* Chart built with Chart.js 3 */}
         <div >
           {/* Change the height attribute to adjust the chart height */}
-          <LineChart data={chartData} width={389} height={70} />
+          {chartData?.labels?.length > 0 && !isRendering && <AppointmentLineChart data={chartData} width={389} height={70} />}
         </div>
 
         {/* Table */}
@@ -90,7 +83,7 @@ function AppointmentsChart() {
                     <div className="text-left">Completed</div>
                   </td>
                   <td className="py-2">
-                    <div className="font-medium text-right text-slate-800">94</div>
+                    <div className="font-medium text-right text-slate-800">{appointmentsData?.completed ? appointmentsData?.completed : 0}</div>
                   </td>
                 </tr>
                 {/* Row */}
@@ -99,7 +92,7 @@ function AppointmentsChart() {
                     <div className="text-left">Cancelled</div>
                   </td>
                   <td className="py-2">
-                    <div className="font-medium text-right text-slate-800">42</div>
+                    <div className="font-medium text-right text-slate-800">{appointmentsData?.cancelled ? appointmentsData?.cancelled : 0}</div>
                   </td>
                 </tr>
                 {/* Row */}

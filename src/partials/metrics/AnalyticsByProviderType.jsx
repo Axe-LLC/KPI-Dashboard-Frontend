@@ -46,18 +46,20 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
       setTotalHours(hours);
 
       for (var key in metricsData) {
-        totalProductionValue += metricsData[key][METRICS_PRODUCTION];
-        if (role === STAFF_TYPE_DOCTOR) {
-          production += metricsData[key][METRICS_DOCTOR_PRODUCTION];
-          productionValues.push(metricsData[key][METRICS_DOCTOR_PRODUCTION]);
-          productionPerHourValues.push(staffData[key][role] === 0 ? 0 : parseFloat(metricsData[key][METRICS_DOCTOR_PRODUCTION] / staffData[key][role]).toFixed(2));
-          percentageValues.push(metricsData[key][METRICS_PRODUCTION] === 0 ? 0 : parseFloat(metricsData[key][METRICS_DOCTOR_PRODUCTION] / metricsData[key][METRICS_PRODUCTION] * 100).toFixed(2));
-        }
-        else {
-          production += metricsData[key][METRICS_HYGIENE_PRODUCTION];
-          productionValues.push(metricsData[key][METRICS_HYGIENE_PRODUCTION]);
-          productionPerHourValues.push(staffData[key][role] === 0 ? 0 : parseFloat(metricsData[key][METRICS_HYGIENE_PRODUCTION] / staffData[key][role]).toFixed(2));
-          percentageValues.push(metricsData[key][METRICS_PRODUCTION] === 0 ? 0 : parseFloat(metricsData[key][METRICS_HYGIENE_PRODUCTION] / metricsData[key][METRICS_PRODUCTION] * 100).toFixed(2));
+        if(staffData[key]) {
+          totalProductionValue += metricsData[key][METRICS_PRODUCTION];
+          if (role === STAFF_TYPE_DOCTOR) {
+            production += metricsData[key][METRICS_DOCTOR_PRODUCTION];
+            productionValues.push(metricsData[key][METRICS_DOCTOR_PRODUCTION]);
+            productionPerHourValues.push(staffData[key][role] === 0 ? 0 : parseFloat(metricsData[key][METRICS_DOCTOR_PRODUCTION] / staffData[key][role]).toFixed(2));
+            percentageValues.push(metricsData[key][METRICS_PRODUCTION] === 0 ? 0 : parseFloat(metricsData[key][METRICS_DOCTOR_PRODUCTION] / metricsData[key][METRICS_PRODUCTION] * 100).toFixed(2));
+          }
+          else {
+            production += metricsData[key][METRICS_HYGIENE_PRODUCTION];
+            productionValues.push(metricsData[key][METRICS_HYGIENE_PRODUCTION]);
+            productionPerHourValues.push(staffData[key][role] === 0 ? 0 : parseFloat(metricsData[key][METRICS_HYGIENE_PRODUCTION] / staffData[key][role]).toFixed(2));
+            percentageValues.push(metricsData[key][METRICS_PRODUCTION] === 0 ? 0 : parseFloat(metricsData[key][METRICS_HYGIENE_PRODUCTION] / metricsData[key][METRICS_PRODUCTION] * 100).toFixed(2));
+          }
         }
       }
   

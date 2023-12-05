@@ -55,8 +55,9 @@ function AppointmentsChart({appointmentsData, isRendering}) {
         </div>
 
         {/* Chart built with Chart.js 3 */}
-        <div >
+        <div className={`grow ${isRendering && 'flex items-center m-auto empty-line-appointments'}`}>
           {/* Change the height attribute to adjust the chart height */}
+          {isRendering && <p>Loading now...</p>}
           {chartData?.labels?.length > 0 && !isRendering && <AppointmentLineChart data={chartData} width={389} height={70} />}
         </div>
 

@@ -204,6 +204,10 @@ main {
     height: 375px;
 }
 
+.empty-line-appointments {
+    height: 70px;
+}
+
 .empty-line-chart-supply {
     height: 98px;
 }

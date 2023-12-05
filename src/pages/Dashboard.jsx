@@ -136,9 +136,6 @@ function Dashboard() {
               {/* Line chart (Real Time Value) */}
               <AppointmentsChart appointmentsData={appointmentsData} isRendering={isRenderingApp}/>              
             </div>
-            <button onClick={() => {
-              axios.get(`${SERVER_ADDRESS}/fetch_appointments`).then((res) => console.log(res));
-            }}>Test Button</button>
 
           </div>
         </main>

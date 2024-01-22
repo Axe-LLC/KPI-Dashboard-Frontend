@@ -2,28 +2,26 @@ import React, { useState } from "react";
 import axios from "axios";
 import ModalBasic from "../../../components/ModalBasic";
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_PART_TIME, EMPLOYEE_STATUS_FULL_TIME, SERVER_ADDRESS } from "../../../utils/Consts";
+import WorkHoursList from "./WorkHoursList";
 
 function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
-  const [startDate, setStartDate] = useState(staff.startDate);
   const [name, setName] = useState(staff.name);
-  const [hours, setHours] = useState(staff.hours);
   const [hourly, setHourly] = useState(staff.hourly);
   const [role, setRole] = useState(staff.role);
   const [employeeStatus, setEmployeeStatus] = useState(staff.employeeStatus);
   const [clinic, setClinic] = useState(staff.clinic);
   const [showError, setShowError] = useState(false);
+  const [workHoursList, setWorkHoursList] = useState(staff.workHoursList ? staff.workHoursList : []);
 
   const updateStaff = () => {
-    if (clinic === 0 || !hours || !hourly || startDate === '' || !name) {
+    if (clinic === 0 || !name) {
       setShowError(true);
     }
     else {
       axios.put(`${SERVER_ADDRESS}/team/${staff.id}`, {
         name: name,
         role: role,
-        hours: hours,
         hourly: hourly,
-        start_date: startDate,
         employee_status: employeeStatus,
         clinic: clinic
       }).then((res) => {
@@ -31,6 +29,43 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
         setOpen(false);
       });
     }
+  }
+
+  const addWorkHours = () => {
+    setShowError(false);
+    let updatedList = [...workHoursList];
+    updatedList.push({year: new Date().getFullYear(), month: '01', workHours: 0});
+    setWorkHoursList(updatedList);
+  }
+
+  const updateList = (index, key, value) => {
+    setShowError(false);
+    const updatedList = [...workHoursList];
+    updatedList[index] = {
+      ...updatedList,
+      [key]: value
+    }
+    setWorkHoursList(updatedList);
+  }
+
+  const removeListItem = (index) => {
+    setShowError(false);
+    const updatedList = workHoursList.filter((_, i) => i !== index);
+    setWorkHoursList(updatedList);
+  }
+
+  const hasDuplicateWorkHourList = () => {
+    console.log(workHoursList);
+    for (let i = 0; i < workHoursList.length; i++) {
+      for (let j = i + 1; j < workHoursList.length; j++) {
+        console.log(workHoursList[i].year, ', ', workHoursList[j].year);
+        console.log(workHoursList[i].month, ', ', workHoursList[j].month);
+        if (workHoursList[i].year === workHoursList[j].year && workHoursList[i].month === workHoursList[j].month) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   return (
@@ -46,10 +81,6 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
               <input id="name" className="form-input w-full px-2 py-1" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1" htmlFor="date">Date <span className="text-rose-500">*</span></label>
-              <input id="date" className="form-input w-full px-2 py-1" type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} required />
-            </div>
-            <div>
               <label className="block text-sm font-medium mb-1" htmlFor="role">Role <span className="text-rose-500">*</span></label>
               <select id="role" className="form-input w-full px-2 py-1" value={role} onChange={(e) => setRole(e.target.value)}>
                 <option value={STAFF_TYPE_DOCTOR}>Doctor</option>
@@ -57,11 +88,7 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1" htmlFor="hours">Hours <span className="text-rose-500">*</span></label>
-              <input id="hours" className="form-input w-full px-2 py-1" type="number" value={hours} onChange={(e) => setHours(e.target.value)} required />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1" htmlFor="hours">Hourly <span className="text-rose-500">*</span></label>
+              <label className="block text-sm font-medium mb-1" htmlFor="hours">Hourly</label>
               <input id="hourly" className="form-input w-full px-2 py-1" type="number" value={hourly} onChange={(e) => setHourly(e.target.value)} required />
             </div>
             <div>
@@ -80,8 +107,21 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
                 ))}
               </select>
             </div>
+            <div className="px-5 py-3 border-t border-slate-200 dark:border-slate-700">
+              <label className="block text-sm font-medium mb-1" htmlFor="clinic">Work Hours</label>
+              {
+                workHoursList.map((list, index) => (
+                  <WorkHoursList key={index} index={index} data={list} updateList={updateList} removeListItem={removeListItem} />
+                ))
+              }
+            </div>
+            <div className="px-5">
+              <div className="w-full text-right">
+                <button className="btn-sm primary-button text-white" onClick={() => addWorkHours()}>Add More</button>
+              </div>
+            </div>
             <div>
-              {showError && <p className="text-rose-500">Please fill out all fields.</p>}
+              {showError && <p className="text-rose-500">{hasDuplicateWorkHourList() ? "You can't add work hours for same month." : "Please fill out all fields."}</p>}
             </div>
           </div>
         </div>

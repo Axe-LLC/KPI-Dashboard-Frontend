@@ -37,16 +37,16 @@ function ProcedureMetrics({data, isRendering}) {
             <tbody className="text-sm font-medium divide-y divide-slate-100 dark:divide-slate-700">
               {Object.keys(data).map(key => (HYGIENE_CODES.includes(key) === (role !== STAFF_TYPE_DOCTOR) ? 
                   <tr key={key}>
-                    <td className="p-2">
+                    <td className="p-2 py-3">
                       <div className="">{key}</div>
                     </td>
-                    <td className="p-2">
+                    <td className="p-2 py-3">
                       <div className="">{PROCEDURE_CODES.find(item => item.Code === key).Description}</div>
                     </td>
-                    <td className="p-2">
+                    <td className="p-2 py-3">
                       <div className="">{data[key]['count']}</div>
                     </td>
-                    <td className="p-2">
+                    <td className="p-2 py-3">
                       <div className="text-emerald-500">${parseFloat(data[key]['production'].toFixed(2)).toLocaleString('en-US')}</div>
                     </td>
                   </tr> : <></>

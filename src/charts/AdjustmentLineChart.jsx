@@ -47,7 +47,7 @@ function AdjustmentLineChart({
             },
             ticks: {
               maxTicksLimit: 7,
-              callback: (value) => '-' + formatValue(value),
+              callback: (value) => value === 0 ? formatValue(value) : '-' + formatValue(value),
               color: darkMode ? textColor.dark : textColor.light,
             },
             grid: {
@@ -80,7 +80,7 @@ function AdjustmentLineChart({
           tooltip: {
             callbacks: {
               title: () => false, // Disable tooltip title
-              label: (context) => '-' + formatValue(context.parsed.y),
+              label: (context) => context.parsed.y === 0 ? formatValue(context.parsed.y + 0) : '-' + formatValue(context.parsed.y),
             },
             bodyColor: darkMode ? tooltipBodyColor.dark : tooltipBodyColor.light,
             backgroundColor: darkMode ? tooltipBgColor.dark : tooltipBgColor.light,

@@ -12,6 +12,8 @@ import AnalyticsByProviderType from '../partials/metrics/AnalyticsByProviderType
 import { SERVER_ADDRESS } from '../utils/Consts';
 import { formatRangeDateString, generateMetricsData } from '../utils/Utils';
 import AppointmentsChart from '../partials/metrics/AppointmentsChart';
+import ProcedureMetrics from '../partials/procedure/ProcedureMetrics';
+import ProviderByProduction from '../partials/procedure/ProviderByProduction';
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -25,6 +27,8 @@ function Dashboard() {
   const [metricsData, setMetricsData] = useState([]);
   const [appointmentsData, setAppointmentsData] = useState(null);
   const [isCustomDate, setIsCustomDate] = useState(false);
+  const [procedureMetricsData, setProcedureMetricsData] = useState(false);
+  const [providerData, setProviderData] = useState(false);
 
   useEffect(() => {
     fetchClincs();
@@ -38,6 +42,8 @@ function Dashboard() {
     if(startDate && endDate) {
       fetchOfficeFinance();
       fetchAppointments();
+      fetchProcedureMetricsData();
+      fetchProviderByProduction();
     }
   }, [startDate, endDate]);
 
@@ -53,6 +59,8 @@ function Dashboard() {
     if(startDate && endDate) {
       fetchOfficeFinance();
       fetchAppointments();
+      fetchProcedureMetricsData();
+      fetchProviderByProduction();
     }
   }, [clinic])
 
@@ -71,6 +79,18 @@ function Dashboard() {
     setRenderingApp(true);
     axios.get(`${SERVER_ADDRESS}/appointment/${clinic}`, { params: { start: startDate, end: endDate } }).then((res) => {
       setAppointmentsData(res.data);
+    });
+  }
+
+  const fetchProcedureMetricsData = () => {
+    axios.get(`${SERVER_ADDRESS}/procedure_metrics/${clinic}`, { params: { start: startDate, end: endDate } }).then((res) => {
+      setProcedureMetricsData(res.data.data);
+    });
+  }
+
+  const fetchProviderByProduction = () => {
+    axios.get(`${SERVER_ADDRESS}/provider_by_production/${clinic}`, { params: { start: startDate, end: endDate } }).then((res) => {
+      setProviderData(res.data.data);
     });
   }
 
@@ -134,9 +154,10 @@ function Dashboard() {
               {/* Bar chart (Direct vs Indirect) */}
               <AnalyticsByProviderType metricsData={metricsData} startDate={startDate} endDate={endDate} clinic={clinic} outerRendering={isRendering}/>
               {/* Line chart (Real Time Value) */}
-              <AppointmentsChart appointmentsData={appointmentsData} isRendering={isRenderingApp}/>              
+              <AppointmentsChart appointmentsData={appointmentsData} isRendering={isRenderingApp}/>        
+              <ProcedureMetrics data={procedureMetricsData} />
+              <ProviderByProduction data={providerData} />
             </div>
-
           </div>
         </main>
 

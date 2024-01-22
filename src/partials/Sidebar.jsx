@@ -4,6 +4,7 @@ import ordersImg from '../images/sidebar/orders.png';
 import metricsImg from '../images/sidebar/metrics.png';
 import teamImg from '../images/sidebar/team.png';
 import logoImg from '../images/sidebar/caresuite_logo.svg';
+import logoMobileImg from '../images/sidebar/responsive_icon.svg';
 
 function Sidebar({
   sidebarOpen,
@@ -84,7 +85,7 @@ function Sidebar({
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <img src={logoImg} alt="" className='logo-img'/>
+            <img src={sidebarExpanded ? logoImg : logoMobileImg} alt="" className='logo-img'/>
           </NavLink>
         </div>
 
@@ -142,10 +143,10 @@ function Sidebar({
                   </div>
                 </NavLink>
               </li>
-              <li className={`px-3 py-2 rounded-md mb-2 sidebar-footer`}>
+              {sidebarExpanded && <li className={`px-3 py-2 rounded-md mb-2 sidebar-footer`}>
                 <p className='text-sm text-white font-medium'>KPI Dashboard</p>
                 <p className='text-sm text-white font-medium mb-2'>Built by Caresuite</p>
-              </li>
+              </li>}
             </ul>
           </div>
         </div>

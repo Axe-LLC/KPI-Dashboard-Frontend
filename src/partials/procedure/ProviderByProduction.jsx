@@ -35,13 +35,13 @@ function ProviderByProduction({data, isRendering}) {
               {/* Row */}
               {Object.keys(data).map(key => (HYGIENE_CODES.includes(data[key]['code']) === (role !== STAFF_TYPE_DOCTOR) ? 
                   <tr key={key}>
-                    <td className="p-2">
+                    <td className="p-2 py-3">
                       <div className="text-left">{key}</div>
                     </td>
-                    <td className="p-2">
+                    <td className="p-2 py-3">
                       <div className="text-left text-emerald-500">${parseFloat(data[key]['production'].toFixed(2)).toLocaleString('en-US')}{}</div>
                     </td>
-                    <td className="p-2">
+                    <td className="p-2 py-3">
                       <div className="text-left">{0}</div>
                     </td>
                   </tr> : <></>

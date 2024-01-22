@@ -155,8 +155,8 @@ function Dashboard() {
               <AnalyticsByProviderType metricsData={metricsData} startDate={startDate} endDate={endDate} clinic={clinic} outerRendering={isRendering}/>
               {/* Line chart (Real Time Value) */}
               <AppointmentsChart appointmentsData={appointmentsData} isRendering={isRenderingApp}/>        
-              <ProcedureMetrics data={procedureMetricsData} />
-              <ProviderByProduction data={providerData} />
+              <ProcedureMetrics data={procedureMetricsData} isRendering={isRendering} />
+              <ProviderByProduction data={providerData} isRendering={isRendering} />
             </div>
           </div>
         </main>

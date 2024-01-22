@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import RoleSelect from '../../components/RoleSelect';
 import { STAFF_TYPE_DOCTOR, HYGIENE_CODES, PROCEDURE_CODES } from '../../utils/Consts';
 
-function ProcedureMetrics({data}) {
+function ProcedureMetrics({data, isRendering}) {
   const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
 
   return (
@@ -13,8 +13,9 @@ function ProcedureMetrics({data}) {
       </header>
       <div className="p-3">
         {/* Table */}
-        <div className="overflow-x-auto" style={{height: 350}}>
-          <table className="w-full dark:text-slate-300">
+        <div className={`overflow-x-auto ${isRendering && 'flex items-center m-auto justify-center'}`} style={{height: 350}}>
+          {isRendering && <p className='text-center'>Loading now...</p>}
+          {!isRendering && <table className="w-full dark:text-slate-300">
             {/* Table header */}
             <thead className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-md" style={{position: 'sticky', top: 0}}>
               <tr>
@@ -52,7 +53,7 @@ function ProcedureMetrics({data}) {
                 )
               )}
             </tbody>
-          </table>
+          </table>}
         </div>
       </div>
     </div>

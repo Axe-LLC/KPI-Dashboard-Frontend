@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import ordersImg from '../images/sidebar/orders.png';
 import metricsImg from '../images/sidebar/metrics.png';
@@ -19,6 +19,28 @@ function Sidebar({
 
   const storedSidebarExpanded = localStorage.getItem('sidebar-expanded');
   const [sidebarExpanded, setSidebarExpanded] = useState(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true');
+  const [isTablet, setIsTablet] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      if (window.innerWidth > 1023) {
+        setIsMobile(false);
+      }
+      else {
+        setIsMobile(true);
+      }
+      if (window.innerWidth > 1535) {
+        setIsTablet(false);
+      }
+      else {
+        setIsTablet(true);
+      }
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
 
   // close on click outside
   useEffect(() => {
@@ -85,7 +107,7 @@ function Sidebar({
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <img src={sidebarExpanded ? logoImg : logoMobileImg} alt="" className='logo-img'/>
+            <img src={isMobile ? logoImg : (sidebarExpanded || !isTablet ? logoImg : logoMobileImg)} alt="" className='logo-img'/>
           </NavLink>
         </div>
 
@@ -143,7 +165,7 @@ function Sidebar({
                   </div>
                 </NavLink>
               </li>
-              {sidebarExpanded && <li className={`px-3 py-2 rounded-md mb-2 sidebar-footer`}>
+              {(isMobile || (sidebarExpanded || !isTablet)) && <li className={`px-3 py-2 rounded-md mb-2 sidebar-footer`}>
                 <p className='text-sm text-white font-medium'>KPI Dashboard</p>
                 <p className='text-sm text-white font-medium mb-2'>Built by Caresuite</p>
               </li>}

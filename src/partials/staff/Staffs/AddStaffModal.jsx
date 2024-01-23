@@ -28,12 +28,13 @@ function AddStaffModal({clinics, fetchStaffs}) {
       setShowError(true);
     }
     else {
-      axios.post(`${SERVER_ADDRESS}/team`, {
+      axios.post(`${SERVER_ADDRESS}/member`, {
         name: name,
         role: role,
         hourly: hourly,
         employee_status: employeeStatus,
-        clinic: clinic
+        clinic: clinic,
+        work_hours: JSON.stringify(workHoursList)
       }).then((res) => {
         fetchStaffs();
         setAddStaffModalOpen(false);
@@ -52,7 +53,7 @@ function AddStaffModal({clinics, fetchStaffs}) {
     setShowError(false);
     const updatedList = [...workHoursList];
     updatedList[index] = {
-      ...updatedList,
+      ...updatedList[index],
       [key]: value
     }
     setWorkHoursList(updatedList);

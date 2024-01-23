@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ModalBasic from "../../../components/ModalBasic";
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_PART_TIME, EMPLOYEE_STATUS_FULL_TIME, SERVER_ADDRESS } from "../../../utils/Consts";
@@ -11,19 +11,27 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
   const [employeeStatus, setEmployeeStatus] = useState(staff.employeeStatus);
   const [clinic, setClinic] = useState(staff.clinic);
   const [showError, setShowError] = useState(false);
-  const [workHoursList, setWorkHoursList] = useState(staff.workHoursList ? staff.workHoursList : []);
+  const [workHoursList, setWorkHoursList] = useState(staff.work_hours ? JSON.parse(staff.work_hours) : []);
+
+  useEffect(() => {
+    if(staff.work_hours) {
+      setWorkHoursList(JSON.parse(staff.work_hours));
+    }
+  }, [staff])
 
   const updateStaff = () => {
-    if (clinic === 0 || !name) {
+    setShowError(false);
+    if (clinic === 0 || !name || hasDuplicateWorkHourList()) {
       setShowError(true);
     }
     else {
-      axios.put(`${SERVER_ADDRESS}/team/${staff.id}`, {
+      axios.put(`${SERVER_ADDRESS}/member/${staff.id}`, {
         name: name,
         role: role,
         hourly: hourly,
         employee_status: employeeStatus,
-        clinic: clinic
+        clinic: clinic,
+        work_hours: JSON.stringify(workHoursList)
       }).then((res) => {
         fetchStaffs();
         setOpen(false);
@@ -42,7 +50,7 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
     setShowError(false);
     const updatedList = [...workHoursList];
     updatedList[index] = {
-      ...updatedList,
+      ...updatedList[index],
       [key]: value
     }
     setWorkHoursList(updatedList);
@@ -55,11 +63,8 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
   }
 
   const hasDuplicateWorkHourList = () => {
-    console.log(workHoursList);
     for (let i = 0; i < workHoursList.length; i++) {
       for (let j = i + 1; j < workHoursList.length; j++) {
-        console.log(workHoursList[i].year, ', ', workHoursList[j].year);
-        console.log(workHoursList[i].month, ', ', workHoursList[j].month);
         if (workHoursList[i].year === workHoursList[j].year && workHoursList[i].month === workHoursList[j].month) {
           return true;
         }

@@ -62,15 +62,6 @@ function StaffsTableItem(props) {
             <div className={`inline-flex font-medium rounded-full text-center capitalize`} style={{color: statusColor(props.role)}}>{props.role}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="font-medium text-slate-800 dark:text-slate-100">{props.hours}</div>
-          </td>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium staff-table-text">${props.hourly.toFixed(2)}</div>
-          </td>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className="text-left font-medium staff-table-text">{dateStringType(props.startDate)}</div>
-          </td>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div className="text-left font-medium capitalize" style={{color: employeeColor(props.employeeStatus)}}>{props.employeeStatus}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -83,9 +74,8 @@ function StaffsTableItem(props) {
           id: props.id,
           name: props.name,
           role: props.role,
-          hours: props.hours,
           hourly: props.hourly,
-          startDate: props.startDate,
+          work_hours: props.work_hours,
           employeeStatus: props.employeeStatus,
           clinic: props.clinic
         }}

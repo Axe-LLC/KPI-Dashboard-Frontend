@@ -8,7 +8,7 @@ function Staffs({clinics, staffs, fetchStaffs}) {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const handleDelete = () => {
-    axios.delete(`${SERVER_ADDRESS}/teams`, {
+    axios.delete(`${SERVER_ADDRESS}/member`, {
       headers: {},
       data: selectedItems
     }).then((res) => {

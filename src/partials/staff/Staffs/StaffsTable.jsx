@@ -60,15 +60,6 @@ function StaffsTable({
                   <div className="font-semibold text-left">Role</div>
                 </th>
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Hours</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Hourly</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Start Date</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                   <div className="font-semibold text-left">Employee Status</div>
                 </th>
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -85,9 +76,8 @@ function StaffsTable({
                     id={staff.id}
                     name={staff.name}
                     role={staff.role}
-                    hours={staff.hours}
                     hourly={staff.hourly}
-                    startDate={staff.start_date}
+                    work_hours={staff.work_hours}
                     employeeStatus={staff.employee_status}
                     clinic={staff.clinic}
                     clinics={clinics}

@@ -17,8 +17,7 @@ export const PROVIDER_NAMES = [
     {id: '2901022007', name: 'Dan Meyer'},
     {id: '2901022283', name: 'Alex Burau'},
     {id: '2901601019', name: 'Simon Shamoon'},
-    {id: '2901601395', name: 'Charlie Emmert'},
-    {id: '2901601806', name: 'Kevin Krieger'}
+    {id: '2901601395', name: 'Charlie Emmert'}
 ];
 // export const SERVER_ADDRESS = 'http://localhost:8000';
 export const SERVER_ADDRESS = 'https://gf57f0wcr1.execute-api.us-east-1.amazonaws.com';

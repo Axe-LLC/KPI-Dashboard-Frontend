@@ -71,6 +71,9 @@ function Staff() {
 
       while (currentDate < new Date(endDate)) {
         let data = dayArray[formatDateString(currentDate)];
+        console.log(data, '==================');
+        console.log(dayArray, '==================');
+        console.log(formatDateString(currentDate), '==================');
         data[EMPLOYEE_STATUS_FULL_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_FULL_TIME);
         data[EMPLOYEE_STATUS_PART_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_PART_TIME);
         

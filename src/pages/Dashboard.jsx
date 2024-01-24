@@ -172,7 +172,6 @@ function Dashboard() {
               <ProcedureMetrics data={procedureMetricsData} isRendering={isRendering} />
               <ProviderByProduction data={providerData} isRendering={isRendering} startDate={startDate} endDate={endDate} clinic={clinic} openHours={openHours}/>
             </div>
-            <button onClick={() => fetchOpenHours()}>Button</button>
           </div>
         </main>
 

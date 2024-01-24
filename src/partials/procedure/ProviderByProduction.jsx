@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RoleSelect from '../../components/RoleSelect';
-import { STAFF_TYPE_DOCTOR, HYGIENE_CODES, SERVER_ADDRESS } from '../../utils/Consts';
+import { STAFF_TYPE_DOCTOR, HYGIENE_CODES, SERVER_ADDRESS, PROVIDER_NAMES } from '../../utils/Consts';
 import { getWorkHoursByProvider } from '../../utils/Utils';
 import axios from 'axios';
 
@@ -51,7 +51,7 @@ function ProviderByProduction({data, isRendering, startDate, endDate, clinic, op
               {Object.keys(data).map(key => (HYGIENE_CODES.includes(data[key]['code']) === (role !== STAFF_TYPE_DOCTOR) ? 
                   <tr key={key}>
                     <td className="p-2 py-3">
-                      <div className="text-left">{key}</div>
+                      <div className="text-left">{PROVIDER_NAMES.find(item => item.id === key)?.name ? PROVIDER_NAMES.find(item => item.id === key)?.name : key}</div>
                     </td>
                     <td className="p-2 py-3">
                       <div className="text-left text-emerald-500">${parseFloat(data[key]['production'].toFixed(2)).toLocaleString('en-US')}{}</div>

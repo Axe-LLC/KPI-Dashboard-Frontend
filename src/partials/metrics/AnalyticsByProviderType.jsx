@@ -125,7 +125,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
           <div className="flex items-center py-2 cursor-pointer" onClick={() => { if(selectedItem !== 0) {setSelectedItem(0); setChartData(null); }}}>
             <div className="mr-5">
               <div className="flex items-center">
-                <div className={`text-3xl font-bold ${selectedItem === 0 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>{totalHours}</div>
+                <div className={`text-3xl font-bold ${selectedItem === 0 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>{totalHours.toFixed(2)}</div>
                 <div className="text-sm font-medium text-emerald-500">+49%</div>
               </div>
               <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`${role}  Hours`}</div>

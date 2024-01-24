@@ -14,8 +14,8 @@ function TypeStaffChart({data, isRendering}) {
     let values2 = [];
     for (var key in data) {
       labels.push(key);
-      values1.push(data[key][EMPLOYEE_STATUS_FULL_TIME]);
-      values2.push(data[key][EMPLOYEE_STATUS_PART_TIME]);
+      values1.push(data[key][EMPLOYEE_STATUS_FULL_TIME].toFixed(2));
+      values2.push(data[key][EMPLOYEE_STATUS_PART_TIME].toFixed(2));
     }
     
     setChartData({

@@ -174,9 +174,33 @@ export const getWorkHoursByProvider = (start, end, openHours, memberData) => {
   return totalHours;
 }
 
-export const getDailyWorkHoursByProvider = (openHours, memberData, today, role) => {
+export const getDailyWorkHoursByProviderRole = (openHours, memberData, today, role) => {
   let totalHours = 0;
   const filteredMemberData = memberData.filter(item => item.role === role);
+  for (let i=0; i<filteredMemberData.length; i++) {
+    const workHoursData = JSON.parse(filteredMemberData[i].work_hours);
+    const workHours = workHoursData.find(item => 
+      parseInt(item.year) === today.getFullYear() && item.month === MONTH_LABELS[today.getMonth()]);
+    const todayWorkHours = openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[today.getDay()]).hours;
+    if(workHours) {
+      let totalMonthEstHours = 0;
+      for(let dayOfWeek=0; dayOfWeek<7; dayOfWeek++) {
+        totalMonthEstHours += countDaysByWeekday(
+          new Date(today.getFullYear(), today.getMonth(), 1),
+          new Date(today.getFullYear(), today.getMonth()+1, 0),
+          dayOfWeek
+        ) * openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+      }
+      totalHours += parseFloat(workHours.workHours) / totalMonthEstHours * todayWorkHours;
+    }
+  }
+
+  return totalHours;
+}
+
+export const getDailyWorkHoursByProviderType = (openHours, memberData, today, type) => {
+  let totalHours = 0;
+  const filteredMemberData = memberData.filter(item => item.employee_status === type);
   for (let i=0; i<filteredMemberData.length; i++) {
     const workHoursData = JSON.parse(filteredMemberData[i].work_hours);
     const workHours = workHoursData.find(item => 

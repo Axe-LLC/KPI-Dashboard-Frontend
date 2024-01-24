@@ -9,14 +9,14 @@ import Staffs from '../partials/staff/Staffs';
 import RoleStaffChart from '../partials/staff/RoleStaffChart';
 import TypeStaffChart from '../partials/staff/TypeStaffChart';
 import AddStaffModal from '../partials/staff/Staffs/AddStaffModal';
-import { getFilteredDays, formatRangeDateString } from "../utils/Utils";
+import { getFilteredDays, formatRangeDateString, formatDateString, getDailyWorkHoursByProviderType } from "../utils/Utils";
 import { EMPLOYEE_STATUS_FULL_TIME, EMPLOYEE_STATUS_PART_TIME, SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from "../utils/Consts";
 
 function Staff() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [staffData, setStaffData] = useState([]);
-  const [isRendering, setRendering] = useState(false);
+  const [isRendering, setRendering] = useState(true);
   const [clinics, setClinics] = useState([{id: 0, name: 'All Clinics'}]);
   const [clinic, setClinic] = useState(0);
   const [startDate, setStartDate] = useState();
@@ -24,9 +24,10 @@ function Staff() {
   const initialClinics = [{id: 0, name: 'All Clinics'}];
   const [staffs, setStaffs] = useState([]);
   const [isCustomDate, setIsCustomDate] = useState(false);
+  const [openHours, setOpenHours] = useState([]);
 
   useEffect(() => {
-    setRendering(false);
+    // setRendering(false);
   }, [staffData, isCustomDate]);
 
   useEffect(() => {
@@ -38,38 +39,47 @@ function Staff() {
   }, []);
 
   useEffect(() => {
-    if(startDate && endDate) {
+    if(startDate && endDate && openHours.length > 0) {
       fetchStaffs();
     }
-  }, [startDate, endDate, clinic]);
+  }, [startDate, endDate, clinic, openHours]);
+
+  useEffect(() => {
+    if(clinics.length > 1) fetchOpenHours();
+  }, [clinics.length]);
+
+  const fetchOpenHours = async () => {
+    
+    let openHoursArray = [];
+    for (let i=1; i<clinics.length; i++) {
+      setRendering(true);
+      const res = await axios.get(`${SERVER_ADDRESS}/clinic_hours/${clinics[i].id}`)
+      openHoursArray[clinics[i].id] = res.data;
+      setRendering(false);
+    }
+    setOpenHours(openHoursArray);
+  }
 
   const fetchStaffs = () => {
     setRendering(true);
+    setStaffData([]);
     axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate, provider: '', clinic: clinic } }).then((res) => {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
       setStaffs(filteredDataByClinic);
-      for (let i=0; i<filteredDataByClinic.length; i++) {
-        let data = dayArray[filteredDataByClinic[i].start_date];
-        if(data) {
-          if (filteredDataByClinic[i].role === STAFF_TYPE_DOCTOR) {
-            data[STAFF_TYPE_DOCTOR] += filteredDataByClinic[i].hours;
-          }
-          else {
-            data[STAFF_TYPE_HYGIENE] += filteredDataByClinic[i].hours;
-          }
-  
-          if (filteredDataByClinic[i].employee_status === EMPLOYEE_STATUS_FULL_TIME) {
-            data[EMPLOYEE_STATUS_FULL_TIME] += filteredDataByClinic[i].hours;
-          }
-          else {
-            data[EMPLOYEE_STATUS_PART_TIME] += filteredDataByClinic[i].hours;
-          }
-  
-          dayArray[filteredDataByClinic[i].start_date] = data;
-        }
+      let currentDate = new Date(startDate);
+
+      while (currentDate < new Date(endDate)) {
+        let data = dayArray[formatDateString(currentDate)];
+        data[EMPLOYEE_STATUS_FULL_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_FULL_TIME);
+        data[EMPLOYEE_STATUS_PART_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_PART_TIME);
+        
+        dayArray[formatDateString(currentDate)] = data;
+        currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
       }
+
       setStaffData(dayArray);
+      setRendering(false);
     });
   }
 

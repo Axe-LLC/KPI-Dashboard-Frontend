@@ -4,7 +4,7 @@ import axios from 'axios';
 import { METRICS_DOCTOR_PRODUCTION, METRICS_HYGIENE_PRODUCTION, METRICS_PRODUCTION, SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../../utils/Consts';
 // Import utilities
 import RoleSelect from '../../components/RoleSelect';
-import { formatDateString, getDailyWorkHoursByProvider, getFilteredDays, kFormatter } from '../../utils/Utils';
+import { formatDateString, getDailyWorkHoursByProviderRole, getFilteredDays, kFormatter } from '../../utils/Utils';
 
 function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outerRendering, openHours}) {
   const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
@@ -100,8 +100,8 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
 
       while (currentDate < new Date(endDate)) {
         let data = dayArray[formatDateString(currentDate)];
-        data[STAFF_TYPE_DOCTOR] += getDailyWorkHoursByProvider(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_DOCTOR);
-        data[STAFF_TYPE_HYGIENE] += getDailyWorkHoursByProvider(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_HYGIENE);
+        data[STAFF_TYPE_DOCTOR] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_DOCTOR);
+        data[STAFF_TYPE_HYGIENE] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_HYGIENE);
         
         dayArray[formatDateString(currentDate)] = data;
         currentDate.setDate(currentDate.getDate() + 1); // Move to the next day

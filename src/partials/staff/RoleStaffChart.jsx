@@ -21,7 +21,7 @@ const colors = [
 
 function RoleStaffChart({clinics, clinic, data, isRendering}) {
   const [chartData, setChartData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if(clinics.length > 1) {
@@ -80,6 +80,7 @@ function RoleStaffChart({clinics, clinic, data, isRendering}) {
       labels: labels,
       datasets: datasets
     });
+    
     setLoading(false);
   }
 

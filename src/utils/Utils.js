@@ -171,7 +171,7 @@ export const getWorkHoursByProvider = (start, end, openHours, memberData) => {
     }
   }
 
-  return totalHours.toFixed(2);
+  return totalHours;
 }
 
 export const getDailyWorkHoursByProviderRole = (openHours, memberData, today, role) => {
@@ -195,7 +195,7 @@ export const getDailyWorkHoursByProviderRole = (openHours, memberData, today, ro
     }
   }
 
-  return totalHours.toFixed(2);
+  return totalHours;
 }
 
 export const getDailyWorkHoursByProviderType = (openHours, memberData, today, type) => {
@@ -219,7 +219,7 @@ export const getDailyWorkHoursByProviderType = (openHours, memberData, today, ty
     }
   }
 
-  return totalHours.toFixed(2);
+  return totalHours;
 }
 
 function countDaysByWeekday(start, end, weekday) {

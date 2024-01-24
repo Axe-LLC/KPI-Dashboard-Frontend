@@ -10,7 +10,7 @@ import AdjustmentChart from '../partials/metrics/AdjustmentChart';
 import CollectionsChart from '../partials/metrics/CollectionsChart';
 import AnalyticsByProviderType from '../partials/metrics/AnalyticsByProviderType';
 import { SERVER_ADDRESS } from '../utils/Consts';
-import { formatRangeDateString, generateMetricsData } from '../utils/Utils';
+import { formatRangeDateString } from '../utils/Utils';
 import AppointmentsChart from '../partials/metrics/AppointmentsChart';
 import ProcedureMetrics from '../partials/procedure/ProcedureMetrics';
 import ProviderByProduction from '../partials/procedure/ProviderByProduction';
@@ -29,6 +29,7 @@ function Dashboard() {
   const [isCustomDate, setIsCustomDate] = useState(false);
   const [procedureMetricsData, setProcedureMetricsData] = useState(false);
   const [providerData, setProviderData] = useState(false);
+  const [openHours, setOpenHours] = useState([]);
 
   useEffect(() => {
     fetchClincs();
@@ -54,6 +55,10 @@ function Dashboard() {
   useEffect(() => {
     setRenderingApp(false);
   }, [appointmentsData, clinic]);
+
+  useEffect(() => {
+    if(clinics.length > 1) fetchOpenHours();
+  }, [clinics.length])
 
   useEffect(() => {
     if(startDate && endDate) {
@@ -92,6 +97,15 @@ function Dashboard() {
     axios.get(`${SERVER_ADDRESS}/provider_by_production/${clinic}`, { params: { start: startDate, end: endDate } }).then((res) => {
       setProviderData(res.data.data);
     });
+  }
+
+  const fetchOpenHours = async () => {
+    let openHoursArray = [];
+    for (let i=1; i<clinics.length; i++) {
+      const res = await axios.get(`${SERVER_ADDRESS}/clinic_hours/${clinics[i].id}`)
+      openHoursArray[clinics[i].id] = res.data;
+    }
+    setOpenHours(openHoursArray);
   }
 
   return (
@@ -156,8 +170,9 @@ function Dashboard() {
               {/* Line chart (Real Time Value) */}
               <AppointmentsChart appointmentsData={appointmentsData} isRendering={isRenderingApp}/>        
               <ProcedureMetrics data={procedureMetricsData} isRendering={isRendering} />
-              <ProviderByProduction data={providerData} isRendering={isRendering} />
+              <ProviderByProduction data={providerData} isRendering={isRendering} startDate={startDate} endDate={endDate} clinic={clinic} openHours={openHours}/>
             </div>
+            <button onClick={() => fetchOpenHours()}>Button</button>
           </div>
         </main>
 

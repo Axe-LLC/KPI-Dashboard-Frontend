@@ -20,6 +20,7 @@ function AddStaffModal({clinics, fetchStaffs}) {
     setRole(STAFF_TYPE_DOCTOR);
     setEmployeeStatus(EMPLOYEE_STATUS_FULL_TIME);
     setClinic(0);
+    setWorkHoursList([]);
   }, [addStaffModalOpen]);
   
   const addStaff = () => {
@@ -45,7 +46,7 @@ function AddStaffModal({clinics, fetchStaffs}) {
   const addWorkHours = () => {
     setShowError(false);
     let updatedList = [...workHoursList];
-    updatedList.push({year: new Date().getFullYear(), month: '01', workHours: 0});
+    updatedList.push({year: '' + (new Date().getFullYear()), month: '01', workHours: 0});
     setWorkHoursList(updatedList);
   }
 

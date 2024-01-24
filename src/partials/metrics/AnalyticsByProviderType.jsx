@@ -95,7 +95,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
 
   const fetchStaffs = () => {
     setRendering(true);
-    axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate } }).then((res) => {
+    axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate, provider: '', clinic: clinic } }).then((res) => {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
       for (let i=0; i<filteredDataByClinic.length; i++) {

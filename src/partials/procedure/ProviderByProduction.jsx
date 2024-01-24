@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RoleSelect from '../../components/RoleSelect';
 import { STAFF_TYPE_DOCTOR, HYGIENE_CODES } from '../../utils/Consts';
+import { getWorkHoursByProvider } from '../../utils/Utils';
 
-function ProviderByProduction({data, isRendering}) {
+function ProviderByProduction({data, isRendering, startDate, endDate, clinic, openHours}) {
   const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
+  const [totalWorkHours, setTotalWorkHours] = useState(0);
+
+  useEffect(() => {
+    if(role && startDate && endDate && openHours.length > 0) {
+      getWorkHoursByProvider(role, startDate, endDate, clinic, openHours).then(res => setTotalWorkHours(res));
+    };
+  }, [role, startDate, endDate, clinic, openHours])
 
   return (
     <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700">
@@ -42,7 +50,7 @@ function ProviderByProduction({data, isRendering}) {
                       <div className="text-left text-emerald-500">${parseFloat(data[key]['production'].toFixed(2)).toLocaleString('en-US')}{}</div>
                     </td>
                     <td className="p-2 py-3">
-                      <div className="text-left">{0}</div>
+                      <div className="text-left">{totalWorkHours === 0 ? 0 : parseFloat((data[key]['production'] / totalWorkHours).toFixed(2)).toLocaleString('en-US')}</div>
                     </td>
                   </tr> : <></>
                 )

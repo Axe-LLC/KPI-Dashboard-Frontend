@@ -9,7 +9,7 @@ import Staffs from '../partials/staff/Staffs';
 import RoleStaffChart from '../partials/staff/RoleStaffChart';
 import TypeStaffChart from '../partials/staff/TypeStaffChart';
 import AddStaffModal from '../partials/staff/Staffs/AddStaffModal';
-import { getFilteredDays, formatRangeDateString, formatDateString, getDailyWorkHoursByProviderType } from "../utils/Utils";
+import { getFilteredDays, formatRangeDateString, formatDateString, getDailyWorkHoursByProviderType, generateDateFromString } from "../utils/Utils";
 import { EMPLOYEE_STATUS_FULL_TIME, EMPLOYEE_STATUS_PART_TIME, SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from "../utils/Consts";
 
 function Staff() {
@@ -67,17 +67,17 @@ function Staff() {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
       setStaffs(filteredDataByClinic);
-      let currentDate = new Date(startDate);
+      let currentDate = generateDateFromString(startDate);
 
-      while (currentDate < new Date(endDate)) {
+      while (currentDate <= generateDateFromString(endDate)) {
         let data = dayArray[formatDateString(currentDate)];
-        console.log(data, '==================');
-        console.log(dayArray, '==================');
-        console.log(formatDateString(currentDate), '==================');
-        data[EMPLOYEE_STATUS_FULL_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_FULL_TIME);
-        data[EMPLOYEE_STATUS_PART_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_PART_TIME);
+        if(data) {
+          data[EMPLOYEE_STATUS_FULL_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_FULL_TIME);
+          data[EMPLOYEE_STATUS_PART_TIME] += getDailyWorkHoursByProviderType(openHours, filteredDataByClinic, currentDate, EMPLOYEE_STATUS_PART_TIME);
+          
+          dayArray[formatDateString(currentDate)] = data;
+        }
         
-        dayArray[formatDateString(currentDate)] = data;
         currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
       }
 

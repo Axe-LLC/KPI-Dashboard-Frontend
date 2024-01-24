@@ -10,7 +10,6 @@ import { STAFF_TYPE_DOCTOR,
   METRICS_DOCTOR_PRODUCTION,
   METRICS_HYGIENE_PRODUCTION,
   HYGIENE_CODES,
-  SERVER_ADDRESS,
   MONTH_LABELS,
   WEEK_DAYS
 } from './Consts';
@@ -262,4 +261,13 @@ function divideDateRangeIntoMonths(startDate, endDate) {
   }
 
   return dateRanges;
+}
+
+export const generateDateFromString = (dateString) => {
+  const dateParts = dateString.split('-');
+  const year = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; // Months are zero-based in JavaScript
+  const day = parseInt(dateParts[2], 10);
+
+  return new Date(year, month, day);
 }

@@ -27,8 +27,8 @@ function TypeStaffChart({data, isRendering}) {
           data: values1,
           backgroundColor: '#B49BC0',
           hoverBackgroundColor: '#B49BC0',
-          barPercentage: 0.66,
-          categoryPercentage: 0.66,
+          barPercentage: 0.8,
+          categoryPercentage: 0.8,
         },
         // Gray line
         {
@@ -36,8 +36,8 @@ function TypeStaffChart({data, isRendering}) {
           data: values2,
           backgroundColor: '#66A6C4',
           hoverBackgroundColor: '#66A6C4',
-          barPercentage: 0.66,
-          categoryPercentage: 0.66,
+          barPercentage: 0.8,
+          categoryPercentage: 0.8,
         },
       ]
     })

@@ -3,7 +3,7 @@ import axios from 'axios';
 import BarChart from '../../charts/BarChart01';
 import LineChart from '../../charts/LineChart06';
 import StaffLineChart from '../../charts/StaffLineChart';
-import { tailwindConfig, hexToRGB } from '../../utils/Utils';
+import { tailwindConfig, hexToRGB, generateDateFromString } from '../../utils/Utils';
 
 // Import utilities
 import { WEEK_DAYS, SERVER_ADDRESS } from '../../utils/Consts';
@@ -40,7 +40,7 @@ function RoleStaffChart({clinics, clinic, data, isRendering}) {
         
         for (var key in data) {
           if(i === 1) labels.push(key);
-          const date = new Date(key);
+          const date = generateDateFromString(key);
           const hourValue = clinicsHours.data.find(item => item.day === WEEK_DAYS[date.getDay()]).hours;
           values.push(hourValue);
         }

@@ -49,14 +49,14 @@ function ProviderByProduction({data, isRendering, startDate, endDate, clinic, op
             <tbody className="text-sm font-medium divide-y divide-slate-100 dark:divide-slate-700">
               {/* Row */}
               {Object.keys(data).map(key => (HYGIENE_CODES.includes(data[key]['code']) === (role !== STAFF_TYPE_DOCTOR) ? 
-                  <tr key={key}>
-                    <td className="p-2 py-3">
+                  <tr key={key} style={{height: 50}}>
+                    <td className="p-2">
                       <div className="text-left">{PROVIDER_NAMES.find(item => item.id === key)?.name ? PROVIDER_NAMES.find(item => item.id === key)?.name : key}</div>
                     </td>
-                    <td className="p-2 py-3">
+                    <td className="p-2">
                       <div className="text-left text-emerald-500">${parseFloat(data[key]['production'].toFixed(2)).toLocaleString('en-US')}{}</div>
                     </td>
-                    <td className="p-2 py-3">
+                    <td className="p-2">
                       <div className="text-left">{totalWorkHours === 0 ? 0 : parseFloat((data[key]['production'] / totalWorkHours).toFixed(2)).toLocaleString('en-US')}</div>
                     </td>
                   </tr> : <></>

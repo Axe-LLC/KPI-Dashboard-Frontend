@@ -37,8 +37,8 @@ function StaffsTableItem(props) {
     <React.Fragment>
       <tbody className="text-sm" onClick={() => setEditModalOpen(true)} aria-controls={`update-staff-modal-${props.id}`}>
         {/* Row */}
-        <tr className='border-b'>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+        <tr className='border-b' style={{height: 50}}>
+          <td className="px-2 first:pl-5 last:pr-5 whitespace-nowrap w-px">
             <div className="flex items-center">
               <label className="inline-flex">
                 <span className="sr-only">Select</span>
@@ -53,18 +53,18 @@ function StaffsTableItem(props) {
               </label>
             </div>
           </td>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+          <td className="px-2 first:pl-5 last:pr-5 whitespace-nowrap">
             <div className="flex items-center text-slate-800">
               <div className="font-medium staff-table-text">{props.name}</div>
             </div>
           </td>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+          <td className="px-2 first:pl-5 last:pr-5 whitespace-nowrap">
             <div className={`inline-flex font-medium rounded-full text-center capitalize`} style={{color: statusColor(props.role)}}>{props.role}</div>
           </td>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+          <td className="px-2 first:pl-5 last:pr-5 whitespace-nowrap">
             <div className="text-left font-medium capitalize" style={{color: employeeColor(props.employeeStatus)}}>{props.employeeStatus}</div>
           </td>
-          <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+          <td className="px-2 first:pl-5 last:pr-5 whitespace-nowrap">
             <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>
           </td>
         </tr>

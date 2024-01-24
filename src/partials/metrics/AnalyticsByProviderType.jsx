@@ -4,7 +4,7 @@ import axios from 'axios';
 import { METRICS_DOCTOR_PRODUCTION, METRICS_HYGIENE_PRODUCTION, METRICS_PRODUCTION, SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../../utils/Consts';
 // Import utilities
 import RoleSelect from '../../components/RoleSelect';
-import { formatDateString, getDailyWorkHoursByProviderRole, getFilteredDays, kFormatter } from '../../utils/Utils';
+import { formatDateString, generateDateFromString, getDailyWorkHoursByProviderRole, getFilteredDays, kFormatter } from '../../utils/Utils';
 
 function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outerRendering, openHours}) {
   const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
@@ -96,14 +96,16 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
     axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate, provider: '', clinic: clinic } }).then((res) => {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
-      let currentDate = new Date(startDate);
+      let currentDate = generateDateFromString(startDate);
 
-      while (currentDate < new Date(endDate)) {
+      while (currentDate < generateDateFromString(endDate)) {
         let data = dayArray[formatDateString(currentDate)];
-        data[STAFF_TYPE_DOCTOR] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_DOCTOR);
-        data[STAFF_TYPE_HYGIENE] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_HYGIENE);
-        
-        dayArray[formatDateString(currentDate)] = data;
+        if(data) {
+          data[STAFF_TYPE_DOCTOR] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_DOCTOR);
+          data[STAFF_TYPE_HYGIENE] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_HYGIENE);
+          
+          dayArray[formatDateString(currentDate)] = data;
+        }
         currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
       }
 

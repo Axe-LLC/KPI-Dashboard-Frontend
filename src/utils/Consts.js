@@ -11,6 +11,15 @@ export const METRICS_HYGIENE_PRODUCTION = 'Hygiene_Production';
 export const HYGIENE_CODES = ['D1110', 'D1120', 'D4341', 'D4342', 'D1206', 'D0274', 'D0330', 'D0220'];
 export const WEEK_DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export const MONTH_LABELS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+export const PROVIDER_NAMES = [
+    {id: '2901015019', name: 'Brad Burau'},
+    {id: '2901015751', name: 'Scott Burau'},
+    {id: '2901022007', name: 'Dan Meyer'},
+    {id: '2901022283', name: 'Alex Burau'},
+    {id: '2901601019', name: 'Simon Shamoon'},
+    {id: '2901601395', name: 'Charlie Emmert'},
+    {id: '2901601806', name: 'Kevin Krieger'}
+];
 // export const SERVER_ADDRESS = 'http://localhost:8000';
 export const SERVER_ADDRESS = 'https://gf57f0wcr1.execute-api.us-east-1.amazonaws.com';
 export const PROCEDURE_CODES = [

@@ -4,14 +4,14 @@ import axios from 'axios';
 import { METRICS_DOCTOR_PRODUCTION, METRICS_HYGIENE_PRODUCTION, METRICS_PRODUCTION, SERVER_ADDRESS, STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE } from '../../utils/Consts';
 // Import utilities
 import RoleSelect from '../../components/RoleSelect';
-import { getFilteredDays, kFormatter } from '../../utils/Utils';
+import { formatDateString, getDailyWorkHoursByProviderRole, getFilteredDays, kFormatter } from '../../utils/Utils';
 
-function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outerRendering}) {
+function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outerRendering, openHours}) {
   const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
   const [selectedItem, setSelectedItem] = useState(0);
   const [chartData, setChartData] = useState(null);
   const [staffData, setStaffData] = useState([]);
-  const [isRendering, setRendering] = useState(false);
+  const [isRendering, setRendering] = useState(true);
   const [totalHours, setTotalHours] = useState(0);
   const [totalProduction, setTotalProduction] = useState(0);
   const [totalRoleProduction, setTotalRoleProduction] = useState(0);
@@ -22,10 +22,10 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
 ];
 
   useEffect(() => {
-    if(startDate && endDate) {
+    if(startDate && endDate && openHours.length > 0) {
       fetchStaffs();
     }
-  }, [startDate, endDate, clinic, role]);
+  }, [startDate, endDate, clinic, role, openHours]);
 
   useEffect(() => {
     if (!outerRendering) {
@@ -37,7 +37,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
       let hours = 0;
       let production = 0;
       let totalProductionValue = 0;
-  
+
       for (var key in staffData) {
         graphLabels.push(key);
         hoursValues.push(staffData[key][role]);
@@ -88,8 +88,6 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
           }
         ],
       });
-  
-      setRendering(false);
     }
   }, [role, staffData, selectedItem, outerRendering])
 
@@ -98,19 +96,19 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
     axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate, provider: '', clinic: clinic } }).then((res) => {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
-      for (let i=0; i<filteredDataByClinic.length; i++) {
-        let data = dayArray[filteredDataByClinic[i].start_date];
-        if(data) {
-          if (filteredDataByClinic[i].role === STAFF_TYPE_DOCTOR) {
-            data[STAFF_TYPE_DOCTOR] += filteredDataByClinic[i].hours;
-          }
-          else {
-            data[STAFF_TYPE_HYGIENE] += filteredDataByClinic[i].hours;
-          }
-          dayArray[filteredDataByClinic[i].start_date] = data;
-        }
+      let currentDate = new Date(startDate);
+
+      while (currentDate < new Date(endDate)) {
+        let data = dayArray[formatDateString(currentDate)];
+        data[STAFF_TYPE_DOCTOR] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_DOCTOR);
+        data[STAFF_TYPE_HYGIENE] += getDailyWorkHoursByProviderRole(openHours, filteredDataByClinic, currentDate, STAFF_TYPE_HYGIENE);
+        
+        dayArray[formatDateString(currentDate)] = data;
+        currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
       }
+
       setStaffData(dayArray);
+      setRendering(false);
     });
   }
 

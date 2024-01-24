@@ -166,7 +166,7 @@ function Dashboard() {
               {/* Line chart (Acme Professional) */}
               <CollectionsChart metricsData={metricsData} isRendering={isRendering} />
               {/* Bar chart (Direct vs Indirect) */}
-              <AnalyticsByProviderType metricsData={metricsData} startDate={startDate} endDate={endDate} clinic={clinic} outerRendering={isRendering}/>
+              <AnalyticsByProviderType metricsData={metricsData} startDate={startDate} endDate={endDate} clinic={clinic} outerRendering={isRendering} openHours={openHours}/>
               {/* Line chart (Real Time Value) */}
               <AppointmentsChart appointmentsData={appointmentsData} isRendering={isRenderingApp}/>        
               <ProcedureMetrics data={procedureMetricsData} isRendering={isRendering} />

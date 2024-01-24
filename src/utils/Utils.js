@@ -146,14 +146,13 @@ export const kFormatter = (num) => {
   return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
 }
 
-export const getWorkHoursByProvider = async (provider, start, end, clinic, openHours) => {
-  const result = await axios.get(`${SERVER_ADDRESS}/member`, { params: { start: start, end: end, provider: provider, clinic: clinic } });
+export const getWorkHoursByProvider = (start, end, openHours, memberData) => {
   let totalHours = 0;
   const dateRanges = divideDateRangeIntoMonths(start, end);
 
-  for (let i=0; i<result.data.length; i++) {
+  for (let i=0; i<memberData.length; i++) {
     for (let j=0; j<dateRanges.length; j++) {
-      const workHoursData = JSON.parse(result.data[i].work_hours);
+      const workHoursData = JSON.parse(memberData[i].work_hours);
       const workHours = workHoursData.find(item => 
         parseInt(item.year) === dateRanges[j].start.getFullYear() && item.month === MONTH_LABELS[dateRanges[j].start.getMonth()]);
       if(workHours) {
@@ -164,11 +163,35 @@ export const getWorkHoursByProvider = async (provider, start, end, clinic, openH
             new Date(dateRanges[j].start.getFullYear(), dateRanges[j].start.getMonth(), 1),
             new Date(dateRanges[j].start.getFullYear(), dateRanges[j].start.getMonth()+1, 0),
             dayOfWeek
-          ) * openHours[result.data[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
-          totalMonthHours += countDaysByWeekday(new Date(dateRanges[j].start), new Date(dateRanges[j].end), dayOfWeek) * openHours[result.data[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+          ) * openHours[memberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+          totalMonthHours += countDaysByWeekday(new Date(dateRanges[j].start), new Date(dateRanges[j].end), dayOfWeek) * openHours[memberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
         }
         totalHours += parseFloat(workHours.workHours) / totalMonthEstHours * totalMonthHours;
       }
+    }
+  }
+
+  return totalHours;
+}
+
+export const getDailyWorkHoursByProvider = (openHours, memberData, today, role) => {
+  let totalHours = 0;
+  const filteredMemberData = memberData.filter(item => item.role === role);
+  for (let i=0; i<filteredMemberData.length; i++) {
+    const workHoursData = JSON.parse(filteredMemberData[i].work_hours);
+    const workHours = workHoursData.find(item => 
+      parseInt(item.year) === today.getFullYear() && item.month === MONTH_LABELS[today.getMonth()]);
+    const todayWorkHours = openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[today.getDay()]).hours;
+    if(workHours) {
+      let totalMonthEstHours = 0;
+      for(let dayOfWeek=0; dayOfWeek<7; dayOfWeek++) {
+        totalMonthEstHours += countDaysByWeekday(
+          new Date(today.getFullYear(), today.getMonth(), 1),
+          new Date(today.getFullYear(), today.getMonth()+1, 0),
+          dayOfWeek
+        ) * openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+      }
+      totalHours += parseFloat(workHours.workHours) / totalMonthEstHours * todayWorkHours;
     }
   }
 

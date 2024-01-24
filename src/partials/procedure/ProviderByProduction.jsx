@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import RoleSelect from '../../components/RoleSelect';
-import { STAFF_TYPE_DOCTOR, HYGIENE_CODES } from '../../utils/Consts';
+import { STAFF_TYPE_DOCTOR, HYGIENE_CODES, SERVER_ADDRESS } from '../../utils/Consts';
 import { getWorkHoursByProvider } from '../../utils/Utils';
+import axios from 'axios';
 
 function ProviderByProduction({data, isRendering, startDate, endDate, clinic, openHours}) {
+  const [isInnerRendering, setInnerRendering] = useState(true);
   const [role, setRole] = useState(STAFF_TYPE_DOCTOR);
   const [totalWorkHours, setTotalWorkHours] = useState(0);
 
   useEffect(() => {
     if(role && startDate && endDate && openHours.length > 0) {
-      getWorkHoursByProvider(role, startDate, endDate, clinic, openHours).then(res => setTotalWorkHours(res));
+      setInnerRendering(true);
+      axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate, provider: role, clinic: clinic } }).then(result => {
+        const res = getWorkHoursByProvider(startDate, endDate, openHours, result.data);
+        setTotalWorkHours(res);
+        setInnerRendering(false);
+      });
     };
   }, [role, startDate, endDate, clinic, openHours])
 
@@ -21,9 +28,9 @@ function ProviderByProduction({data, isRendering, startDate, endDate, clinic, op
       </header>
       <div className="p-3">
         {/* Table */}
-        <div className={`overflow-x-auto ${isRendering && 'flex items-center m-auto justify-center'}`} style={{height: 350}}>
-          {isRendering && <p className='text-center'>Loading now...</p>}
-          {!isRendering && <table className="table-auto w-full dark:text-slate-300">
+        <div className={`overflow-x-auto ${(isRendering || isInnerRendering) && 'flex items-center m-auto justify-center'}`} style={{height: 350}}>
+          {(isRendering || isInnerRendering) && <p className='text-center'>Loading now...</p>}
+          {!isRendering && !isInnerRendering && <table className="table-auto w-full dark:text-slate-300">
             {/* Table header */}
             <thead className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-md" style={{position: 'sticky', top: 0}}>
               <tr>

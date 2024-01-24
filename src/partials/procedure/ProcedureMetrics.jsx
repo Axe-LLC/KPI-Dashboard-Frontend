@@ -41,7 +41,7 @@ function ProcedureMetrics({data, isRendering}) {
                       <div className="">{key}</div>
                     </td>
                     <td className="p-2 py-3">
-                      <div className="">{PROCEDURE_CODES.find(item => item.Code === key).Description}</div>
+                      <div className="">{PROCEDURE_CODES.find(item => item.Code === key)?.Description}</div>
                     </td>
                     <td className="p-2 py-3">
                       <div className="">{data[key]['count']}</div>

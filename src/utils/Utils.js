@@ -9,8 +9,12 @@ import { STAFF_TYPE_DOCTOR,
   METRICS_COLLECTIONS,
   METRICS_DOCTOR_PRODUCTION,
   METRICS_HYGIENE_PRODUCTION,
-  HYGIENE_CODES
+  HYGIENE_CODES,
+  SERVER_ADDRESS,
+  MONTH_LABELS,
+  WEEK_DAYS
 } from './Consts';
+import axios from 'axios';
 
 export const tailwindConfig = () => {
   // Tailwind config
@@ -140,4 +144,75 @@ export const dateStringType = (inputDate) => {
 
 export const kFormatter = (num) => {
   return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+}
+
+export const getWorkHoursByProvider = async (provider, start, end, clinic, openHours) => {
+  const result = await axios.get(`${SERVER_ADDRESS}/member`, { params: { start: start, end: end, provider: provider, clinic: clinic } });
+  let totalHours = 0;
+  const dateRanges = divideDateRangeIntoMonths(start, end);
+
+  for (let i=0; i<result.data.length; i++) {
+    for (let j=0; j<dateRanges.length; j++) {
+      const workHoursData = JSON.parse(result.data[i].work_hours);
+      const workHours = workHoursData.find(item => 
+        parseInt(item.year) === dateRanges[j].start.getFullYear() && item.month === MONTH_LABELS[dateRanges[j].start.getMonth()]);
+      if(workHours) {
+        let totalMonthHours = 0;
+        let totalMonthEstHours = 0;
+        for(let dayOfWeek=0; dayOfWeek<7; dayOfWeek++) {
+          totalMonthEstHours += countDaysByWeekday(
+            new Date(dateRanges[j].start.getFullYear(), dateRanges[j].start.getMonth(), 1),
+            new Date(dateRanges[j].start.getFullYear(), dateRanges[j].start.getMonth()+1, 0),
+            dayOfWeek
+          ) * openHours[result.data[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+          totalMonthHours += countDaysByWeekday(new Date(dateRanges[j].start), new Date(dateRanges[j].end), dayOfWeek) * openHours[result.data[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+        }
+        totalHours += parseFloat(workHours.workHours) / totalMonthEstHours * totalMonthHours;
+      }
+    }
+  }
+
+  return totalHours;
+}
+
+function countDaysByWeekday(start, end, weekday) {
+  let count = 0;
+  let currentDate = start;
+
+  while (currentDate <= end) {
+    if (currentDate.getDay() === weekday) {
+      count++;
+    }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  return count;
+}
+
+function divideDateRangeIntoMonths(startDate, endDate) {
+  const dateRanges = [];
+  let currentMonthStart = new Date(startDate);
+
+  while (currentMonthStart < new Date(endDate)) {
+    const currentMonthEnd = new Date(
+      currentMonthStart.getFullYear(),
+      currentMonthStart.getMonth() + 1,
+      0
+    ); // Set to the last day of the month
+
+    const monthEnd = currentMonthEnd < new Date(endDate) ? new Date(currentMonthEnd) : new Date(endDate);
+
+    const monthRange = {
+      start: new Date(currentMonthStart),
+      end: new Date(monthEnd),
+    };
+
+    dateRanges.push(monthRange);
+
+    // Move to the next month
+    currentMonthStart = new Date(monthEnd);
+    currentMonthStart.setDate(currentMonthStart.getDate() + 1); // Move to the next day
+  }
+
+  return dateRanges;
 }

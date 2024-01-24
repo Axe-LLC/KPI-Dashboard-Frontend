@@ -42,7 +42,7 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
   const addWorkHours = () => {
     setShowError(false);
     let updatedList = [...workHoursList];
-    updatedList.push({year: new Date().getFullYear(), month: '01', workHours: 0});
+    updatedList.push({year: '' + (new Date().getFullYear()), month: '01', workHours: 0});
     setWorkHoursList(updatedList);
   }
 

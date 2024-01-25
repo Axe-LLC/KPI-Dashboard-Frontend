@@ -3,6 +3,7 @@ import axios from "axios";
 import DeleteButton from "../actions/DeleteButton";
 import StaffsTable from "./Staffs/StaffsTable";
 import PaginationClassic from "../../components/PaginationClassic";
+import { SERVER_ADDRESS } from "../../utils/Consts";
 
 function Staffs({clinics, staffs, fetchStaffs}) {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -14,7 +15,7 @@ function Staffs({clinics, staffs, fetchStaffs}) {
   }, [staffs])
 
   const handleDelete = () => {
-    axios.delete(`${SERVER_ADDRESS}/member`, {
+    axios.delete(`${SERVER_ADDRESS}/members`, {
       headers: {},
       data: selectedItems
     }).then((res) => {

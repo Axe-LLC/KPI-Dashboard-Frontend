@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StaffsTableItem from './StaffsTableItem';
 
 function StaffsTable({
+  count,
   selectedItems,
   staffs,
   clinics,
@@ -35,7 +36,7 @@ function StaffsTable({
   return (
     <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 relative staff-table-min-height">
       <header className="px-5 py-4">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">All Teams <span className="text-slate-400 dark:text-slate-500 font-medium">442</span></h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">All Teams <span className="text-slate-400 dark:text-slate-500 font-medium">{count}</span></h2>
       </header>
       <div>
 

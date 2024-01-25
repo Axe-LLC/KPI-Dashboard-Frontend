@@ -95,7 +95,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
     setRendering(true);
     axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate, provider: '', clinic: clinic } }).then((res) => {
       let dayArray = getFilteredDays(startDate, endDate);
-      const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
+      const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic || d.clinic === -1) : res.data;
       let currentDate = generateDateFromString(startDate);
 
       while (currentDate < generateDateFromString(endDate)) {

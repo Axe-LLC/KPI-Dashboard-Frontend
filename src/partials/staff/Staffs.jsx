@@ -5,7 +5,7 @@ import StaffsTable from "./Staffs/StaffsTable";
 import PaginationClassic from "../../components/PaginationClassic";
 import { SERVER_ADDRESS } from "../../utils/Consts";
 
-function Staffs({clinics, staffs, fetchStaffs}) {
+function Staffs({clinics, staffs, fetchStaffs, fetchAllStaffs}) {
   const [selectedItems, setSelectedItems] = useState([]);
   const [page, setPage] = useState(0);
   const perPage = 10;
@@ -20,6 +20,7 @@ function Staffs({clinics, staffs, fetchStaffs}) {
       data: selectedItems
     }).then((res) => {
       fetchStaffs();
+      fetchAllStaffs();
       setSelectedItems([]);
     })
   }
@@ -58,6 +59,7 @@ function Staffs({clinics, staffs, fetchStaffs}) {
         staffs={staffs.slice(page * perPage, page * perPage + (staffs.length - (page + 1) * perPage > 0 ? perPage : staffs.length - page * perPage))}
         clinics={clinics}
         fetchStaffs={fetchStaffs}
+        fetchAllStaffs={fetchAllStaffs}
       />
       {/* Pagination */}
       <div className="mt-8 mb-8">

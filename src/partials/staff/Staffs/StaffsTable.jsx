@@ -6,7 +6,8 @@ function StaffsTable({
   selectedItems,
   staffs,
   clinics,
-  fetchStaffs
+  fetchStaffs,
+  fetchAllStaffs
 }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
@@ -85,6 +86,7 @@ function StaffsTable({
                     handleClick={handleClick}
                     isChecked={isCheck.includes(staff.id)}
                     fetchStaffs={fetchStaffs}
+                    fetchAllStaffs={fetchAllStaffs}
                   />
                 )
               })

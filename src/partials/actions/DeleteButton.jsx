@@ -24,7 +24,7 @@ function DeleteButton({
           <div className="px-5 py-4 border-t border-slate-200 dark:border-slate-700">
             <div className="flex flex-wrap justify-end space-x-2">
               <button className="btn-sm border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300" onClick={() => setShowModal(false)}>Cancel</button>
-              <button className="btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" onClick={() => { handleDelete(); setShowModal(false); }}>Confirm</button>
+              <button className="primary-button btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" onClick={() => { handleDelete(); setShowModal(false); }}>Confirm</button>
             </div>
           </div>
         </ModalBasic>

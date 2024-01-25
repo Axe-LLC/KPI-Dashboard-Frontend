@@ -158,12 +158,13 @@ export const getWorkHoursByProvider = (start, end, openHours, memberData) => {
         let totalMonthHours = 0;
         let totalMonthEstHours = 0;
         for(let dayOfWeek=0; dayOfWeek<7; dayOfWeek++) {
+          const currentDayWorkHours = getDailyWorkHoursPerClinic(memberData[i].clinic, openHours, dayOfWeek);
           totalMonthEstHours += countDaysByWeekday(
             new Date(dateRanges[j].start.getFullYear(), dateRanges[j].start.getMonth(), 1),
             new Date(dateRanges[j].start.getFullYear(), dateRanges[j].start.getMonth()+1, 0),
             dayOfWeek
-          ) * openHours[memberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
-          totalMonthHours += countDaysByWeekday(new Date(dateRanges[j].start), new Date(dateRanges[j].end), dayOfWeek) * openHours[memberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+          ) * currentDayWorkHours;
+          totalMonthHours += countDaysByWeekday(new Date(dateRanges[j].start), new Date(dateRanges[j].end), dayOfWeek) * currentDayWorkHours;
         }
         totalHours += parseFloat(workHours.workHours) / totalMonthEstHours * totalMonthHours;
       }
@@ -180,15 +181,16 @@ export const getDailyWorkHoursByProviderRole = (openHours, memberData, today, ro
     const workHoursData = JSON.parse(filteredMemberData[i].work_hours);
     const workHours = workHoursData.find(item => 
       parseInt(item.year) === today.getFullYear() && item.month === MONTH_LABELS[today.getMonth()]);
-    const todayWorkHours = openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[today.getDay()]).hours;
+    const todayWorkHours = getDailyWorkHoursPerClinic(filteredMemberData[i].clinic, openHours, today.getDay());
     if(workHours) {
       let totalMonthEstHours = 0;
       for(let dayOfWeek=0; dayOfWeek<7; dayOfWeek++) {
+        const currentDayWorkHours = getDailyWorkHoursPerClinic(filteredMemberData[i].clinic, openHours, dayOfWeek);
         totalMonthEstHours += countDaysByWeekday(
           new Date(today.getFullYear(), today.getMonth(), 1),
           new Date(today.getFullYear(), today.getMonth()+1, 0),
           dayOfWeek
-        ) * openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+        ) * currentDayWorkHours;
       }
       totalHours += parseFloat(workHours.workHours) / totalMonthEstHours * todayWorkHours;
     }
@@ -204,21 +206,41 @@ export const getDailyWorkHoursByProviderType = (openHours, memberData, today, ty
     const workHoursData = JSON.parse(filteredMemberData[i].work_hours);
     const workHours = workHoursData.find(item => 
       parseInt(item.year) === today.getFullYear() && item.month === MONTH_LABELS[today.getMonth()]);
-    const todayWorkHours = openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[today.getDay()]).hours;
+    const todayWorkHours = getDailyWorkHoursPerClinic(filteredMemberData[i].clinic, openHours, today.getDay());
+
     if(workHours) {
       let totalMonthEstHours = 0;
       for(let dayOfWeek=0; dayOfWeek<7; dayOfWeek++) {
+        const currentDayWorkHours = getDailyWorkHoursPerClinic(filteredMemberData[i].clinic, openHours, dayOfWeek);
+
         totalMonthEstHours += countDaysByWeekday(
           new Date(today.getFullYear(), today.getMonth(), 1),
           new Date(today.getFullYear(), today.getMonth()+1, 0),
           dayOfWeek
-        ) * openHours[filteredMemberData[i].clinic].find(item => item.day === WEEK_DAYS[dayOfWeek]).hours;
+        ) * currentDayWorkHours;
       }
       totalHours += parseFloat(workHours.workHours) / totalMonthEstHours * todayWorkHours;
     }
   }
 
   return totalHours;
+}
+
+function getDailyWorkHoursPerClinic(clinic, openHours, day) {
+  let todayWorkHours = 0;
+  if(clinic === -1) {
+     // Filter Open Hour because clinic's id is array's index, there is data for non-existing id index.
+    const filteredOpenHours = openHours.filter(item => item ? true : false);
+    for(let c=0; c<filteredOpenHours.length; c++) {
+      todayWorkHours += filteredOpenHours[c].find(item => item.day === WEEK_DAYS[day]).hours;
+    }
+    todayWorkHours /= filteredOpenHours.length;
+  }
+  else {
+    todayWorkHours = openHours[clinic].find(item => item.day === WEEK_DAYS[day]).hours;
+  }
+
+  return todayWorkHours;
 }
 
 function countDaysByWeekday(start, end, weekday) {

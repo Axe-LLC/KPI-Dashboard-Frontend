@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_FULL_TIME, EMPLOYEE_STATUS_PART_TIME } from '../../../utils/Consts';
 import EditStaffModal from './EditStaffModal';
-import { dateStringType } from '../../../utils/Utils';
 
 function StaffsTableItem(props) {
   const [clinicName, setClinicName] = useState('');
@@ -65,7 +64,11 @@ function StaffsTableItem(props) {
             <div className="text-left font-medium capitalize" style={{color: employeeColor(props.employeeStatus)}}>{props.employeeStatus}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 whitespace-nowrap">
-            <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>
+            {props.clinic === -1 ? 
+              props.clinics.filter(c => c.id !== 0).map(c => (
+                  <div key={c.id} className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic mr-1`}>{c.name}</div>
+              ))
+            :<div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>}
           </td>
         </tr>
       </tbody>

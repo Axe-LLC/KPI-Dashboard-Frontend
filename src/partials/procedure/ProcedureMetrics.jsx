@@ -35,7 +35,7 @@ function ProcedureMetrics({data, isRendering}) {
             </thead>
             {/* Table body */}
             <tbody className="text-sm font-medium divide-y divide-slate-100 dark:divide-slate-700">
-              {Object.keys(data).map(key => (HYGIENE_CODES.includes(key) === (role !== STAFF_TYPE_DOCTOR) ? 
+              {Object.keys(data).sort((a, b) => data[b].production - data[a].production).map(key => (HYGIENE_CODES.includes(key) === (role !== STAFF_TYPE_DOCTOR) ? 
                   <tr key={key} style={{height: 50}}>
                     <td className="p-2">
                       <div className="">{key}</div>

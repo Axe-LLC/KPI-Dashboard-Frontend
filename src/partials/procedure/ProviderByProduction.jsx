@@ -48,7 +48,7 @@ function ProviderByProduction({data, isRendering, startDate, endDate, clinic, op
             {/* Table body */}
             <tbody className="text-sm font-medium divide-y divide-slate-100 dark:divide-slate-700">
               {/* Row */}
-              {Object.keys(data).map(key => ((PROVIDER_NAMES.find(item => item.id === key) !== undefined) === (role === STAFF_TYPE_DOCTOR) ? 
+              {Object.keys(data).sort((a, b) => data[b].production - data[a].production).map(key => ((PROVIDER_NAMES.find(item => item.id === key) !== undefined) === (role === STAFF_TYPE_DOCTOR) ? 
                   <tr key={key} style={{height: 50}}>
                     <td className="p-2">
                       <div className="text-left">{PROVIDER_NAMES.find(item => item.id === key)?.name ? PROVIDER_NAMES.find(item => item.id === key)?.name : key}</div>

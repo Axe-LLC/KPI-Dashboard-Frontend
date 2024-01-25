@@ -18,7 +18,7 @@ function PaginationClassic({page, count, handleNext, handlePrev, perPage}) {
         </ul>
       </nav>
       <div className="text-sm text-slate-500 dark:text-slate-400 text-center sm:text-left">
-        Showing <span className="font-medium text-slate-600 dark:text-slate-300">{page * perPage + 1}</span> to <span className="font-medium text-slate-600 dark:text-slate-300">{page * perPage + (count - (page + 1) * perPage > 0 ? perPage : count - page * perPage)}</span> of <span className="font-medium text-slate-600 dark:text-slate-300">{count}</span> results
+        Showing <span className="font-medium text-slate-600 dark:text-slate-300">{count === 0 ? 0 : page * perPage + 1}</span> to <span className="font-medium text-slate-600 dark:text-slate-300">{page * perPage + (count - (page + 1) * perPage > 0 ? perPage : count - page * perPage)}</span> of <span className="font-medium text-slate-600 dark:text-slate-300">{count}</span> results
       </div>
     </div>
   );

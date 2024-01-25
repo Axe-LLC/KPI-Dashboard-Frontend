@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import DeleteButton from "../actions/DeleteButton";
 import StaffsTable from "./Staffs/StaffsTable";
@@ -6,6 +6,12 @@ import PaginationClassic from "../../components/PaginationClassic";
 
 function Staffs({clinics, staffs, fetchStaffs}) {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [page, setPage] = useState(0);
+  const perPage = 10;
+
+  useEffect(() => {
+    setPage(0);
+  }, [staffs])
 
   const handleDelete = () => {
     axios.delete(`${SERVER_ADDRESS}/member`, {
@@ -46,14 +52,15 @@ function Staffs({clinics, staffs, fetchStaffs}) {
 
       {/* Table */}
       <StaffsTable
+        count={staffs.length}
         selectedItems={handleSelectedItems}
-        staffs={staffs}
+        staffs={staffs.slice(page * perPage, page * perPage + (staffs.length - (page + 1) * perPage > 0 ? perPage : staffs.length - page * perPage))}
         clinics={clinics}
         fetchStaffs={fetchStaffs}
       />
       {/* Pagination */}
       <div className="mt-8 mb-8">
-        <PaginationClassic />
+        <PaginationClassic page={page} count={staffs.length} handleNext={() => setPage(page + 1)} handlePrev={() => setPage(page - 1)} perPage={perPage}/>
       </div>
 
     </div>)

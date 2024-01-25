@@ -9,10 +9,16 @@ import AddOrderModal from "./Orders/AddOrderModal";
 
 function Orders({clinics, orders, fetchOrders}) {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [page, setPage] = useState(0);
+  const perPage = 10;
 
   const handleSelectedItems = (selectedItems) => {
     setSelectedItems([...selectedItems]);
   };
+
+  useEffect(() => {
+    setPage(0);
+  }, [orders])
 
   const handleDelete = () => {
     axios.delete(`${SERVER_ADDRESS}/orders`, {
@@ -48,11 +54,17 @@ function Orders({clinics, orders, fetchOrders}) {
       </div>
 
       {/* Table */}
-      <OrdersTable selectedItems={handleSelectedItems} orders={orders} clinics={clinics} fetchOrders={fetchOrders} />
+      <OrdersTable
+        count={orders.length}
+        selectedItems={handleSelectedItems}
+        orders={orders.slice(page * perPage, page * perPage + (orders.length - (page + 1) * perPage > 0 ? perPage : orders.length - page * perPage))}
+        clinics={clinics}
+        fetchOrders={fetchOrders}
+      />
 
       {/* Pagination */}
       <div className="mt-8 mb-8">
-        <PaginationClassic />
+        <PaginationClassic page={page} count={orders.length} handleNext={() => setPage(page + 1)} handlePrev={() => setPage(page - 1)} perPage={perPage}/>
       </div>
 
     </div>)

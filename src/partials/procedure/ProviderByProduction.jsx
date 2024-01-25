@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RoleSelect from '../../components/RoleSelect';
-import { STAFF_TYPE_DOCTOR, HYGIENE_CODES, SERVER_ADDRESS, PROVIDER_NAMES } from '../../utils/Consts';
+import { STAFF_TYPE_DOCTOR, SERVER_ADDRESS, PROVIDER_NAMES } from '../../utils/Consts';
 import { getWorkHoursByProvider } from '../../utils/Utils';
 import axios from 'axios';
 

@@ -16,15 +16,19 @@ function Staff() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [staffData, setStaffData] = useState([]);
+  const [staffs, setStaffs] = useState([]);
   const [isRendering, setRendering] = useState(true);
   const [clinics, setClinics] = useState([{id: 0, name: 'All Clinics'}]);
   const [clinic, setClinic] = useState(0);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const initialClinics = [{id: 0, name: 'All Clinics'}];
-  const [staffs, setStaffs] = useState([]);
   const [isCustomDate, setIsCustomDate] = useState(false);
   const [openHours, setOpenHours] = useState([]);
+
+  useEffect(() => {
+    fetchAllStaffs();
+  }, [])
 
   useEffect(() => {
     // setRendering(false);
@@ -60,13 +64,19 @@ function Staff() {
     setOpenHours(openHoursArray);
   }
 
+  const fetchAllStaffs = () => {
+    setStaffs([]);
+    axios.get(`${SERVER_ADDRESS}/member/all`, { params: { clinic: clinic } }).then((res) => {
+      setStaffs(res.data);
+    });
+  }
+
   const fetchStaffs = () => {
     setRendering(true);
     setStaffData([]);
     axios.get(`${SERVER_ADDRESS}/member`, { params: { start: startDate, end: endDate, provider: '', clinic: clinic } }).then((res) => {
       let dayArray = getFilteredDays(startDate, endDate);
       const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic || d.clinic === -1) : res.data;
-      setStaffs(filteredDataByClinic);
       let currentDate = generateDateFromString(startDate);
 
       while (currentDate <= generateDateFromString(endDate)) {
@@ -119,7 +129,7 @@ function Staff() {
                 {/* Datepicker built with flatpickr */}
                 <Datepicker align="right" setStartDate={setStartDate} setEndDate={setEndDate} start={startDate} end={endDate} setIsCustomDate={setIsCustomDate} /> 
                 {/* Add order button */}
-                <AddStaffModal clinics={clinics} fetchStaffs={fetchStaffs} />          
+                <AddStaffModal clinics={clinics} fetchStaffs={fetchStaffs} fetchAllStaffs={fetchAllStaffs}/>          
               </div>
 
             </div>
@@ -133,7 +143,7 @@ function Staff() {
             </div>
           </div>
 
-          <Staffs clinics={clinics} staffs={staffs} fetchStaffs={fetchStaffs} />
+          <Staffs clinics={clinics} staffs={staffs} fetchStaffs={fetchStaffs} fetchAllStaffs={fetchAllStaffs} />
         </main>
       </div>
     </div>

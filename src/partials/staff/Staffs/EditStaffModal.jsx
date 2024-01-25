@@ -4,7 +4,7 @@ import ModalBasic from "../../../components/ModalBasic";
 import { STAFF_TYPE_DOCTOR, STAFF_TYPE_HYGIENE, EMPLOYEE_STATUS_PART_TIME, EMPLOYEE_STATUS_FULL_TIME, SERVER_ADDRESS, STAFF_TYPE_FRONTDESK } from "../../../utils/Consts";
 import WorkHoursList from "./WorkHoursList";
 
-function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
+function EditStaffModal({clinics, fetchStaffs, fetchAllStaffs, open, setOpen, staff}) {
   const [name, setName] = useState(staff.name);
   const [hourly, setHourly] = useState(staff.hourly);
   const [role, setRole] = useState(staff.role);
@@ -34,6 +34,7 @@ function EditStaffModal({clinics, fetchStaffs, open, setOpen, staff}) {
         work_hours: JSON.stringify(workHoursList)
       }).then((res) => {
         fetchStaffs();
+        fetchAllStaffs();
         setOpen(false);
       });
     }

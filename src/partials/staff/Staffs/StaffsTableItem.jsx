@@ -72,7 +72,7 @@ function StaffsTableItem(props) {
           </td>
         </tr>
       </tbody>
-      <EditStaffModal clinics={props.clinics} fetchStaffs={props.fetchStaffs} open={editModalOpen} setOpen={setEditModalOpen}
+      <EditStaffModal clinics={props.clinics} fetchStaffs={props.fetchStaffs} fetchAllStaffs={props.fetchAllStaffs} open={editModalOpen} setOpen={setEditModalOpen}
         staff={{
           id: props.id,
           name: props.name,

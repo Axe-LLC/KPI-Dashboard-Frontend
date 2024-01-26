@@ -61,7 +61,7 @@ function RoleStaffChart({clinics, clinic, data, isRendering}) {
         
         for (var key in data) {
           labels.push(key);
-          const date = new Date(key);
+          const date = generateDateFromString(key);
           const hourValue = clinicsHours.data.find(item => item.day === WEEK_DAYS[date.getDay()]).hours;
           values.push(hourValue);
         }

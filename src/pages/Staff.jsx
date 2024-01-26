@@ -143,7 +143,13 @@ function Staff() {
             </div>
           </div>
 
-          <Staffs clinics={clinics} staffs={staffs} fetchStaffs={fetchStaffs} fetchAllStaffs={fetchAllStaffs} />
+          <Staffs
+            clinics={clinics}
+            clinic={clinic}
+            staffs={clinic === 0 ? staffs : staffs.filter(s => s.clinic == clinic || s.clinic === -1)}
+            fetchStaffs={fetchStaffs}
+            fetchAllStaffs={fetchAllStaffs}
+          />
         </main>
       </div>
     </div>

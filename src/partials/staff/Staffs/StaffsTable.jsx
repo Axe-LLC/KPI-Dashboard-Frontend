@@ -7,7 +7,8 @@ function StaffsTable({
   staffs,
   clinics,
   fetchStaffs,
-  fetchAllStaffs
+  fetchAllStaffs,
+  isUpdated
 }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
@@ -33,6 +34,10 @@ function StaffsTable({
     selectedItems(isCheck);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCheck]);
+
+  useEffect(() => {
+    setIsCheck([]);
+  }, [isUpdated])
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 relative staff-table-min-height">

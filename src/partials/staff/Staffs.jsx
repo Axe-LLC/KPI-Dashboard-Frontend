@@ -7,6 +7,7 @@ import { SERVER_ADDRESS } from "../../utils/Consts";
 
 function Staffs({clinics, staffs, fetchStaffs, fetchAllStaffs}) {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false);
   const [page, setPage] = useState(0);
   const perPage = 10;
 
@@ -19,6 +20,7 @@ function Staffs({clinics, staffs, fetchStaffs, fetchAllStaffs}) {
       headers: {},
       data: selectedItems
     }).then((res) => {
+      setIsUpdated(!isUpdated);
       fetchStaffs();
       fetchAllStaffs();
       setSelectedItems([]);
@@ -60,6 +62,7 @@ function Staffs({clinics, staffs, fetchStaffs, fetchAllStaffs}) {
         clinics={clinics}
         fetchStaffs={fetchStaffs}
         fetchAllStaffs={fetchAllStaffs}
+        isUpdated={isUpdated}
       />
       {/* Pagination */}
       <div className="mt-8 mb-8">

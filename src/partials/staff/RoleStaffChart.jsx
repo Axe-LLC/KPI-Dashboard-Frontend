@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BarChart from '../../charts/BarChart01';
+import RoleStaffBarChart from './Staffs/RoleStaffBarChart';
 import LineChart from '../../charts/LineChart06';
 import StaffLineChart from '../../charts/StaffLineChart';
 import { tailwindConfig, hexToRGB, generateDateFromString } from '../../utils/Utils';
@@ -92,7 +93,7 @@ function RoleStaffChart({clinics, clinic, data, isRendering}) {
       {/* Chart built with Chart.js 3 */}
       <div className={`grow empty-line-chart-staff ${(isRendering || loading) && 'flex items-center m-auto'}`}>
         {(isRendering || loading) && <p>Loading now...</p>}
-        {chartData?.labels?.length > 0 && !isRendering && !loading && <BarChart data={chartData} width={595} height={248} />}
+        {chartData?.labels?.length > 0 && !isRendering && !loading && <RoleStaffBarChart data={chartData} width={595} height={248} />}
       </div>
     </div>
   );

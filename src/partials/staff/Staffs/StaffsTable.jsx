@@ -37,6 +37,7 @@ function StaffsTable({
 
   useEffect(() => {
     setIsCheck([]);
+    setSelectAll(false);
   }, [isUpdated])
 
   return (

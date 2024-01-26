@@ -15,7 +15,7 @@ function AddOrderModal({clinics, fetchOrders}) {
 
   useEffect(() => {
     setName('');
-    setNumber('');
+    if(addOrderModalOpen) setNumber(new Date().getTime());
     setDate('');
     setTotal(0);
     setType(STAFF_TYPE_DOCTOR);

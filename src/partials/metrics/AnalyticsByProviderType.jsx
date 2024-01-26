@@ -128,7 +128,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
             <div className="mr-5">
               <div className="flex items-center">
                 <div className={`text-3xl font-bold ${selectedItem === 0 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>{totalHours.toFixed(2)}</div>
-                <div className="text-sm font-medium text-emerald-500">+49%</div>
+                {/* <div className="text-sm font-medium text-emerald-500">+49%</div> */}
               </div>
               <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`${role}  Hours`}</div>
             </div>
@@ -139,7 +139,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
             <div className="mr-5">
               <div className="flex items-center">
                 <div className={`text-3xl font-bold ${selectedItem === 1 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>${kFormatter(totalRoleProduction.toFixed(2))}</div>
-                <div className="text-sm font-medium text-emerald-500">+7%</div>
+                {/* <div className="text-sm font-medium text-emerald-500">+7%</div> */}
               </div>
               <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`${role} Production`}</div>
             </div>
@@ -150,7 +150,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
             <div className="mr-5">
               <div className="flex items-center">
                 <div className={`text-3xl font-bold ${selectedItem === 2 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>${totalHours === 0 ? 0 : kFormatter(parseFloat(totalRoleProduction / totalHours).toFixed(2))}</div>
-                <div className="text-sm font-medium text-amber-500">-7%</div>
+                {/* <div className="text-sm font-medium text-amber-500">-7%</div> */}
               </div>
               <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`Production per ${role} Hour`}</div>
             </div>
@@ -161,7 +161,7 @@ function AnalyticsByProviderType({metricsData, startDate, endDate, clinic, outer
             <div>
               <div className="flex items-center">
                 <div className={`text-3xl font-bold ${selectedItem === 3 ? 'text-slate-800' : 'text-slate-200'} dark:text-slate-100 mr-2`}>{totalProduction === 0 ? 0 : parseFloat(totalRoleProduction / totalProduction * 100).toFixed(2)}%</div>
-                <div className="text-sm font-medium text-amber-500">+7%</div>
+                {/* <div className="text-sm font-medium text-amber-500">+7%</div> */}
               </div>
               <div className="text-sm text-slate-500 dark:text-slate-400 capitalize">{`Percentage of ${role} Production`}</div>
             </div>

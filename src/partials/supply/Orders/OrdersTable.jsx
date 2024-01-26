@@ -36,6 +36,7 @@ function OrdersTable({
 
   useEffect(() => {
     setIsCheck([]);
+    setSelectAll(false);
   }, [isUpdated])
 
   return (

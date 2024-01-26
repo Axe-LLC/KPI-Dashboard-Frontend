@@ -6,7 +6,8 @@ function OrdersTable({
   selectedItems,
   orders,
   clinics,
-  fetchOrders
+  fetchOrders,
+  isUpdated
 }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
@@ -32,6 +33,10 @@ function OrdersTable({
     selectedItems(isCheck);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCheck]);
+
+  useEffect(() => {
+    setIsCheck([]);
+  }, [isUpdated])
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 relative order-table-min-height">

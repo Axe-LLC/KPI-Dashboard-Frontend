@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DeleteButton from "../actions/DeleteButton";
-import DateSelect from "../../components/DateSelect";
-import FilterButton from '../../components/DropdownFilter';
 import OrdersTable from "./Orders/OrdersTable";
 import PaginationClassic from "../../components/PaginationClassic";
-import AddOrderModal from "./Orders/AddOrderModal";
+import { SERVER_ADDRESS } from "../../utils/Consts";
 
 function Orders({clinics, orders, fetchOrders}) {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false);
   const [page, setPage] = useState(0);
   const perPage = 10;
 
@@ -25,6 +24,7 @@ function Orders({clinics, orders, fetchOrders}) {
       headers: {},
       data: selectedItems
     }).then((res) => {
+      setIsUpdated(!isUpdated);
       fetchOrders();
       setSelectedItems([]);
     })
@@ -60,6 +60,7 @@ function Orders({clinics, orders, fetchOrders}) {
         orders={orders.slice(page * perPage, page * perPage + (orders.length - (page + 1) * perPage > 0 ? perPage : orders.length - page * perPage))}
         clinics={clinics}
         fetchOrders={fetchOrders}
+        isUpdated={isUpdated}
       />
 
       {/* Pagination */}

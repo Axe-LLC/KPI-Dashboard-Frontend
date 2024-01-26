@@ -228,16 +228,18 @@ export const getDailyWorkHoursByProviderType = (openHours, memberData, today, ty
 
 function getDailyWorkHoursPerClinic(clinic, openHours, day) {
   let todayWorkHours = 0;
-  if(clinic === -1) {
-     // Filter Open Hour because clinic's id is array's index, there is data for non-existing id index.
-    const filteredOpenHours = openHours.filter(item => item ? true : false);
-    for(let c=0; c<filteredOpenHours.length; c++) {
-      todayWorkHours += filteredOpenHours[c].find(item => item.day === WEEK_DAYS[day]).hours;
+  if(openHours.length > 0) {
+    if(clinic === -1) {
+      // Filter Open Hour because clinic's id is array's index, there is data for non-existing id index.
+     const filteredOpenHours = openHours.filter(item => item ? true : false);
+     for(let c=0; c<filteredOpenHours.length; c++) {
+       todayWorkHours += filteredOpenHours[c].find(item => item.day === WEEK_DAYS[day]).hours;
+     }
+     todayWorkHours /= filteredOpenHours.length;
     }
-    todayWorkHours /= filteredOpenHours.length;
-  }
-  else {
-    todayWorkHours = openHours[clinic].find(item => item.day === WEEK_DAYS[day]).hours;
+    else {
+      todayWorkHours = openHours[clinic].find(item => item.day === WEEK_DAYS[day]).hours;
+    }
   }
 
   return todayWorkHours;

@@ -53,7 +53,13 @@ function OrdersTableItem(props) {
             <div className={`inline-flex font-medium rounded-full text-center capitalize`} style={{color: statusColor(props.type)}}>{props.type}</div>
           </td>
           <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-            <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>
+            {parseInt(props.clinic) === -1 ? 
+              props.clinics.filter(c => c.id !== 0).map(c => (
+                  <div key={c.id} className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic mr-1`}>{c.name}</div>
+              ))
+              :
+              <div className={`inline-flex font-medium text-center px-2.5 py-0.5 staff-table-clinic`}>{clinicName}</div>
+            }
           </td>
         </tr>
       </tbody>

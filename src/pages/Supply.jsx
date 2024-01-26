@@ -48,7 +48,7 @@ function Supply() {
     setRendering(true);
     axios.get(`${SERVER_ADDRESS}/order`, { params: { start: startDate, end: endDate } }).then((res) => {
       let dayArray = getFilteredDays(startDate, endDate);
-      const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic) : res.data;
+      const filteredDataByClinic = clinic !== 0 ? res.data.filter(d => d.clinic == clinic || parseInt(d.clinic) === -1) : res.data;
       setOrders(filteredDataByClinic);
       for (let i=0; i<filteredDataByClinic.length; i++) {
         let data = dayArray[filteredDataByClinic[i]?.date];

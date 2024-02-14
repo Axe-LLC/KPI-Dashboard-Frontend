@@ -1,26 +1,18 @@
-# Mosaic React
-
-React landing page template designed by Cruip.
-
+# KPI Dashboard Frontend
 ## Project setup
 ```
-npm install
+yarn install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run dev
+yarn dev
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+yarn build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://vitejs.dev/guide/).
-
-## Support notes
-We are shipping our templates with a very basic React configuration to let you quickly get into the development process, but we don't discourage you from using any other configuration or framework built on the top of React. So, please note that any request dealing with React (e.g. extra features, customisations, et cetera) is to be considered out of the support scope.
-
-For more information about what support covers, please see our (FAQs)[https://cruip.com/faq/].
+## Deployment
+We use AWS Amplify to deploy this project and CI/CD is automatically configured using AWS Amplify. So if you push changes to `develop` branch, it will be automatically deployed. You can see Amplify Setting at [here](https://us-east-1.console.aws.amazon.com/amplify/home?region=us-east-1#/d3s967q0r9pmp9) for this application.
